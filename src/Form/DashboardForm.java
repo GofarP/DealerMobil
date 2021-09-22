@@ -139,6 +139,9 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel3MouseEntered(evt);
             }
@@ -187,10 +190,10 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(153, 153, 153));
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("Daftar Mobil");
+        jLabel4.setText("Daftar Motor");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 15, -1, -1));
 
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/car.png"))); // NOI18N
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/motorcycle.png"))); // NOI18N
 
         javax.swing.GroupLayout rSPanelImage2Layout = new javax.swing.GroupLayout(rSPanelImage2);
         rSPanelImage2.setLayout(rSPanelImage2Layout);
@@ -245,6 +248,9 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(51, 51, 51));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel6MouseEntered(evt);
             }
@@ -278,6 +284,9 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(51, 51, 51));
         jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel7MouseEntered(evt);
             }
@@ -352,7 +361,7 @@ public class DashboardForm extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(51, 255, 255));
         kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rSPanelImage8.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/car.png"))); // NOI18N
+        rSPanelImage8.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/motorcycle.png"))); // NOI18N
 
         javax.swing.GroupLayout rSPanelImage8Layout = new javax.swing.GroupLayout(rSPanelImage8);
         rSPanelImage8.setLayout(rSPanelImage8Layout);
@@ -544,15 +553,19 @@ public class DashboardForm extends javax.swing.JFrame {
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         // TODO add your handling code here:
         dispose();
-        new DataMobilForm().setVisible(true);
+        new DataMotorForm().setVisible(true);
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jPanel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseEntered
         // TODO add your handling code here:
+        jPanel9.setBackground(new Color(99,111,254));
+        jLabel17.setForeground(Color.WHITE);
     }//GEN-LAST:event_jPanel9MouseEntered
 
     private void jPanel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseExited
         // TODO add your handling code here:
+        jPanel9.setBackground(new Color(51,51,51));
+        jLabel17.setForeground(new Color(153,153,153));
     }//GEN-LAST:event_jPanel9MouseExited
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
@@ -566,6 +579,24 @@ public class DashboardForm extends javax.swing.JFrame {
         dispose();
         new BeliCredit().setVisible(true);
     }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new PaketCreditForm().setVisible(true);
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new LoginForm().setVisible(true);
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new LaporanForm().setVisible(true);
+    }//GEN-LAST:event_jPanel7MouseClicked
 
     /**
      * @param args the command line arguments

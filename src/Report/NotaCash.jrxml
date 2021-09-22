@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaCash" pageWidth="550" pageHeight="500" columnWidth="510" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="494bac55-b3e7-4383-8b5c-a3f4be295e74">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pembeli" class="java.lang.String"/>
+	<parameter name="kodeMotor" class="java.lang.String"/>
+	<parameter name="namaMotor" class="java.lang.String"/>
+	<parameter name="warna" class="java.lang.String"/>
+	<parameter name="harga" class="java.lang.String"/>
+	<parameter name="tglBeli" class="java.lang.String"/>
+	<parameter name="merk" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="510" height="120" uuid="c3536116-711b-433c-97fa-50a2447a1638"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="116" y="15" width="273" height="34" uuid="9dd6170e-65f4-4510-8f47-d62bf48d22cb"/>
+				<textElement textAlignment="Center">
+					<font size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota Pembelian Cash]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="60" width="301" height="50" uuid="a6ac28b3-88fc-4535-bff1-49457218f9d9"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dealer Jaya Maju Motor]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="194" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-1" y="0" width="511" height="194" uuid="564d078c-e816-48b9-b2fb-fb8a999aa99b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="16" y="40" width="100" height="20" uuid="bf9e795d-33fb-4cd5-b81b-fa314f0fa0db"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Motor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="83" width="100" height="20" uuid="b4bc5ea8-d95d-49bd-8b5c-b8445774204b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Motor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="123" width="100" height="20" uuid="f8aee0bb-e876-4943-a401-e0ffcdc8c4fc"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Merk Motor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="40" width="100" height="20" uuid="3bb62517-2b35-4aa6-b73d-cb42f2143b57"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Warna:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="83" width="100" height="20" uuid="45364613-6c01-4832-9286-af3e9a9710e5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Harga:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="123" width="100" height="20" uuid="ac877f32-6e24-4262-a677-238d177693ad"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Beli:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="118" y="40" width="100" height="20" uuid="ec576072-53a1-46f6-a20d-df42f38d5725"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kodeMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="83" width="100" height="20" uuid="f077496c-6570-4f66-9ace-a63cc5f4dbee"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namaMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="123" width="100" height="20" uuid="d4271d75-b7a0-4bea-88f1-70867579d2ad"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{merk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="40" width="100" height="20" uuid="21d18c56-6ccc-451e-8242-c9a79aad6f23"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{warna}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="83" width="100" height="20" uuid="ed3b1226-ab9b-4f58-a770-386e2e44b6c2"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="123" width="100" height="20" uuid="57dfcf4a-989b-4b48-b833-4de6317be3d7"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tglBeli}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="135" splitType="Stretch">
+			<staticText>
+				<reportElement x="395" y="18" width="100" height="20" uuid="151c483a-ffc1-477c-acb7-cc5bd906b1a9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="99" width="100" height="20" uuid="bea1efa8-62af-462d-847e-a8b28f1fb68b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pemilik]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="18" width="100" height="20" uuid="b50dadd2-7362-46b9-ab49-3b7ce1b660c1"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pembeli]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="16" y="99" width="100" height="20" uuid="0a69bb47-23d1-4262-b5c3-49d427c4091d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pembeli}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

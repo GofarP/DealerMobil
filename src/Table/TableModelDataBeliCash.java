@@ -7,8 +7,11 @@ package Table;
 
 import Model.BeliCash;
 import Model.Pelanggan;
-import Model.Mobil;
+import Model.Motor;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -18,6 +21,8 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelDataBeliCash extends AbstractTableModel{
 
     ArrayList<BeliCash>beliArrayList;
+    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+    Date date=new Date();
     
     public TableModelDataBeliCash(ArrayList<BeliCash>beliArrayList)
     {
@@ -31,25 +36,29 @@ public class TableModelDataBeliCash extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 12;
+        return 13;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        
+        
         switch(columnIndex)
         {
-//            case 0: return beliArrayList.get(rowIndex).getIdBeli();
-//            case 1: return beliArrayList.get(rowIndex).getNoKtp();
-//            case 2:return  beliArrayList.get(rowIndex).getNoBeli();
-//            case 3:return  beliArrayList.get(rowIndex).getNama();
-//            case 4:return  beliArrayList.get(rowIndex).getJeniKelamin();
-//            case 5:return  beliArrayList.get(rowIndex).getAlamat();
-//            case 6:return  beliArrayList.get(rowIndex).getNoTelp();
-//            case 7:return  beliArrayList.get(rowIndex).getIdMobil();
-//            case 8:return  beliArrayList.get(rowIndex).getNamaMobil();
-//            case 9:return  beliArrayList.get(rowIndex).getMerkMobil();
-//            case 10:return  beliArrayList.get(rowIndex).getWarnaMobil();
-//            case 11:return  beliArrayList.get(rowIndex).getHargaMobil();
+                
+            case 0:return beliArrayList.get(rowIndex).getIdBeli();
+            case 1: return beliArrayList.get(rowIndex).getNoKtp();
+            case 2:return  beliArrayList.get(rowIndex).getNoBeli();
+            case 3:return  beliArrayList.get(rowIndex).getNama();
+            case 4:return  beliArrayList.get(rowIndex).getJeniKelamin();
+            case 5:return  beliArrayList.get(rowIndex).getAlamat();
+            case 6:return  beliArrayList.get(rowIndex).getNoTelp();
+            case 7:return  beliArrayList.get(rowIndex).getIdMotor();
+            case 8:return  beliArrayList.get(rowIndex).getNamaMotor();
+            case 9:return  beliArrayList.get(rowIndex).getMerkMotor();
+            case 10:return  beliArrayList.get(rowIndex).getWarnaMotor();
+            case 11:return  "Rp."+NumberFormat.getInstance().format(beliArrayList.get(rowIndex).getHargaMotor());
+            case 12: return beliArrayList.get(rowIndex).getTglbayar();
             
             default:return null;
         }
@@ -67,10 +76,11 @@ public class TableModelDataBeliCash extends AbstractTableModel{
             case 5: return "Alamat";
             case 6: return "No.Telp";
             case 7: return "ID Mobil";
-            case 8: return "Nama Mobil";
-            case 9: return "Merk Mobil";
+            case 8: return "Nama Motor";
+            case 9: return "Merk Motor";
             case 10: return "Warna";
             case 11: return "Harga";
+            case 12: return "tanggal";
             
             default:return null;
         }

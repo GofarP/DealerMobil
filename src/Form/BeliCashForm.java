@@ -7,6 +7,7 @@ package Form;
 
 import Controller.BeliCashController;
 import Model.BeliCash;
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,9 +32,15 @@ public class BeliCashForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         beliCashController=new BeliCashController(this);
         beliCashController.showDataBeli();
+       
         
     }
     
+    
+    public JTextField getTxtCari()
+    {
+        return txtcari;
+    }
     
     public JTextField getTxtNoKtp()
     {
@@ -50,6 +57,16 @@ public class BeliCashForm extends javax.swing.JFrame {
         return cbjk;
     }
     
+    public JComboBox getCbKategori()
+    {
+        return cbkategori;
+    }
+    
+    public JComboBox getCbberdasarkan()
+    {
+        return cbberdasarkan;
+    }
+    
     public JTextField getTxtalamat()
     {
         return txtalamat;
@@ -60,34 +77,55 @@ public class BeliCashForm extends javax.swing.JFrame {
         return txtnotelp;
     }
     
-    public JLabel getLblkodemobil()
+    public JLabel getLblkodemotor()
     {
-        return lblkodemobil;
+        return lblkodemotor;
     }
     
-    public JLabel getLblnamamobil()
+    public JLabel getLblnamamotor()
     {
-        return lblnamamobil;
+        return lblnamamotor;
     }
     
-    public JLabel getLblmerkmobil()
+    public JLabel getLblmerkmotor()
     {
-        return lblmerkmobil;
+        return lblmerkmotor;
     }
     
-    public JLabel getLblwarnamobil()
+    public JLabel getLblwarnamotor()
     {
-        return lblwarnamobil;
+        return lblwarnamotor;
     }
     
-    public JLabel getLblhargamobil()
+    public JLabel getLblhargamotor()
     {
-        return lblhargamobil;
+        return lblhargamotor;
     }
+    
+    public JLabel getLblStok()
+    {
+        return lblstok;
+    }
+   
     
     public JTable getTblBeliCash()
     {
         return tblbelicash;
+    }
+    
+    public JRadioButton getRbDataBeli()
+    {
+        return rbpembelian;
+    }
+    
+    public JRadioButton getRbDataMotor()
+    {
+        return rbmotor;
+    }
+    
+    public ButtonGroup getbuttonGroup()
+    {
+        return buttonGroup1;
     }
     
    
@@ -118,25 +156,38 @@ public class BeliCashForm extends javax.swing.JFrame {
         txtnotelp = new javax.swing.JTextField();
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
+        rSButtonMetro6 = new rojerusan.RSButtonMetro();
+        rSButtonMetro5 = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        lblkodemobil = new javax.swing.JLabel();
-        lblnamamobil = new javax.swing.JLabel();
-        lblmerkmobil = new javax.swing.JLabel();
-        lblwarnamobil = new javax.swing.JLabel();
-        lblhargamobil = new javax.swing.JLabel();
+        lblstok = new javax.swing.JLabel();
+        lblkodemotor = new javax.swing.JLabel();
+        lblnamamotor = new javax.swing.JLabel();
+        lblmerkmotor = new javax.swing.JLabel();
+        lblwarnamotor = new javax.swing.JLabel();
+        lblhargamotor = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblbelicash = new rojerusan.RSTableMetro();
         jPanel5 = new javax.swing.JPanel();
-        rbmobil = new javax.swing.JRadioButton();
+        rbmotor = new javax.swing.JRadioButton();
         rbpembelian = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        txtcari = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        cbberdasarkan = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        cbkategori = new javax.swing.JComboBox<>();
+        rSButtonMetro3 = new rojerusan.RSButtonMetro();
+        rSButtonMetro4 = new rojerusan.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -182,6 +233,11 @@ public class BeliCashForm extends javax.swing.JFrame {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         txtnoktp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtnoktp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnoktpKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtnoktp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, 20));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -209,6 +265,11 @@ public class BeliCashForm extends javax.swing.JFrame {
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 223, -1, -1));
 
         txtnotelp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtnotelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnotelpKeyTyped(evt);
+            }
+        });
         jPanel3.add(txtnotelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 160, 20));
 
         rSButtonMetro1.setBackground(new java.awt.Color(225, 0, 0));
@@ -218,7 +279,7 @@ public class BeliCashForm extends javax.swing.JFrame {
                 rSButtonMetro1ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 265, 80, 30));
+        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, 80, 30));
 
         rSButtonMetro2.setText("Tambah ");
         rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
@@ -228,101 +289,89 @@ public class BeliCashForm extends javax.swing.JFrame {
         });
         jPanel3.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 265, 80, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 310, 320));
+        rSButtonMetro6.setText("Clear");
+        rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 265, 80, 30));
+
+        rSButtonMetro5.setText("Cetak Nota");
+        rSButtonMetro5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 265, 80, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 430, 320));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detail Mobil:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detail Motor:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel9.setText("Kode Mobil:");
+        jLabel9.setText("Kode Motor:");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 50, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel10.setText("Nama Mobil:");
+        jLabel10.setText("Nama Motor:");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 78, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel11.setText("Merk Mobil:");
+        jLabel11.setText("Merk Motor:");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 106, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel12.setText("Warna Mobil:");
+        jLabel12.setText("Warna Motor:");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 134, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel1.setText("Harga Mobil:");
+        lblstok.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblstok.setForeground(new java.awt.Color(99, 111, 254));
+        lblstok.setText("...");
+        jPanel4.add(lblstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 190, -1, -1));
 
-        lblkodemobil.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblkodemobil.setForeground(new java.awt.Color(99, 111, 254));
-        lblkodemobil.setText("...");
+        lblkodemotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblkodemotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblkodemotor.setText("...");
+        jPanel4.add(lblkodemotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 50, -1, -1));
 
-        lblnamamobil.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblnamamobil.setForeground(new java.awt.Color(99, 111, 254));
-        lblnamamobil.setText("...");
+        lblnamamotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblnamamotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblnamamotor.setText("...");
+        jPanel4.add(lblnamamotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 78, -1, -1));
 
-        lblmerkmobil.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblmerkmobil.setForeground(new java.awt.Color(99, 111, 254));
-        lblmerkmobil.setText("...");
+        lblmerkmotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblmerkmotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblmerkmotor.setText("...");
+        jPanel4.add(lblmerkmotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 106, -1, -1));
 
-        lblwarnamobil.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblwarnamobil.setForeground(new java.awt.Color(99, 111, 254));
-        lblwarnamobil.setText("...");
+        lblwarnamotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblwarnamotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblwarnamotor.setText("...");
+        jPanel4.add(lblwarnamotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 134, -1, -1));
 
-        lblhargamobil.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblhargamobil.setForeground(new java.awt.Color(99, 111, 254));
-        lblhargamobil.setText("...");
+        lblhargamotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblhargamotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblhargamotor.setText("...");
+        jPanel4.add(lblhargamotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 162, -1, -1));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblhargamobil, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblmerkmobil, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblnamamobil, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblkodemobil, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblwarnamobil, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(188, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lblkodemobil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblnamamobil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblmerkmobil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblwarnamobil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblhargamobil))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel2.setText("Harga Motor:");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 162, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 320, 230));
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel3.setText("Stok:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 320, 230));
 
         tblbelicash.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -335,23 +384,28 @@ public class BeliCashForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblbelicash.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblbelicashMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblbelicash);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 940, 200));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 1030, 200));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tampilkan Data:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rbmobil.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(rbmobil);
-        rbmobil.setText("Mobil");
-        rbmobil.addActionListener(new java.awt.event.ActionListener() {
+        rbmotor.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rbmotor);
+        rbmotor.setText("Motor");
+        rbmotor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbmobilActionPerformed(evt);
+                rbmotorActionPerformed(evt);
             }
         });
-        jPanel5.add(rbmobil, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 23, -1, -1));
+        jPanel5.add(rbmotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 23, -1, -1));
 
         rbpembelian.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(rbpembelian);
@@ -364,25 +418,55 @@ public class BeliCashForm extends javax.swing.JFrame {
         });
         jPanel5.add(rbpembelian, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 23, -1, -1));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 315, 320, 60));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 320, 60));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cari Data:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 228, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 197, Short.MAX_VALUE)
-        );
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel13.setText("Berdasarkan:");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 145, -1, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 240, 220));
+        txtcari.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        jPanel6.add(txtcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 60, 150, 27));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 630));
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel14.setText("Cari Data:");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 65, -1, -1));
+
+        cbberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kode", "Nama" }));
+        jPanel6.add(cbberdasarkan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 145, 150, -1));
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel15.setText("Kategori:");
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 105, -1, -1));
+
+        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pembeli", "Motor" }));
+        jPanel6.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 105, 150, -1));
+
+        rSButtonMetro3.setText("Reset Tabel");
+        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro3ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rSButtonMetro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 230, 30));
+
+        rSButtonMetro4.setText("Cari");
+        rSButtonMetro4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro4ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rSButtonMetro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 230, 30));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 280, 270));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -396,24 +480,82 @@ public class BeliCashForm extends javax.swing.JFrame {
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
         beliCashController.deleteDataBeli();
+        beliCashController.showDataBeli();
+        beliCashController.clearMotor();
+        beliCashController.clearPembeli();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
         // TODO add your handling code here:
        
         beliCashController.tambahDataBeli();
-        
+        beliCashController.clearMotor();
+        beliCashController.clearPembeli();
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
 
     private void rbpembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpembelianActionPerformed
         // TODO add your handling code here:
-        beliCashController.showMobil();
+        beliCashController.showDataBeli();
     }//GEN-LAST:event_rbpembelianActionPerformed
 
-    private void rbmobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmobilActionPerformed
+    private void rbmotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmotorActionPerformed
         // TODO add your handling code here:
-        beliCashController.showMobil();
-    }//GEN-LAST:event_rbmobilActionPerformed
+        beliCashController.showMotor();
+    }//GEN-LAST:event_rbmotorActionPerformed
+
+    private void tblbelicashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblbelicashMouseClicked
+        // TODO add your handling code here:
+                
+        if(rbmotor.isSelected())
+        {
+             beliCashController.getRowDataMotor();
+        }
+        
+        else if(rbpembelian.isSelected())
+        {
+            beliCashController.getRowDataBeli();
+        }
+       
+    }//GEN-LAST:event_tblbelicashMouseClicked
+
+    private void txtnotelpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnotelpKeyTyped
+        // TODO add your handling code here:
+        char stok = evt.getKeyChar();
+        if (!(Character.isDigit(stok))) 
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnotelpKeyTyped
+
+    private void rSButtonMetro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro4ActionPerformed
+        // TODO add your handling code here:
+        beliCashController.cariData();
+    }//GEN-LAST:event_rSButtonMetro4ActionPerformed
+
+    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
+        // TODO add your handling code here:
+        beliCashController.resetTable();
+    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
+
+    private void rSButtonMetro6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro6ActionPerformed
+        // TODO add your handling code here:
+        beliCashController.clearMotor();
+        beliCashController.clearPembeli();
+    }//GEN-LAST:event_rSButtonMetro6ActionPerformed
+
+    private void txtnoktpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnoktpKeyTyped
+        // TODO add your handling code here:
+        char stok = evt.getKeyChar();
+        if (!(Character.isDigit(stok))) 
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnoktpKeyTyped
+
+    private void rSButtonMetro5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro5ActionPerformed
+        // TODO add your handling code here:
+        beliCashController.cetakNota();
+    }//GEN-LAST:event_rSButtonMetro5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,11 +595,17 @@ public class BeliCashForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbberdasarkan;
     private javax.swing.JComboBox<String> cbjk;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbkategori;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -471,18 +619,24 @@ public class BeliCashForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblhargamobil;
-    private javax.swing.JLabel lblkodemobil;
-    private javax.swing.JLabel lblmerkmobil;
-    private javax.swing.JLabel lblnamamobil;
-    private javax.swing.JLabel lblwarnamobil;
+    private javax.swing.JLabel lblhargamotor;
+    private javax.swing.JLabel lblkodemotor;
+    private javax.swing.JLabel lblmerkmotor;
+    private javax.swing.JLabel lblnamamotor;
+    private javax.swing.JLabel lblstok;
+    private javax.swing.JLabel lblwarnamotor;
     private rojerusan.RSButtonMetro rSButtonMetro1;
     private rojerusan.RSButtonMetro rSButtonMetro2;
+    private rojerusan.RSButtonMetro rSButtonMetro3;
+    private rojerusan.RSButtonMetro rSButtonMetro4;
+    private rojerusan.RSButtonMetro rSButtonMetro5;
+    private rojerusan.RSButtonMetro rSButtonMetro6;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private javax.swing.JRadioButton rbmobil;
+    private javax.swing.JRadioButton rbmotor;
     private javax.swing.JRadioButton rbpembelian;
     private rojerusan.RSTableMetro tblbelicash;
     private javax.swing.JTextField txtalamat;
+    private javax.swing.JTextField txtcari;
     private javax.swing.JTextField txtnamapembeli;
     private javax.swing.JTextField txtnoktp;
     private javax.swing.JTextField txtnotelp;

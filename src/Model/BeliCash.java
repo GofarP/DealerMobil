@@ -13,10 +13,9 @@ import java.util.Date;
  */
 public class BeliCash {
     
-    private Pelanggan pelanggan;
-    private Pembelian pembelian;
-    private Mobil mobil; 
-    private Date tglbayar;
+    private Pelanggan pelanggan=new Pelanggan();
+    private Pembelian pembelian=new Pembelian();
+    private Motor motor=new Motor(); 
     
     public String getIdBeli()
     {
@@ -41,7 +40,7 @@ public class BeliCash {
     }
 
     public void setNoKtp(String noKtp) {
-        pelanggan.setAlamat(noKtp);
+        pelanggan.setNoKtp(noKtp);
     }
 
     public String getNama() {
@@ -76,53 +75,53 @@ public class BeliCash {
         pelanggan.setNoTelp(noTelp);
     }
 
-    public int getIdMobil() {
-        return mobil.getId();
+    public int getIdMotor() {
+        return motor.getId();
     }
 
-    public void setIdMobil(int idMobil) {
-        mobil.setId(idMobil);
+    public void setIdMotor(int idMotor) {
+        motor.setId(idMotor);
     }
     
     
-    public String getKodeMobil() {
-        return mobil.getKodeMobil();
+    public String getKodeMotor() {
+        return motor.getKodeMotor();
     }
 
-    public void setKodeMobil(String kodeMobil) {
-        mobil.setKodeMobil(kodeMobil);
+    public void setKodeMotor(String kodeMotor) {
+        motor.setKodeMotor(kodeMotor);
     }
 
-    public String getNamaMobil() {
-        return mobil.getNama();
+    public String getNamaMotor() {
+        return motor.getNama();
     }
 
-    public void setNamaMobil(String namaMobil) {
-        mobil.setNama(namaMobil);
+    public void setNamaMotor(String namaMotor) {
+        motor.setNama(namaMotor);
     }
 
-    public String getMerkMobil() {
-        return mobil.getMerk();
+    public String getMerkMotor() {
+        return motor.getMerk();
     }
 
-    public void setMerkMobil(String merkMobil) {
-        mobil.setMerk(merkMobil);
+    public void setMerkMotor(String merkMotor) {
+        motor.setMerk(merkMotor);
     }
     
-    public String getWarnaMobil() {
-        return mobil.getWarna();
+    public String getWarnaMotor() {
+        return motor.getWarna();
     }
 
-    public void setWarnaMobil(String warnaMobil) {
-        mobil.setWarna(warnaMobil);
+    public void setWarnaMotor(String warnaMotor) {
+        motor.setWarna(warnaMotor);
     }
     
-    public int getHargaMobil() {
-        return mobil.getHarga();
+    public int getHargaMotor() {
+        return motor.getHarga();
     }
 
-    public void setHargaMobil(int hargaMobil) {
-        mobil.setHarga(hargaMobil);
+    public void setHargaMotor(int hargaMotor) {
+        motor.setHarga(hargaMotor);
     }
     
     
@@ -134,12 +133,12 @@ public class BeliCash {
         pembelian.setStatus(status);
     }
 
-    public Date getTglbayar() {
-        return tglbayar;
+    public String getTglbayar() {
+        return pembelian.getTglbayar();
     }
 
-    public void setTglbayar(Date tglbayar) {
-        this.tglbayar = tglbayar;
+    public void setTglbayar(String tglbayar) {
+        pembelian.setTglbayar(tglbayar);
     }
     
     

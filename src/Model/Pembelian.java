@@ -13,8 +13,7 @@ import java.util.Date;
  */
 public class Pembelian {
     
-   private Date tglbayar;
-   private String status, noBeli, idBeli; 
+   private String status, noBeli, idBeli, tglbayar; 
 
     public String getIdBeli() {
         return idBeli;
@@ -25,8 +24,7 @@ public class Pembelian {
     }
    
    
-    
-
+  
     public String getNoBeli() {
         return noBeli;
     }
@@ -36,11 +34,11 @@ public class Pembelian {
     }
    
 
-    public Date getTglbayar() {
+    public String getTglbayar() {
         return tglbayar;
     }
 
-    public void setTglbayar(Date tglbayar) {
+    public void setTglbayar(String tglbayar) {
         this.tglbayar = tglbayar;
     }
 

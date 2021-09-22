@@ -5,6 +5,12 @@
  */
 package Form;
 
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author LENOVO
@@ -17,6 +23,128 @@ public class BeliCredit extends javax.swing.JFrame {
     public BeliCredit() {
         initComponents();
     }
+    
+    public JLabel getJlabelKodePaket()
+    {
+        return lblkodepaket;
+    }
+    
+    public JLabel getJlabelKodeMotor()
+    {
+        return lblkodemotor;
+    }
+    
+    public JLabel getJlabelNamaMotor()
+    {
+        return lblnamamotor;
+    }
+    
+    
+    public JLabel getJlabelMerk()
+    {
+        return lblmerk;
+    }
+    
+    public JLabel getJlabelWarna()
+    {
+        return lblwarna;
+    }
+    
+    public JLabel getJlabelStok()
+    {
+        return lblstok;
+    }
+    
+    public JLabel getJlabelHarga()
+    {
+        return lblharga;
+    }
+    
+    public JLabel getJlabelNilaiCicilan()
+    {
+        return lblnilaicicilan;
+    }
+    
+    public JLabel getJlabelHargaTotal()
+    {
+        return lblhargatotal;
+    }
+    
+    public JLabel getJlabelHutangPokok()
+    {
+        return lblhutangpokok;
+    }
+    
+    public JLabel getJlabelTotalBunga()
+    {
+        return lbltotalbunga;
+    }
+    
+    public JLabel getJlabelJumlahCicilan()
+    {
+        return lbljumlahcicilan;
+    }
+    
+    
+    public JComboBox getCbKategori()
+    {
+        return cbkategori;
+    }
+    
+    public JComboBox getCbBerdasarkan()
+    {
+        return cbberdasarkan;
+    }
+    
+    public JLabel getJlabelBunga()
+    {
+        return lblbunga;
+    }
+    
+    public JLabel getJLabelUangMuka()
+    {
+        return lbluangmuka;
+    }
+    
+    public JLabel getJLabelNilaiCicilan()
+    {
+        return lblnilaicicilan;
+    }
+    
+    public JLabel getJLabelHargaTotal()
+    {
+        return lblhargatotal;
+    }
+    
+    public JLabel getJLabelHutangPokok()
+    {
+        return lblhutangpokok;
+    }
+    
+    public JLabel getJLabelTotalBunga()
+    {
+        return lbltotalbunga;
+    }
+    
+    public JTextField getTxtCari()
+    {
+        return txtcaridata;
+    }
+    
+    public JTable getTblKredit()
+    {
+        return tblkredit;
+    }
+    
+    public JRadioButton getRbpaket()
+    {
+        return rbpaket;
+    }
+    
+    public JRadioButton getRbPaket()
+    {
+        return rbpaket;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +155,428 @@ public class BeliCredit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        rSPanelImage1 = new rojerusan.RSPanelImage();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtnoktp = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtnamapembeli = new javax.swing.JTextField();
+        cbjk = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        txtalamat = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtnotelp = new javax.swing.JTextField();
+        rSButtonMetro1 = new rojerusan.RSButtonMetro();
+        rSButtonMetro2 = new rojerusan.RSButtonMetro();
+        rSButtonMetro6 = new rojerusan.RSButtonMetro();
+        jPanel4 = new javax.swing.JPanel();
+        lblharga = new javax.swing.JLabel();
+        lblhargatotal = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        lblkodepaket = new javax.swing.JLabel();
+        lblkodemotor = new javax.swing.JLabel();
+        lblnamamotor = new javax.swing.JLabel();
+        lblmerk = new javax.swing.JLabel();
+        lblwarna = new javax.swing.JLabel();
+        lblstok = new javax.swing.JLabel();
+        lbluangmuka = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        lblnilaicicilan = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        lbltotalbunga = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        lblhutangpokok = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        lbljumlahcicilan = new javax.swing.JLabel();
+        lblbunga = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblkredit = new rojerusan.RSTableMetro();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        txtcaridata = new javax.swing.JTextField();
+        cbberdasarkan = new javax.swing.JComboBox<>();
+        cbkategori = new javax.swing.JComboBox<>();
+        rSButtonMetro3 = new rojerusan.RSButtonMetro();
+        jPanel6 = new javax.swing.JPanel();
+        rbpaket = new javax.swing.JRadioButton();
+        rbpembeli = new javax.swing.JRadioButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(99, 111, 254));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/back.png"))); // NOI18N
+        rSPanelImage1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rSPanelImage1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout rSPanelImage1Layout = new javax.swing.GroupLayout(rSPanelImage1);
+        rSPanelImage1.setLayout(rSPanelImage1Layout);
+        rSPanelImage1Layout.setHorizontalGroup(
+            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        rSPanelImage1Layout.setVerticalGroup(
+            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
+
+        jPanel2.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 30, 30, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 680));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Biodata Pembeli:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel4.setText("Jenis Kelamin:");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel5.setText("No KTP:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        txtnoktp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtnoktp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnoktpKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txtnoktp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, 20));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel6.setText("Nama:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, -1, -1));
+
+        txtnamapembeli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        jPanel3.add(txtnamapembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 160, 20));
+
+        cbjk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan", "Lainnya" }));
+        jPanel3.add(cbjk, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 160, -1));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel7.setText("Alamat:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        txtalamat.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        jPanel3.add(txtalamat, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 179, 160, 20));
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel8.setText("No Telp:");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 223, -1, -1));
+
+        txtnotelp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtnotelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnotelpKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txtnotelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 160, 20));
+
+        rSButtonMetro1.setBackground(new java.awt.Color(225, 0, 0));
+        rSButtonMetro1.setText("Hapus");
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, 80, 30));
+
+        rSButtonMetro2.setText("Tambah ");
+        rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 265, 80, 30));
+
+        rSButtonMetro6.setText("Clear");
+        rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 265, 80, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 350, 310));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Paket Kredit:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblharga.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblharga.setForeground(new java.awt.Color(99, 111, 254));
+        lblharga.setText("...");
+        jPanel4.add(lblharga, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+
+        lblhargatotal.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblhargatotal.setForeground(new java.awt.Color(99, 111, 254));
+        lblhargatotal.setText("...");
+        jPanel4.add(lblhargatotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel11.setText("Uang Muka:");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel12.setText(" Kode Motor:");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 80, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel13.setText("Nama Motor:");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel14.setText("Merk:");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 140, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel15.setText("Warna:");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 170, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel16.setText("Stok:");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 200, -1, -1));
+
+        lblkodepaket.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblkodepaket.setForeground(new java.awt.Color(99, 111, 254));
+        lblkodepaket.setText("...");
+        jPanel4.add(lblkodepaket, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+
+        lblkodemotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblkodemotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblkodemotor.setText("...");
+        jPanel4.add(lblkodemotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+
+        lblnamamotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblnamamotor.setForeground(new java.awt.Color(99, 111, 254));
+        lblnamamotor.setText("...");
+        jPanel4.add(lblnamamotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+
+        lblmerk.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblmerk.setForeground(new java.awt.Color(99, 111, 254));
+        lblmerk.setText("...");
+        jPanel4.add(lblmerk, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
+
+        lblwarna.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblwarna.setForeground(new java.awt.Color(99, 111, 254));
+        lblwarna.setText("...");
+        jPanel4.add(lblwarna, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        lblstok.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblstok.setForeground(new java.awt.Color(99, 111, 254));
+        lblstok.setText("...");
+        jPanel4.add(lblstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+
+        lbluangmuka.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lbluangmuka.setForeground(new java.awt.Color(99, 111, 254));
+        lbluangmuka.setText("...");
+        jPanel4.add(lbluangmuka, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel19.setText("Bunga Per Tahun:");
+        jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel20.setText("Harga:");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 230, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel21.setText("Harga Total:");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel22.setText("Total Bunga:");
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, -1));
+
+        lblnilaicicilan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblnilaicicilan.setForeground(new java.awt.Color(99, 111, 254));
+        lblnilaicicilan.setText("...");
+        jPanel4.add(lblnilaicicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel23.setText("Kode Paket:");
+        jPanel4.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel24.setText("Cicilan (Per bulan):");
+        jPanel4.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 110, -1));
+
+        lbltotalbunga.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lbltotalbunga.setForeground(new java.awt.Color(99, 111, 254));
+        lbltotalbunga.setText("...");
+        jPanel4.add(lbltotalbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 110, -1));
+
+        jLabel26.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel26.setText("Hutang Pokok:");
+        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 90, -1));
+
+        lblhutangpokok.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblhutangpokok.setForeground(new java.awt.Color(99, 111, 254));
+        lblhutangpokok.setText("...");
+        jPanel4.add(lblhutangpokok, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 110, -1));
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel25.setText("Cicilan (Bulan):");
+        jPanel4.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+
+        lbljumlahcicilan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lbljumlahcicilan.setForeground(new java.awt.Color(99, 111, 254));
+        lbljumlahcicilan.setText("...");
+        jPanel4.add(lbljumlahcicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
+
+        lblbunga.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblbunga.setForeground(new java.awt.Color(99, 111, 254));
+        lblbunga.setText("...");
+        jPanel4.add(lblbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 470, 290));
+
+        tblkredit.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblkredit);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 1150, 260));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cari Data:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel27.setText("Berdasarkan:");
+        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel28.setText("Cari Data:");
+        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel29.setText("Kategori:");
+        jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel5.add(txtcaridata, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 130, -1));
+
+        cbberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Nama" }));
+        jPanel5.add(cbberdasarkan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, -1));
+
+        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pembeli", "Paket" }));
+        jPanel5.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 130, -1));
+
+        rSButtonMetro3.setText("Cari Data");
+        jPanel5.add(rSButtonMetro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 190, 40));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 260, 240));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tampilkan Data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 112, 192))); // NOI18N
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rbpaket.setBackground(new java.awt.Color(255, 255, 255));
+        rbpaket.setText("Data Paket");
+        jPanel6.add(rbpaket, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 17, -1, -1));
+
+        rbpembeli.setBackground(new java.awt.Color(255, 255, 255));
+        rbpembeli.setText("Data Pembeli");
+        jPanel6.add(rbpembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 17, -1, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 310, 260, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rSPanelImage1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSPanelImage1MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new DashboardForm().setVisible(true);
+    }//GEN-LAST:event_rSPanelImage1MouseClicked
+
+    private void txtnoktpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnoktpKeyTyped
+        // TODO add your handling code here:
+        char stok = evt.getKeyChar();
+        if (!(Character.isDigit(stok)))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnoktpKeyTyped
+
+    private void txtnotelpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnotelpKeyTyped
+        // TODO add your handling code here:
+        char stok = evt.getKeyChar();
+        if (!(Character.isDigit(stok)))
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnotelpKeyTyped
+
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
+
+    private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
+        // TODO add your handling code here:
+
+       
+    }//GEN-LAST:event_rSButtonMetro2ActionPerformed
+
+    private void rSButtonMetro6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro6ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_rSButtonMetro6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +614,64 @@ public class BeliCredit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbberdasarkan;
+    private javax.swing.JComboBox<String> cbjk;
+    private javax.swing.JComboBox<String> cbkategori;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblbunga;
+    private javax.swing.JLabel lblharga;
+    private javax.swing.JLabel lblhargatotal;
+    private javax.swing.JLabel lblhutangpokok;
+    private javax.swing.JLabel lbljumlahcicilan;
+    private javax.swing.JLabel lblkodemotor;
+    private javax.swing.JLabel lblkodepaket;
+    private javax.swing.JLabel lblmerk;
+    private javax.swing.JLabel lblnamamotor;
+    private javax.swing.JLabel lblnilaicicilan;
+    private javax.swing.JLabel lblstok;
+    private javax.swing.JLabel lbltotalbunga;
+    private javax.swing.JLabel lbluangmuka;
+    private javax.swing.JLabel lblwarna;
+    private rojerusan.RSButtonMetro rSButtonMetro1;
+    private rojerusan.RSButtonMetro rSButtonMetro2;
+    private rojerusan.RSButtonMetro rSButtonMetro3;
+    private rojerusan.RSButtonMetro rSButtonMetro6;
+    private rojerusan.RSPanelImage rSPanelImage1;
+    private javax.swing.JRadioButton rbpaket;
+    private javax.swing.JRadioButton rbpembeli;
+    private rojerusan.RSTableMetro tblkredit;
+    private javax.swing.JTextField txtalamat;
+    private javax.swing.JTextField txtcaridata;
+    private javax.swing.JTextField txtnamapembeli;
+    private javax.swing.JTextField txtnoktp;
+    private javax.swing.JTextField txtnotelp;
     // End of variables declaration//GEN-END:variables
 }
