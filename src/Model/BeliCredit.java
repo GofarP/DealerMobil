@@ -13,24 +13,24 @@ import java.util.Date;
  */
 public class BeliCredit {
     
-    String no_beli, no_ktp, nama, jenis_kelamin, alamat, noTelp,tglBeli, status;
-    String namaMotor, merkMotor, warna;
-    int idBeli,idMotor;
+    private String noBeli, noKtp, nama, jenisKelamin, alamat, noTelp,tglBeli, status;
+    private String kodeMotor,namaMotor, merkMotor, warna;
+    private int idBeli,idMotor, jumlahCicilan, nilaiCicilan, Bunga,uangMuka,harga, tanggal;
 
-    public String getNo_beli() {
-        return no_beli;
+    public String getNoBeli() {
+        return noBeli;
     }
 
-    public void setNo_beli(String no_beli) {
-        this.no_beli = no_beli;
+    public void setNoBeli(String noBeli) {
+        this.noBeli = noBeli;
     }
 
-    public String getNo_ktp() {
-        return no_ktp;
+    public String getNoKtp() {
+        return noKtp;
     }
 
-    public void setNo_ktp(String no_ktp) {
-        this.no_ktp = no_ktp;
+    public void setNoKtp(String noKtp) {
+        this.noKtp = noKtp;
     }
 
     public String getNama() {
@@ -41,12 +41,12 @@ public class BeliCredit {
         this.nama = nama;
     }
 
-    public String getJenis_kelamin() {
-        return jenis_kelamin;
+    public String getJenisKelamin() {
+        return jenisKelamin;
     }
 
-    public void setJenis_kelamin(String jenis_kelamin) {
-        this.jenis_kelamin = jenis_kelamin;
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
     }
 
     public String getAlamat() {
@@ -65,6 +65,56 @@ public class BeliCredit {
         this.noTelp = noTelp;
     }
 
+    public Integer getHarga() {
+        return harga;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
+    }
+
+    public int getJumlahCicilan() {
+        return jumlahCicilan;
+    }
+
+    public void setJumlahCicilan(int jumlahCicilan) {
+        this.jumlahCicilan = jumlahCicilan;
+    }
+
+    public int getNilaiCicilan() {
+        return nilaiCicilan;
+    }
+
+    public void setNilaiCicilan(int nilaiCicilan) {
+        this.nilaiCicilan = nilaiCicilan;
+    }
+
+    public int getBunga() {
+        return Bunga;
+    }
+
+    public void setBunga(int Bunga) {
+        this.Bunga = Bunga;
+    }
+
+    public int getUangMuka() {
+        return uangMuka;
+    }
+
+    public void setUangMuka(int uangMuka) {
+        this.uangMuka = uangMuka;
+    }
+
+    public int getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(int tanggal) {
+        this.tanggal = tanggal;
+    }
+    
+    
+    
     public String getTglBeli() {
         return tglBeli;
     }
@@ -81,6 +131,48 @@ public class BeliCredit {
         this.status = status;
     }
 
+    public String getKodeMotor() {
+        return kodeMotor;
+    }
+
+    public void setKodeMotor(String kodeMotor) {
+        this.kodeMotor = kodeMotor;
+    }
+    
+    
+
+    public String getNamaMotor() {
+        return namaMotor;
+    }
+
+    public void setNamaMotor(String namaMotor) {
+        this.namaMotor = namaMotor;
+    }
+
+    public String getMerkMotor() {
+        return merkMotor;
+    }
+
+    public void setMerkMotor(String merkMotor) {
+        this.merkMotor = merkMotor;
+    }
+
+    public String getWarna() {
+        return warna;
+    }
+
+    public void setWarna(String warna) {
+        this.warna = warna;
+    }
+
+    public int getIdBeli() {
+        return idBeli;
+    }
+
+    public void setIdBeli(int idBeli) {
+        this.idBeli = idBeli;
+    }
+
     public int getIdMotor() {
         return idMotor;
     }
@@ -88,6 +180,9 @@ public class BeliCredit {
     public void setIdMotor(int idMotor) {
         this.idMotor = idMotor;
     }
+    
+    
+    
     
     
     
