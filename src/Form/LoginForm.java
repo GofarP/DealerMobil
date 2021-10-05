@@ -150,15 +150,15 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel2.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 155, 100, 100));
 
-        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 0, 40)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 0, 35)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("nama Dealer");
+        jLabel5.setText("Jaya Maju Motor");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Alamat");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
+        jLabel6.setText("Jl. Hang Jebat, Kijang Kota");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

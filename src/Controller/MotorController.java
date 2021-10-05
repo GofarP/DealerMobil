@@ -25,23 +25,21 @@ public class MotorController {
     boolean kosong=false;
     ArrayList<Motor>motorArrayList=new ArrayList<>();
     String id="";
+    Motor motor=new Motor();
     
     
-    public MotorController(DataMotorForm dataMobilForm)
+    public MotorController(DataMotorForm dataMotorForm)
     {
-        this.dataMotorForm=dataMobilForm;
+        this.dataMotorForm=dataMotorForm;
         interfaceMotor=new MotorDao();
         motorArrayList=interfaceMotor.showDataMotor();
-        dataMobilForm.getLblKodeMobil().setText(interfaceMotor.autoNumber());
+        dataMotorForm.getLblKodeMobil().setText(interfaceMotor.autoNumber());
     }
     
     public String getId()
     {
         return id;
     }
-    
-    
-    
     
     public void clear()
     {
@@ -89,16 +87,15 @@ public class MotorController {
     public void tambahMotor()
     {
        
-        Motor mobil=new Motor();
         
-        mobil.setKodeMotor(dataMotorForm.getLblKodeMobil().getText().trim());
-        mobil.setNama(dataMotorForm.getTxtNamaMobil().getText().trim());
-        mobil.setMerk(dataMotorForm.getTxtMerkMobil().getText().trim());
-        mobil.setWarna(dataMotorForm.getTxtWarnaMobil().getText().trim());
-        mobil.setStok(Integer.parseInt(dataMotorForm.getTxtStockMobil().getText().trim()));
-        mobil.setHarga(Integer.parseInt(dataMotorForm.getTxtHargaMobil().getText().trim()));
+        motor.setKodeMotor(dataMotorForm.getLblKodeMobil().getText().trim());
+        motor.setNama(dataMotorForm.getTxtNamaMobil().getText().trim());
+        motor.setMerk(dataMotorForm.getTxtMerkMobil().getText().trim());
+        motor.setWarna(dataMotorForm.getTxtWarnaMobil().getText().trim());
+        motor.setStok(Integer.parseInt(dataMotorForm.getTxtStockMobil().getText().trim()));
+        motor.setHarga(Integer.parseInt(dataMotorForm.getTxtHargaMobil().getText().trim()));
       
-        interfaceMotor.saveDataMotor(mobil);
+        interfaceMotor.saveDataMotor(motor);
         
         
     }   
@@ -107,15 +104,14 @@ public class MotorController {
     public void updateMotor()
     {
         
-        Motor mobil=new Motor();
         
-        mobil.setKodeMotor(dataMotorForm.getLblKodeMobil().getText().trim());
-        mobil.setNama(dataMotorForm.getTxtNamaMobil().getText().trim());
-        mobil.setMerk(dataMotorForm.getTxtMerkMobil().getText().trim());
-        mobil.setWarna(dataMotorForm.getTxtWarnaMobil().getText().trim());
-        mobil.setStok(Integer.parseInt(dataMotorForm.getTxtStockMobil().getText().trim()));
-        mobil.setHarga(Integer.parseInt(dataMotorForm.getTxtHargaMobil().getText().trim()));
-        mobil.setId(Integer.parseInt(id));
+        motor.setKodeMotor(dataMotorForm.getLblKodeMobil().getText().trim());
+        motor.setNama(dataMotorForm.getTxtNamaMobil().getText().trim());
+        motor.setMerk(dataMotorForm.getTxtMerkMobil().getText().trim());
+        motor.setWarna(dataMotorForm.getTxtWarnaMobil().getText().trim());
+        motor.setStok(Integer.parseInt(dataMotorForm.getTxtStockMobil().getText().trim()));
+        motor.setHarga(Integer.parseInt(dataMotorForm.getTxtHargaMobil().getText().trim()));
+        motor.setId(Integer.parseInt(id));
         
         if(validasi())
         {
@@ -129,7 +125,7 @@ public class MotorController {
         
         else
         {
-            interfaceMotor.updateDataMotor(mobil);
+            interfaceMotor.updateDataMotor(motor);
         }
     }
     

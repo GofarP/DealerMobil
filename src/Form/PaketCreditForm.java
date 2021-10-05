@@ -334,6 +334,11 @@ public class PaketCreditForm extends javax.swing.JFrame {
         jPanel4.add(txtbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 40, 25));
 
         rSButtonMetro1.setText("Hapus");
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
         jPanel4.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 90, 36));
 
         rSButtonMetro2.setText("Tambah");
@@ -345,6 +350,11 @@ public class PaketCreditForm extends javax.swing.JFrame {
         jPanel4.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 90, 36));
 
         rSButtonMetro3.setText("Edit");
+        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(rSButtonMetro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 80, 36));
 
         jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -562,6 +572,15 @@ public class PaketCreditForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         paketController.tambahPaket();
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
+
+    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
+        // TODO add your handling code here:
+        paketController.editPaket();
+    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
+
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     /**
      * @param args the command line arguments

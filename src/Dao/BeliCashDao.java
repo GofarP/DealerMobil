@@ -149,6 +149,7 @@ public class BeliCashDao implements InterfaceBeliCash{
         {            
             conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
+            
             sql="insert into beli_cash(no_beli,no_ktp, nama, jenis_kelamin, alamat,notelp,id_motor,tgl_beli) values(?,?,?,?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, beliCash.getNoBeli());

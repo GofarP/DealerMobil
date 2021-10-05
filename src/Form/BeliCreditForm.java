@@ -5,8 +5,15 @@
  */
 package Form;
 
+import Conn.koneksi;
+import Controller.BeliCreditController;
+import Model.BeliCredit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -15,13 +22,44 @@ import javax.swing.JTextField;
  *
  * @author LENOVO
  */
-public class BeliCredit extends javax.swing.JFrame {
+public class BeliCreditForm extends javax.swing.JFrame {
 
     /**
      * Creates new form BeliCredit
      */
-    public BeliCredit() {
+    Connection conn;
+    BeliCreditController beliCreditController;
+    String sql="";
+    ResultSet rs;
+    PreparedStatement pst;
+
+    public BeliCreditForm() {
         initComponents();
+        setLocationRelativeTo(null);
+        beliCreditController=new BeliCreditController(this);
+        beliCreditController.showDataBeliCredit();
+    }
+    
+   
+    
+    public JTextField getJTextFieldNoKtp()
+    {
+        return txtnoktp;
+    }
+    
+    public JTextField getJTextFieldNama()
+    {
+        return txtnamapembeli;
+    }
+    
+    public JTextField getJTextFieldAlamat()
+    {
+        return txtalamat;
+    }
+    
+    public JTextField getJTextFieldNoTelp()
+    {
+        return txtnotelp;
     }
     
     public JLabel getJlabelKodePaket()
@@ -58,6 +96,16 @@ public class BeliCredit extends javax.swing.JFrame {
     public JLabel getJlabelHarga()
     {
         return lblharga;
+    }        
+    
+    public JLabel getJLabelHutangPokok()
+    {
+        return lblhutangpokok;
+    }
+    
+    public JLabel getJLabelTotalBunga()
+    {
+        return lbltotalbunga;
     }
     
     public JLabel getJlabelNilaiCicilan()
@@ -68,16 +116,6 @@ public class BeliCredit extends javax.swing.JFrame {
     public JLabel getJlabelHargaTotal()
     {
         return lblhargatotal;
-    }
-    
-    public JLabel getJlabelHutangPokok()
-    {
-        return lblhutangpokok;
-    }
-    
-    public JLabel getJlabelTotalBunga()
-    {
-        return lbltotalbunga;
     }
     
     public JLabel getJlabelJumlahCicilan()
@@ -94,6 +132,11 @@ public class BeliCredit extends javax.swing.JFrame {
     public JComboBox getCbBerdasarkan()
     {
         return cbberdasarkan;
+    }
+    
+    public JComboBox getCbJenisKelamin()
+    {
+        return cbjk;
     }
     
     public JLabel getJlabelBunga()
@@ -116,15 +159,7 @@ public class BeliCredit extends javax.swing.JFrame {
         return lblhargatotal;
     }
     
-    public JLabel getJLabelHutangPokok()
-    {
-        return lblhutangpokok;
-    }
     
-    public JLabel getJLabelTotalBunga()
-    {
-        return lbltotalbunga;
-    }
     
     public JTextField getTxtCari()
     {
@@ -141,9 +176,9 @@ public class BeliCredit extends javax.swing.JFrame {
         return rbpaket;
     }
     
-    public JRadioButton getRbPaket()
+    public JRadioButton getRbPembeli()
     {
-        return rbpaket;
+        return rbpembeli;
     }
 
     /**
@@ -155,6 +190,7 @@ public class BeliCredit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         rSPanelImage1 = new rojerusan.RSPanelImage();
@@ -172,6 +208,7 @@ public class BeliCredit extends javax.swing.JFrame {
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
         rSButtonMetro6 = new rojerusan.RSButtonMetro();
+        rSButtonMetro7 = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         lblharga = new javax.swing.JLabel();
         lblhargatotal = new javax.swing.JLabel();
@@ -216,6 +253,7 @@ public class BeliCredit extends javax.swing.JFrame {
         rbpembeli = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -307,7 +345,7 @@ public class BeliCredit extends javax.swing.JFrame {
                 rSButtonMetro1ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, 80, 30));
+        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 265, 80, 30));
 
         rSButtonMetro2.setText("Tambah ");
         rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
@@ -317,15 +355,23 @@ public class BeliCredit extends javax.swing.JFrame {
         });
         jPanel3.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 265, 80, 30));
 
-        rSButtonMetro6.setText("Clear");
+        rSButtonMetro6.setText("Edit");
         rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSButtonMetro6ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 265, 80, 30));
+        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 265, 80, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 350, 310));
+        rSButtonMetro7.setText("Clear");
+        rSButtonMetro7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro7ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 265, 80, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 390, 310));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Paket Kredit:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
@@ -471,7 +517,7 @@ public class BeliCredit extends javax.swing.JFrame {
         lblbunga.setText("...");
         jPanel4.add(lblbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 470, 290));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 470, 290));
 
         tblkredit.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -484,6 +530,11 @@ public class BeliCredit extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblkredit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblkreditMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblkredit);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 1150, 260));
@@ -515,6 +566,11 @@ public class BeliCredit extends javax.swing.JFrame {
         jPanel5.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 130, -1));
 
         rSButtonMetro3.setText("Cari Data");
+        rSButtonMetro3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro3ActionPerformed(evt);
+            }
+        });
         jPanel5.add(rSButtonMetro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 190, 40));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 260, 240));
@@ -524,14 +580,27 @@ public class BeliCredit extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbpaket.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rbpaket);
         rbpaket.setText("Data Paket");
+        rbpaket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbpaketActionPerformed(evt);
+            }
+        });
         jPanel6.add(rbpaket, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 17, -1, -1));
 
         rbpembeli.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rbpembeli);
+        rbpembeli.setSelected(true);
         rbpembeli.setText("Data Pembeli");
+        rbpembeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbpembeliActionPerformed(evt);
+            }
+        });
         jPanel6.add(rbpembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 17, -1, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 310, 260, 50));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 300, 260, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 660));
 
@@ -564,19 +633,46 @@ public class BeliCredit extends javax.swing.JFrame {
 
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
-       
+       //beliCreditController.deleteData();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
         // TODO add your handling code here:
-
-       
+        //beliCreditController.tambahData();
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
 
     private void rSButtonMetro6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro6ActionPerformed
         // TODO add your handling code here:
+        
+        //beliCreditController.updateData();
        
     }//GEN-LAST:event_rSButtonMetro6ActionPerformed
+
+    private void rbpembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpembeliActionPerformed
+        // TODO add your handling code here:
+        //beliCreditController.showPembeli();
+    }//GEN-LAST:event_rbpembeliActionPerformed
+
+    private void rbpaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpaketActionPerformed
+        // TODO add your handling code here:
+        //beliCreditController.showPaket();
+    }//GEN-LAST:event_rbpaketActionPerformed
+
+    private void tblkreditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkreditMouseClicked
+        // TODO add your handling code here:
+        //beliCreditController.getRowDataBeliCredit();
+    }//GEN-LAST:event_tblkreditMouseClicked
+
+    private void rSButtonMetro7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro7ActionPerformed
+        // TODO add your handling code here:
+//        beliCreditController.clearPaket();
+//        beliCreditController.clearPembeli();
+    }//GEN-LAST:event_rSButtonMetro7ActionPerformed
+
+    private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
+        // TODO add your handling code here:
+        //beliCreditController.searchData();
+    }//GEN-LAST:event_rSButtonMetro3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -595,25 +691,27 @@ public class BeliCredit extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BeliCredit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BeliCreditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BeliCredit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BeliCreditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BeliCredit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BeliCreditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BeliCredit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BeliCreditForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BeliCredit().setVisible(true);
+                new BeliCreditForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbberdasarkan;
     private javax.swing.JComboBox<String> cbjk;
     private javax.swing.JComboBox<String> cbkategori;
@@ -664,6 +762,7 @@ public class BeliCredit extends javax.swing.JFrame {
     private rojerusan.RSButtonMetro rSButtonMetro2;
     private rojerusan.RSButtonMetro rSButtonMetro3;
     private rojerusan.RSButtonMetro rSButtonMetro6;
+    private rojerusan.RSButtonMetro rSButtonMetro7;
     private rojerusan.RSPanelImage rSPanelImage1;
     private javax.swing.JRadioButton rbpaket;
     private javax.swing.JRadioButton rbpembeli;

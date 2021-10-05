@@ -577,7 +577,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
         // TODO add your handling code here:
         dispose();
-        new BeliCredit().setVisible(true);
+        new BeliCreditForm().setVisible(true);
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked

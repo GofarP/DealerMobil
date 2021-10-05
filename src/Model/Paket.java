@@ -10,8 +10,7 @@ package Model;
  * @author LENOVO
  */
 public class Paket {
-    private Motor motor;
-    private int idPaket,idMotor, nilaiCicilan, jumlahCicilan, bunga, uangMuka, hargaTotal, stok;
+    private int idPaket,idMotor, nilaiCicilan, jumlahCicilan, bunga, uangMuka, harga, hargaTotal, stok;
     private String kodePaket, kodeMotor, nama, merk, warna;
 
     public int getIdPaket() {
@@ -129,6 +128,14 @@ public class Paket {
 
     public void setHargaTotal(int hargaTotal) {
         this.hargaTotal = hargaTotal;
+    }
+
+    public int getHarga() {
+        return harga;
+    }
+
+    public void setHarga(int harga) {
+        this.harga = harga;
     }
     
     

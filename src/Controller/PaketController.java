@@ -135,17 +135,38 @@ public class PaketController {
     
     public void tambahPaket()
     {
-        Paket paket=new Paket();
         
-        paket.setKodePaket(paketCreditForm.getJlabelKodePaket().getText());
-        paket.setIdMotor(Integer.parseInt(idMotor));
-        paket.setJumlahCicilan(Integer.parseInt(paketCreditForm.getCbCicilan().getSelectedItem().toString()));
-        paket.setNilaiCicilan(Integer.parseInt(paketCreditForm.getJlabelNilaiCicilan().getText().toString().replaceAll("[Rp.,]", "")));
-        paket.setBunga(Integer.parseInt(paketCreditForm.getTxtBunga().getText().toString().replaceAll("[Rp.,]", "")));
-        paket.setUangMuka(Integer.parseInt(paketCreditForm.getTxtUangMuka().getText().toString().replaceAll("[Rp.,]", "")));
-        paket.setHargaTotal(Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().toString().replaceAll("[Rp.,]", "")));
+        if(idMotor.equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Silahkan Pilih Motor Yang Mau Di Paketkan");
+        }
         
-        interfacePaket.tambahPaket(paket);
+        else if(paketCreditForm.getTxtBunga().getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Silahkan Masukkan Bunga Paket");
+        }
+        
+        else if(paketCreditForm.getTxtUangMuka().getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Silahkan Masukkan Uang Muka");
+        }
+        
+        else
+        {
+            Paket paket=new Paket();
+        
+            paket.setKodePaket(paketCreditForm.getJlabelKodePaket().getText());
+            paket.setIdMotor(Integer.parseInt(idMotor));
+            paket.setJumlahCicilan(Integer.parseInt(paketCreditForm.getCbCicilan().getSelectedItem().toString()));
+            paket.setNilaiCicilan(Integer.parseInt(paketCreditForm.getJlabelNilaiCicilan().getText().toString().replaceAll("[Rp.,]", "")));
+            paket.setBunga(Integer.parseInt(paketCreditForm.getTxtBunga().getText().toString().replaceAll("[Rp.,]", "")));
+            paket.setUangMuka(Integer.parseInt(paketCreditForm.getTxtUangMuka().getText().toString().replaceAll("[Rp.,]", "")));
+            paket.setHargaTotal(Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().toString().replaceAll("[Rp.,]", "")));
+
+            interfacePaket.tambahPaket(paket);
+        }
+        
+        
     }
     
     
@@ -156,6 +177,36 @@ public class PaketController {
             JOptionPane.showMessageDialog(null, "Silahkan Pilih Paket Yang Mau Diubah");
         }
         
+        else if(paketCreditForm.getTxtBunga().getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Silahkan Masukkan Bunga Paket");
+        }
+        
+        else if(interfacePaket.cekPaket(Integer.parseInt(idMotor)))
+        {
+            JOptionPane.showMessageDialog(null, "Paket Tidak Bisa Diubah Karena Masih Ada Pembayaran Yang Belum Lunas");
+        }
+        
+        else if(paketCreditForm.getTxtUangMuka().getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Silahkan Masukkan Uang Muka");
+        }
+        
+        else
+        {
+            Paket paket=new Paket();
+        
+            paket.setKodePaket(paketCreditForm.getJlabelKodePaket().getText());
+            paket.setIdMotor(Integer.parseInt(idMotor));
+            paket.setJumlahCicilan(Integer.parseInt(paketCreditForm.getCbCicilan().getSelectedItem().toString()));
+            paket.setNilaiCicilan(Integer.parseInt(paketCreditForm.getJlabelNilaiCicilan().getText().replaceAll("[Rp.,]", "")));
+            paket.setBunga(Integer.parseInt(paketCreditForm.getTxtBunga().getText().replaceAll("[Rp.,]", "")));
+            paket.setUangMuka(Integer.parseInt(paketCreditForm.getTxtUangMuka().getText().replaceAll("[Rp.,]", "")));
+            paket.setHargaTotal(Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().replaceAll("[Rp.,]", "")));
+
+            interfacePaket.editPaket(Integer.parseInt(idPaket));
+            
+        }
       
     }
     
@@ -167,10 +218,14 @@ public class PaketController {
             JOptionPane.showMessageDialog(null, "Silahkan Pilih Paket Yang Mau Dihapus");
         }
         
+        else if(interfacePaket.cekPaket(Integer.parseInt(idPaket)))
+        {
+            JOptionPane.showMessageDialog(null, "Paket Tidak Bisa Dihapus Karena Ada Pembayaran Yang Belum Lunas");
+        }
                 
         else
         {
-             int opsi=JOptionPane.showConfirmDialog(null, "Hapus data mobil ini ?","Hapus Mobil",JOptionPane.YES_NO_OPTION);
+             int opsi=JOptionPane.showConfirmDialog(null, "Hapus data paket ini ?","Hapus Paket",JOptionPane.YES_NO_OPTION);
              if(opsi==JOptionPane.YES_OPTION)interfacePaket.deletePacket(Integer.parseInt(idPaket));
         }
     }

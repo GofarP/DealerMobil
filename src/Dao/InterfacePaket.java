@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public interface InterfacePaket {
     
     public String autoNumber();
+    public boolean cekPaket(int idpaket);
     public ArrayList<Paket> showDataPaket();
     public ArrayList<Paket> searchDataPaketByKode(String kode);
     public ArrayList<Paket> searchDataPaketByMotor(String nama);

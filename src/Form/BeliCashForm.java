@@ -303,7 +303,7 @@ public class BeliCashForm extends javax.swing.JFrame {
                 rSButtonMetro5ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 265, 80, 30));
+        jPanel3.add(rSButtonMetro5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 265, 95, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 430, 320));
 

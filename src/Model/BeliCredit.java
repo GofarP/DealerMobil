@@ -13,9 +13,9 @@ import java.util.Date;
  */
 public class BeliCredit {
     
-    private String noBeli, noKtp, nama, jenisKelamin, alamat, noTelp,tglBeli, status;
+    private String noBeli, noKtp, nama, jenisKelamin, alamat, noTelp,tglBeli, status,tanggal;
     private String kodeMotor,namaMotor, merkMotor, warna;
-    private int idBeli,idMotor, jumlahCicilan, nilaiCicilan, Bunga,uangMuka,harga, tanggal;
+    private int idBeli,idMotor, idPaket, jumlahCicilan, nilaiCicilan, Bunga,uangMuka,harga;
 
     public String getNoBeli() {
         return noBeli;
@@ -105,11 +105,11 @@ public class BeliCredit {
         this.uangMuka = uangMuka;
     }
 
-    public int getTanggal() {
+    public String getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(int tanggal) {
+    public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
     }
     
@@ -179,6 +179,14 @@ public class BeliCredit {
 
     public void setIdMotor(int idMotor) {
         this.idMotor = idMotor;
+    }
+
+    public int getIdPaket() {
+        return idPaket;
+    }
+
+    public void setIdPaket(int idPaket) {
+        this.idPaket = idPaket;
     }
     
     

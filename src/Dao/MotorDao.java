@@ -32,7 +32,6 @@ public class MotorDao implements InterfaceMotor{
     public ArrayList<Motor> showDataMotor() {
         try 
         {
-            motor=new Motor();
             motorArrayList=new ArrayList<>();
             conn=(Connection)koneksi.configDB();
             sql="select * from motor";

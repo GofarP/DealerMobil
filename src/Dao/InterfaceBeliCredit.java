@@ -13,11 +13,14 @@ import Model.BeliCredit;
  */
 public interface InterfaceBeliCredit {
     
+    public String noOtomatis();
     public ArrayList<BeliCredit> showDataBeliCredit();
     public ArrayList<BeliCredit> searchDataKreditByKode(String kode);
     public ArrayList<BeliCredit> searchDatKreditByNama(String nama);
-    public void tambahData();
-    public void editData();
-    public void deletedata(int id);
+    public void tambahData(BeliCredit beliCredit);
+    public void editData(int id);
+    public void deletedata(int idBeli, int idMotor);
+    public boolean cekCicilan(int id);
+    public boolean cekStok(int idMotor);
     
 }
