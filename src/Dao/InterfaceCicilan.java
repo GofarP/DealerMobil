@@ -15,7 +15,9 @@ import java.util.ArrayList;
 public interface InterfaceCicilan {
     
     public void bayarCicilan(Cicilan cicilan);
-    public boolean telatBayar();
+    public  void updateStatus(String idBeli);
+    public boolean cekTerlambat(String idBeli);
+    public boolean cekCicilan(int id);
     public void hapusCicilan(int idCicilan);
     public ArrayList<Cicilan>showDataCicilan();
     public ArrayList<Cicilan>cariDataByKode(String kode);

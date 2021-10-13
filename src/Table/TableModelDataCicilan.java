@@ -34,8 +34,22 @@ public class TableModelDataCicilan extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(rowIndex)
+        switch(columnIndex)
         {
+            case 0: return arrayListCicilan.get(rowIndex).getKodeCicilan();
+            case 1: return arrayListCicilan.get(rowIndex).getNama();
+            case 2: return arrayListCicilan.get(rowIndex).getKodePaket();
+            case 3: return arrayListCicilan.get(rowIndex).getKodeMotor();
+            case 4: return arrayListCicilan.get(rowIndex).getNamaMotor();
+            case 5: return arrayListCicilan.get(rowIndex).getMerkMotor();
+            case 6: return arrayListCicilan.get(rowIndex).getWarnaMotor();
+            case 7: return arrayListCicilan.get(rowIndex).getJumlahCicilan();
+            case 8: return arrayListCicilan.get(rowIndex).getNilaiCicilan();
+            case 9: return arrayListCicilan.get(rowIndex).getBunga();
+            case 10: return arrayListCicilan.get(rowIndex).getUangMuka();
+            case 11: return arrayListCicilan.get(rowIndex).getHargaTotal();
+            case 12: return arrayListCicilan.get(rowIndex).getCicilanKe();
+            case 13: return arrayListCicilan.get(rowIndex).getTglCicil();
             default: return null;
         }
     }

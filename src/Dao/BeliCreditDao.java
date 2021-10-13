@@ -49,12 +49,16 @@ public class BeliCreditDao implements InterfaceBeliCredit{
 //              date=sdf.parse(rs.getString("tgl_beli")); 
 //              sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 //              String formattedDate=sdf.format(date);
-              beliCredit.setNoBeli(rs.getString("no_beli"));
+                beliCredit.setIdBeli(rs.getInt("id_beli"));
+                beliCredit.setIdPaket(rs.getInt("id_paket"));
+                beliCredit.setNoBeli(rs.getString("no_beli"));
                 beliCredit.setNoKtp(rs.getString("no_ktp"));
                 beliCredit.setNama(rs.getString("nama"));
                 beliCredit.setJenisKelamin(rs.getString("jenis_kelamin"));
+                beliCredit.setAlamat(rs.getString("alamat"));
                 beliCredit.setNoTelp(rs.getString("notelp"));
                 beliCredit.setKodeMotor(rs.getString("kode_motor"));
+                beliCredit.setKodePaket(rs.getString("kode_paket"));
                 beliCredit.setNamaMotor(rs.getString("nama_motor"));
                 beliCredit.setMerkMotor(rs.getString("merk"));
                 beliCredit.setWarna(rs.getString("warna"));
@@ -87,7 +91,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
         {
             arrayListBeliCredit=new ArrayList<>();
             conn=(Connection)koneksi.configDB();
-            sql="select * from view_show_belicredit where no_beli=?";
+            sql="select * from view_belicredit where no_beli=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, kode);
             rs=pst.executeQuery();
@@ -96,12 +100,16 @@ public class BeliCreditDao implements InterfaceBeliCredit{
             {
                 beliCredit=new BeliCredit();
                 
+                beliCredit.setIdBeli(rs.getInt("id_beli"));
+                beliCredit.setIdPaket(rs.getInt("id_paket"));
                 beliCredit.setNoBeli(rs.getString("no_beli"));
                 beliCredit.setNoKtp(rs.getString("no_ktp"));
-                beliCredit.setNama(rs.getString("nama_pembeli"));
+                beliCredit.setNama(rs.getString("nama"));
                 beliCredit.setJenisKelamin(rs.getString("jenis_kelamin"));
+                beliCredit.setAlamat(rs.getString("alamat"));
                 beliCredit.setNoTelp(rs.getString("notelp"));
                 beliCredit.setKodeMotor(rs.getString("kode_motor"));
+                beliCredit.setKodePaket(rs.getString("kode_paket"));
                 beliCredit.setNamaMotor(rs.getString("nama_motor"));
                 beliCredit.setMerkMotor(rs.getString("merk"));
                 beliCredit.setWarna(rs.getString("warna"));
@@ -109,8 +117,8 @@ public class BeliCreditDao implements InterfaceBeliCredit{
                 beliCredit.setNilaiCicilan(rs.getInt("nilai_cicilan"));
                 beliCredit.setBunga(rs.getInt("bunga"));
                 beliCredit.setUangMuka(rs.getInt("uang_muka"));
-                beliCredit.setHarga(rs.getInt("harga"));
-                beliCredit.setTanggal(rs.getString("tanggal"));
+                beliCredit.setHarga(rs.getInt("harga_total"));
+                beliCredit.setTanggal(rs.getString("tgl_beli"));
                 beliCredit.setStatus(rs.getString("status"));
                 
                 arrayListBeliCredit.add(beliCredit);
@@ -131,7 +139,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
         {
             arrayListBeliCredit=new ArrayList<>();
             conn=(Connection)koneksi.configDB();
-            sql="select * from view_show_belicredit where nama_pembeli=?";
+            sql="select * from view_belicredit where nama=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, nama);
             rs=pst.executeQuery();
@@ -139,12 +147,16 @@ public class BeliCreditDao implements InterfaceBeliCredit{
             while(rs.next())
             {
                 beliCredit=new BeliCredit();
+                beliCredit.setIdBeli(rs.getInt("id_beli"));
+                beliCredit.setIdPaket(rs.getInt("id_paket"));
                 beliCredit.setNoBeli(rs.getString("no_beli"));
                 beliCredit.setNoKtp(rs.getString("no_ktp"));
-                beliCredit.setNama(rs.getString("nama_pembeli"));
+                beliCredit.setNama(rs.getString("nama"));
                 beliCredit.setJenisKelamin(rs.getString("jenis_kelamin"));
+                beliCredit.setAlamat(rs.getString("alamat"));
                 beliCredit.setNoTelp(rs.getString("notelp"));
                 beliCredit.setKodeMotor(rs.getString("kode_motor"));
+                beliCredit.setKodePaket(rs.getString("kode_paket"));
                 beliCredit.setNamaMotor(rs.getString("nama_motor"));
                 beliCredit.setMerkMotor(rs.getString("merk"));
                 beliCredit.setWarna(rs.getString("warna"));
@@ -152,8 +164,8 @@ public class BeliCreditDao implements InterfaceBeliCredit{
                 beliCredit.setNilaiCicilan(rs.getInt("nilai_cicilan"));
                 beliCredit.setBunga(rs.getInt("bunga"));
                 beliCredit.setUangMuka(rs.getInt("uang_muka"));
-                beliCredit.setHarga(rs.getInt("harga"));
-                beliCredit.setTanggal(rs.getString("tanggal"));
+                beliCredit.setHarga(rs.getInt("harga_total"));
+                beliCredit.setTanggal(rs.getString("tgl_beli"));
                 beliCredit.setStatus(rs.getString("status"));
                 
                 arrayListBeliCredit.add(beliCredit);
@@ -175,7 +187,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
             conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
             
-            sql="insert into beli_credit(no_beli, no_ktp, nama, jenis_kelamin, alamat, notelp, id_paket, tgl_beli, status) values(?,?,?,?,?,?,?,?,?)";
+            sql="insert into beli_credit(no_beli, no_ktp, nama, jenis_kelamin, alamat, notelp, id_paket, tgl_beli, uang_muka,  status) values(?,?,?,?,?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, beliCredit.getNoBeli());
             pst.setString(2, beliCredit.getNoKtp());
@@ -185,7 +197,8 @@ public class BeliCreditDao implements InterfaceBeliCredit{
             pst.setString(6, beliCredit.getNoTelp());
             pst.setInt(7, beliCredit.getIdPaket());
             pst.setString(8, beliCredit.getTglBeli());
-            pst.setString(9, beliCredit.getStatus());
+            pst.setInt(9, beliCredit.getUangMuka());
+            pst.setString(10, beliCredit.getStatus());
             
             pst.executeUpdate();
             
@@ -215,20 +228,18 @@ public class BeliCreditDao implements InterfaceBeliCredit{
     }
 
     @Override
-    public void editData(int id) {
+    public void editData(BeliCredit beliCredit) {
         try 
-        {
+        {            
             conn=(Connection)koneksi.configDB();
-            sql="update beli_credit set no_ktp=?, nama=?, jenis_kelamin=?, alamat=?, notelp=?, id_motor=?, tgl_beli=? where id_beli=?";
+            sql="update beli_credit set no_ktp=?, nama=?, jenis_kelamin=?,alamat=?, notelp=? where id_beli=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, beliCredit.getNoKtp());
             pst.setString(2, beliCredit.getNama());
             pst.setString(3, beliCredit.getJenisKelamin());
             pst.setString(4, beliCredit.getAlamat());
             pst.setString(5, beliCredit.getNoTelp());
-            pst.setInt(6, beliCredit.getIdMotor());
-            pst.setString(7, beliCredit.getTglBeli());
-            pst.setInt(8, id);
+            pst.setInt(6, beliCredit.getIdBeli());
             
             pst.executeUpdate();
             
@@ -287,6 +298,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
             conn=(Connection)koneksi.configDB();
             sql="select * from cicilan where id_beli=?";
             pst=conn.prepareStatement(sql);
+            pst.setInt(1, id);
             rs=pst.executeQuery();
             
             if(rs.next())

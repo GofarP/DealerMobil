@@ -33,8 +33,25 @@ public class TableModelDataBeliCredit extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(rowIndex)
+        switch(columnIndex)
         {
+            case 0: return arrayListBeliCredit.get(rowIndex).getNoBeli();
+            case 1: return arrayListBeliCredit.get(rowIndex).getNoKtp();
+            case 2: return arrayListBeliCredit.get(rowIndex).getNama();
+            case 3: return arrayListBeliCredit.get(rowIndex).getJenisKelamin();
+            case 4: return arrayListBeliCredit.get(rowIndex).getNoTelp();
+            case 5: return arrayListBeliCredit.get(rowIndex).getKodeMotor();
+            case 6: return arrayListBeliCredit.get(rowIndex).getNamaMotor();
+            case 7: return arrayListBeliCredit.get(rowIndex).getMerkMotor();
+            case 8: return arrayListBeliCredit.get(rowIndex).getWarna();
+            case 9: return arrayListBeliCredit.get(rowIndex).getJumlahCicilan();
+            case 10: return arrayListBeliCredit.get(rowIndex).getNilaiCicilan();
+            case 11: return arrayListBeliCredit.get(rowIndex).getBunga();
+            case 12: return arrayListBeliCredit.get(rowIndex).getUangMuka();
+            case 13: return arrayListBeliCredit.get(rowIndex).getHarga();
+            case 14: return arrayListBeliCredit.get(rowIndex).getTanggal();
+            case 15: return arrayListBeliCredit.get(rowIndex).getStatus();
+            
             default: return null;
         }
     }

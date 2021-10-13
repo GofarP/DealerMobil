@@ -13,7 +13,7 @@ public class Cicilan {
     
     private String kodeCicilan,kodePaket, noBeli, noKtp, nama, jenisKelamin, alamat, noTelp, tglBeli,tglCicil, status;
     private String kodeMotor, namaMotor, merkMotor, warnaMotor;
-    private int idCicilan,idBeli, idPaket, idMotor;
+    private int idCicilan,idBeli, idPaket, idMotor, jumlahBayar;
     private int jumlahCicilan, nilaiCicilan, bunga, uangMuka, hargaTotal, cicilanKe;
 
     public String getKodeCicilan() {
@@ -218,6 +218,15 @@ public class Cicilan {
     public void setCicilanKe(int cicilanKe) {
         this.cicilanKe = cicilanKe;
     }
+
+    public int getJumlahBayar() {
+        return jumlahBayar;
+    }
+
+    public void setJumlahBayar(int jumlahBayar) {
+        this.jumlahBayar = jumlahBayar;
+    }
+    
     
     
     

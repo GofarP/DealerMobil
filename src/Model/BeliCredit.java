@@ -14,7 +14,7 @@ import java.util.Date;
 public class BeliCredit {
     
     private String noBeli, noKtp, nama, jenisKelamin, alamat, noTelp,tglBeli, status,tanggal;
-    private String kodeMotor,namaMotor, merkMotor, warna;
+    private String kodePaket,kodeMotor,namaMotor, merkMotor, warna;
     private int idBeli,idMotor, idPaket, jumlahCicilan, nilaiCicilan, Bunga,uangMuka,harga;
 
     public String getNoBeli() {

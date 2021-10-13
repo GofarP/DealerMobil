@@ -85,7 +85,7 @@ public class PaketDao implements InterfacePaket{
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`";
+            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             
@@ -96,6 +96,7 @@ public class PaketDao implements InterfacePaket{
                 paket.setIdPaket(rs.getInt("id_paket"));
                 paket.setKodePaket(rs.getString("kode_paket"));
                 paket.setIdMotor(rs.getInt("id_motor"));
+                paket.setKodeMotor(rs.getString("kode_motor"));
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
@@ -122,7 +123,7 @@ public class PaketDao implements InterfacePaket{
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where kode_paket=?";
+            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where kode_paket=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, kode);
             rs=pst.executeQuery();
@@ -134,6 +135,7 @@ public class PaketDao implements InterfacePaket{
                 paket.setIdPaket(rs.getInt("id_paket"));
                 paket.setKodePaket(rs.getString("kode_paket"));
                 paket.setIdMotor(rs.getInt("id_motor"));
+                paket.setKodeMotor(rs.getString("kode_motor"));
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
@@ -160,7 +162,7 @@ public class PaketDao implements InterfacePaket{
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`where motor.`nama`=?";
+            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`where motor.`nama`=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, nama);
             rs=pst.executeQuery();
@@ -172,6 +174,7 @@ public class PaketDao implements InterfacePaket{
                 paket.setIdPaket(rs.getInt("id_paket"));
                 paket.setKodePaket(rs.getString("kode_paket"));
                 paket.setIdMotor(rs.getInt("id_motor"));
+                paket.setKodeMotor(rs.getString("kode_motor"));
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
@@ -225,15 +228,15 @@ public class PaketDao implements InterfacePaket{
         try
         {
             conn=(Connection)koneksi.configDB();
-            sql="update paket set id_motor=?, jumlah_cicilan=?, nilai_cicilan=?, bunga=?, uang_muka=?, harga_total";
+            sql="update paket set id_motor=?, jumlah_cicilan=?, nilai_cicilan=?, bunga=?, uang_muka=?, harga_total=? where id_paket=?";
             pst=conn.prepareStatement(sql);
-            rs=pst.executeQuery(sql);
             pst.setInt(1, paket.getIdMotor());
             pst.setInt(2, paket.getJumlahCicilan());
             pst.setInt(3, paket.getNilaiCicilan());
             pst.setInt(4, paket.getBunga());
             pst.setInt(5, paket.getUangMuka());
-            pst.setInt(5, paket.getHargaTotal());
+            pst.setInt(6, paket.getHargaTotal());
+            pst.setInt(7, idpaket);
             
             pst.executeUpdate();
             

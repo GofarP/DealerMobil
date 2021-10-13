@@ -18,7 +18,7 @@ public interface InterfaceBeliCredit {
     public ArrayList<BeliCredit> searchDataKreditByKode(String kode);
     public ArrayList<BeliCredit> searchDatKreditByNama(String nama);
     public void tambahData(BeliCredit beliCredit);
-    public void editData(int id);
+    public void editData(BeliCredit beliCredit);
     public void deletedata(int idBeli, int idMotor);
     public boolean cekCicilan(int id);
     public boolean cekStok(int idMotor);

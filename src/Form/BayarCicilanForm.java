@@ -6,7 +6,9 @@
 package Form;
 
 import Controller.BayarCicilanController;
+import Controller.cicilanController;
 import Model.Cicilan;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -23,15 +25,30 @@ public class BayarCicilanForm extends javax.swing.JFrame {
      * Creates new form BayarCicilanForm
      */
     Cicilan cicilan;
-    BayarCicilanController bayarCicilanController;
+    cicilanController cicilanController;
     
     public BayarCicilanForm() {
         initComponents();
         setLocationRelativeTo(null);
-        bayarCicilanController=new BayarCicilanController(this);
-        bayarCicilanController.showDataCicilan();
+        cicilanController=new cicilanController(this);
+        cicilanController.showDataCicilan();
     }
     
+   public JButton getJButtonTambah()
+   {
+       return btntambah;
+   }
+   
+   public JButton getJButtonHapus()
+   {
+      return btnhapus;
+   }
+   
+   public JButton getJButtonCetak()
+   {
+      return btncetak;
+   }
+   
    public JLabel getJLabelNoKtp()
    {
        return lblnoktp;
@@ -44,7 +61,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
    
    public JLabel getJLabelJenisKelamin()
    {
-       return lblnoktp;
+       return lbljeniskelamin;
    }
    
    public JLabel getJLabelAlamat()
@@ -114,7 +131,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
        return lblhargatotal;
    }
    
-   public JTextField Cari()
+   public JTextField getJTextFieldCari()
    {
        return txtcaridata;
    }
@@ -155,6 +172,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         rSPanelImage1 = new rojerusan.RSPanelImage();
@@ -171,6 +189,9 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         lblnama = new javax.swing.JLabel();
         lbljeniskelamin = new javax.swing.JLabel();
         lblalamat = new javax.swing.JLabel();
+        btncetak = new rojerusan.RSButtonMetro();
+        btntambah = new rojerusan.RSButtonMetro();
+        btnhapus = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -205,8 +226,8 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         cbkategori = new javax.swing.JComboBox<>();
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
         jPanel6 = new javax.swing.JPanel();
-        rbdatacicilan = new javax.swing.JRadioButton();
         rbdatabeli = new javax.swing.JRadioButton();
+        rbdatacicilan = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -250,6 +271,11 @@ public class BayarCicilanForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblcicilan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblcicilanMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblcicilan);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 1050, 220));
@@ -308,7 +334,35 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         lblalamat.setText("...");
         jPanel3.add(lblalamat, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 340, 310));
+        btncetak.setText("Cetak");
+        btncetak.setEnabled(false);
+        btncetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncetakActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btncetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 90, 40));
+
+        btntambah.setText("Tambah");
+        btntambah.setEnabled(false);
+        btntambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntambahActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btntambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 90, 40));
+
+        btnhapus.setBackground(new java.awt.Color(225, 0, 0));
+        btnhapus.setText("Hapus");
+        btnhapus.setEnabled(false);
+        btnhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapusActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 290, 90, 40));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 340, 360));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Cicilan:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
@@ -459,10 +513,15 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         jLabel35.setText("Kategori:");
         jPanel5.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 103, -1, -1));
 
-        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Data Beli", "Cicilan", " " }));
+        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cicilan", "Data Beli" }));
         jPanel5.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 130, -1));
 
         rSButtonMetro1.setText("Cari");
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 220, 40));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 60, 270, 240));
@@ -471,23 +530,26 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tampilkan Data:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 112, 192))); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rbdatacicilan.setBackground(new java.awt.Color(255, 255, 255));
-        rbdatacicilan.setText("Data Cicilan");
-        rbdatacicilan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbdatacicilanActionPerformed(evt);
-            }
-        });
-        jPanel6.add(rbdatacicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
-
         rbdatabeli.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rbdatabeli);
         rbdatabeli.setText("Data Beli");
         rbdatabeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbdatabeliActionPerformed(evt);
             }
         });
-        jPanel6.add(rbdatabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 20, -1, -1));
+        jPanel6.add(rbdatabeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+
+        rbdatacicilan.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(rbdatacicilan);
+        rbdatacicilan.setSelected(true);
+        rbdatacicilan.setText("Data Cicilan");
+        rbdatacicilan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbdatacicilanActionPerformed(evt);
+            }
+        });
+        jPanel6.add(rbdatacicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 310, 270, 55));
 
@@ -495,9 +557,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,11 +575,38 @@ public class BayarCicilanForm extends javax.swing.JFrame {
 
     private void rbdatacicilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbdatacicilanActionPerformed
         // TODO add your handling code here:
+        cicilanController.showDataCicilan();
     }//GEN-LAST:event_rbdatacicilanActionPerformed
 
     private void rbdatabeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbdatabeliActionPerformed
         // TODO add your handling code here:
+        cicilanController.showBeliCredit();
     }//GEN-LAST:event_rbdatabeliActionPerformed
+
+    private void tblcicilanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcicilanMouseClicked
+        // TODO add your handling code here:
+        cicilanController.getValueAt();
+    }//GEN-LAST:event_tblcicilanMouseClicked
+
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+        // TODO add your handling code here:
+        cicilanController.cariData();
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
+
+    private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
+        // TODO add your handling code here:
+        cicilanController.bayarCicilan();
+    }//GEN-LAST:event_btntambahActionPerformed
+
+    private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
+        // TODO add your handling code here:
+        cicilanController.hapusCicilan();
+    }//GEN-LAST:event_btnhapusActionPerformed
+
+    private void btncetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetakActionPerformed
+        // TODO add your handling code here:
+        cicilanController.cetakStruk();
+    }//GEN-LAST:event_btncetakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -557,7 +644,11 @@ public class BayarCicilanForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSButtonMetro btncetak;
+    private rojerusan.RSButtonMetro btnhapus;
+    private rojerusan.RSButtonMetro btntambah;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbberdasarkan;
     private javax.swing.JComboBox<String> cbkategori;
     private javax.swing.JLabel jLabel14;

@@ -5,15 +5,13 @@
  */
 package Form;
 
-import Conn.koneksi;
 import Controller.BeliCreditController;
-import Model.BeliCredit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -180,6 +178,18 @@ public class BeliCreditForm extends javax.swing.JFrame {
     {
         return rbpembeli;
     }
+    
+    
+    public JButton getJButtonEdit()
+    {
+        return btnedit;
+    }
+    
+    public JButton getJButtonHapus()
+    {
+        return btnhapus;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -205,9 +215,9 @@ public class BeliCreditForm extends javax.swing.JFrame {
         txtalamat = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtnotelp = new javax.swing.JTextField();
-        rSButtonMetro1 = new rojerusan.RSButtonMetro();
+        btnhapus = new rojerusan.RSButtonMetro();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
-        rSButtonMetro6 = new rojerusan.RSButtonMetro();
+        btnedit = new rojerusan.RSButtonMetro();
         rSButtonMetro7 = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         lblharga = new javax.swing.JLabel();
@@ -338,14 +348,14 @@ public class BeliCreditForm extends javax.swing.JFrame {
         });
         jPanel3.add(txtnotelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 160, 20));
 
-        rSButtonMetro1.setBackground(new java.awt.Color(225, 0, 0));
-        rSButtonMetro1.setText("Hapus");
-        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+        btnhapus.setBackground(new java.awt.Color(225, 0, 0));
+        btnhapus.setText("Hapus");
+        btnhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro1ActionPerformed(evt);
+                btnhapusActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 265, 80, 30));
+        jPanel3.add(btnhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 265, 80, 30));
 
         rSButtonMetro2.setText("Tambah ");
         rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
@@ -355,13 +365,13 @@ public class BeliCreditForm extends javax.swing.JFrame {
         });
         jPanel3.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 265, 80, 30));
 
-        rSButtonMetro6.setText("Edit");
-        rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
+        btnedit.setText("Edit");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro6ActionPerformed(evt);
+                btneditActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 265, 80, 30));
+        jPanel3.add(btnedit, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 265, 80, 30));
 
         rSButtonMetro7.setText("Clear");
         rSButtonMetro7.addActionListener(new java.awt.event.ActionListener() {
@@ -631,47 +641,52 @@ public class BeliCreditForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtnotelpKeyTyped
 
-    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+    private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
         // TODO add your handling code here:
-       //beliCreditController.deleteData();
-    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
+        beliCreditController.deleteCredit();
+        beliCreditController.showDataBeliCredit();
+    }//GEN-LAST:event_btnhapusActionPerformed
 
     private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
         // TODO add your handling code here:
-        //beliCreditController.tambahData();
+        beliCreditController.tambahBeliCredit();
+        beliCreditController.showDataBeliCredit();
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
 
-    private void rSButtonMetro6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro6ActionPerformed
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
         // TODO add your handling code here:
         
-        //beliCreditController.updateData();
+        beliCreditController.updateCredit();
+        beliCreditController.showDataBeliCredit();
        
-    }//GEN-LAST:event_rSButtonMetro6ActionPerformed
+    }//GEN-LAST:event_btneditActionPerformed
 
     private void rbpembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpembeliActionPerformed
         // TODO add your handling code here:
-        //beliCreditController.showPembeli();
+        beliCreditController.showDataBeliCredit();
+        beliCreditController.clearPaket();
     }//GEN-LAST:event_rbpembeliActionPerformed
 
     private void rbpaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpaketActionPerformed
         // TODO add your handling code here:
-        //beliCreditController.showPaket();
+        beliCreditController.showPaket();
+        beliCreditController.clearPembeli();
     }//GEN-LAST:event_rbpaketActionPerformed
 
     private void tblkreditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkreditMouseClicked
         // TODO add your handling code here:
-        //beliCreditController.getRowDataBeliCredit();
+        beliCreditController.getValueAt();
     }//GEN-LAST:event_tblkreditMouseClicked
 
     private void rSButtonMetro7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro7ActionPerformed
         // TODO add your handling code here:
-//        beliCreditController.clearPaket();
-//        beliCreditController.clearPembeli();
+        beliCreditController.clearPaket();
+        beliCreditController.clearPembeli();
     }//GEN-LAST:event_rSButtonMetro7ActionPerformed
 
     private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
         // TODO add your handling code here:
-        //beliCreditController.searchData();
+        beliCreditController.cari();
     }//GEN-LAST:event_rSButtonMetro3ActionPerformed
 
     /**
@@ -711,6 +726,8 @@ public class BeliCreditForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSButtonMetro btnedit;
+    private rojerusan.RSButtonMetro btnhapus;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbberdasarkan;
     private javax.swing.JComboBox<String> cbjk;
@@ -758,10 +775,8 @@ public class BeliCreditForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbltotalbunga;
     private javax.swing.JLabel lbluangmuka;
     private javax.swing.JLabel lblwarna;
-    private rojerusan.RSButtonMetro rSButtonMetro1;
     private rojerusan.RSButtonMetro rSButtonMetro2;
     private rojerusan.RSButtonMetro rSButtonMetro3;
-    private rojerusan.RSButtonMetro rSButtonMetro6;
     private rojerusan.RSButtonMetro rSButtonMetro7;
     private rojerusan.RSPanelImage rSPanelImage1;
     private javax.swing.JRadioButton rbpaket;
