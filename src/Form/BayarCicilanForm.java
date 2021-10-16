@@ -343,7 +343,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         });
         jPanel3.add(btncetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 90, 40));
 
-        btntambah.setText("Tambah");
+        btntambah.setText("Bayar");
         btntambah.setEnabled(false);
         btntambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -596,6 +596,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
     private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
         // TODO add your handling code here:
         cicilanController.bayarCicilan();
+        cicilanController.showBeliCredit();
     }//GEN-LAST:event_btntambahActionPerformed
 
     private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed

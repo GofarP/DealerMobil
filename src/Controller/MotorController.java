@@ -152,6 +152,7 @@ public class MotorController {
     public void cariNamaMobil()
     {
         motorArrayList=interfaceMotor.searchNamaMotor(dataMotorForm.getTxtCari().getText().trim());
+        
         if(motorArrayList.size()==0)
         {
             JOptionPane.showMessageDialog(null, "Nama Mobil Tidak Ditemukan");

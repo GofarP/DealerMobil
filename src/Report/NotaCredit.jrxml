@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaCredit" pageWidth="550" pageHeight="500" columnWidth="510" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="494bac55-b3e7-4383-8b5c-a3f4be295e74">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaCredit" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b6a582d1-1c83-4fea-9f7b-61dd6a8745e8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="155"/>
-	<parameter name="pembeli" class="java.lang.String"/>
+	<property name="ireport.y" value="112"/>
 	<parameter name="kodeMotor" class="java.lang.String"/>
 	<parameter name="namaMotor" class="java.lang.String"/>
-	<parameter name="warna" class="java.lang.String"/>
-	<parameter name="harga" class="java.lang.String"/>
-	<parameter name="tglBeli" class="java.lang.String"/>
-	<parameter name="merk" class="java.lang.String"/>
+	<parameter name="merkMotor" class="java.lang.String"/>
+	<parameter name="warnaMotor" class="java.lang.String"/>
 	<parameter name="kodePaket" class="java.lang.String"/>
-	<parameter name="jumlahCicilan" class="java.lang.String"/>
-	<parameter name="nilaiCicilan" class="java.lang.String"/>
+	<parameter name="jumlahCicilan" class="java.lang.Integer"/>
+	<parameter name="nilaiCicilan" class="java.lang.Integer"/>
+	<parameter name="harga" class="java.lang.Integer"/>
+	<parameter name="tglBeli" class="java.lang.String"/>
 	<parameter name="bunga" class="java.lang.String"/>
-	<parameter name="uangMuka" class="java.lang.String"/>
-	<parameter name="hargaTotal" class="java.lang.String"/>
+	<parameter name="uangMuka" class="java.lang.Integer"/>
+	<parameter name="hargaTotal" class="java.lang.Integer"/>
+	<parameter name="pembeli" class="java.lang.String"/>
+	<parameter name="kodeBeli" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="120" splitType="Stretch">
+		<band height="133" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="510" height="120" uuid="c3536116-711b-433c-97fa-50a2447a1638"/>
+				<reportElement x="0" y="0" width="555" height="133" uuid="35e73321-bd3b-466c-a2ab-104a0407c128"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="116" y="15" width="273" height="34" uuid="9dd6170e-65f4-4510-8f47-d62bf48d22cb"/>
+				<reportElement x="116" y="15" width="318" height="47" uuid="47bfbc90-07af-4803-a9f6-28a419c4891a"/>
 				<textElement textAlignment="Center">
 					<font size="25" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nota Pembelian Credit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="99" y="60" width="301" height="50" uuid="a6ac28b3-88fc-4535-bff1-49457218f9d9"/>
+				<reportElement x="99" y="60" width="346" height="63" uuid="778bb1b4-d312-4334-9a75-8d99f60d7593"/>
 				<textElement textAlignment="Center">
 					<font size="20" isBold="true"/>
 				</textElement>
@@ -41,198 +42,186 @@
 		</band>
 	</title>
 	<detail>
-		<band height="274" splitType="Stretch">
+		<band height="237" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-1" y="0" width="511" height="274" uuid="564d078c-e816-48b9-b2fb-fb8a999aa99b"/>
+				<reportElement x="0" y="0" width="555" height="237" uuid="6b612f0a-328c-4fbb-a0ea-bf988629df8b"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="16" y="40" width="100" height="20" uuid="bf9e795d-33fb-4cd5-b81b-fa314f0fa0db"/>
+				<reportElement x="26" y="59" width="100" height="20" uuid="7a8c0935-95c1-4b2c-8eb9-c1867e2ef437"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kode Motor:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="83" width="100" height="20" uuid="b4bc5ea8-d95d-49bd-8b5c-b8445774204b"/>
+				<reportElement x="26" y="91" width="100" height="20" uuid="510f3d21-5ea2-433c-9705-20cdb5701cce"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama Motor:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="123" width="100" height="20" uuid="f8aee0bb-e876-4943-a401-e0ffcdc8c4fc"/>
+				<reportElement x="26" y="126" width="100" height="20" uuid="cd910a98-ef0a-44aa-9c9e-77b5916a6430"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Merk Motor:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="255" y="40" width="100" height="20" uuid="3bb62517-2b35-4aa6-b73d-cb42f2143b57"/>
+				<reportElement x="26" y="158" width="100" height="20" uuid="76d6f3ed-ba54-4804-984d-c39f1e495a12"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Warna:]]></text>
+				<text><![CDATA[Warna Motor:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="257" y="83" width="100" height="20" uuid="45364613-6c01-4832-9286-af3e9a9710e5"/>
+				<reportElement x="26" y="192" width="100" height="20" uuid="f036056e-2bb5-4bae-844f-56f5e2e1ed8b"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Harga:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="259" y="123" width="100" height="20" uuid="ac877f32-6e24-4262-a677-238d177693ad"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tanggal Beli:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="118" y="40" width="100" height="20" uuid="ec576072-53a1-46f6-a20d-df42f38d5725"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{kodeMotor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="119" y="83" width="100" height="20" uuid="f077496c-6570-4f66-9ace-a63cc5f4dbee"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{namaMotor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="120" y="123" width="100" height="20" uuid="d4271d75-b7a0-4bea-88f1-70867579d2ad"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{merk}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="374" y="40" width="100" height="20" uuid="21d18c56-6ccc-451e-8242-c9a79aad6f23"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{warna}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="375" y="83" width="100" height="20" uuid="ed3b1226-ab9b-4f58-a770-386e2e44b6c2"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{harga}]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy HH.mm.ss">
-				<reportElement x="376" y="123" width="100" height="20" uuid="57dfcf4a-989b-4b48-b833-4de6317be3d7"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{tglBeli}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="20" y="157" width="100" height="20" uuid="5732e1fe-dfed-4757-a220-c44789615472"/>
-				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kode Paket:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="189" width="100" height="20" uuid="40e6111e-f99a-483c-a2e1-6c20fa1fd3b3"/>
+				<reportElement x="305" y="27" width="100" height="20" uuid="3363ea01-a323-4875-ab8d-5e779fbdf494"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Jumlah Cicilan:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="221" width="100" height="20" uuid="1c4ac584-87de-45ea-b0b8-4cc6281cb08f"/>
+				<reportElement x="305" y="59" width="100" height="20" uuid="900dc81f-cde1-45f1-84b1-62337880b294"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nilai Cicilan:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="259" y="157" width="100" height="20" uuid="b5af667f-fc30-4061-97bf-7d5d5e467a2f"/>
+				<reportElement x="305" y="91" width="100" height="20" uuid="f78e4bec-6455-47f2-8d79-e0c1c818a88c"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tgl Beli:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="126" width="100" height="20" uuid="15c27bf8-5225-451f-b46f-1ea1578080f3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Bunga:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="259" y="189" width="100" height="20" uuid="12c11742-d51c-406a-9376-17da0ebcfc9b"/>
+				<reportElement x="305" y="158" width="100" height="20" uuid="101084bc-8595-488a-b99e-de93419cacf7"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Uang Muka:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="259" y="221" width="100" height="20" uuid="19a4f93f-6775-48f4-8e28-c9c50a14d9aa"/>
+				<reportElement x="305" y="192" width="100" height="20" uuid="3a92383d-0be9-4e37-9dbc-fb6e8d87a6b5"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Harga Total:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="157" width="100" height="20" uuid="0a012138-92e0-4101-8c67-b0670ae34262"/>
+				<reportElement x="139" y="59" width="100" height="20" uuid="f2e1ab28-9073-493b-a421-c0d849fb6d1d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{kodeMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="91" width="100" height="20" uuid="43681032-558c-42fc-b0d3-ee814ab3cafe"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{namaMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="126" width="100" height="20" uuid="dfdf2dc4-2a45-49f4-a558-f95e686c8699"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{merkMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="158" width="100" height="20" uuid="dc6e1599-35e2-4cc7-89eb-ede385ddd5fb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{warnaMotor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="192" width="100" height="20" uuid="e7a65e24-6abf-4dd7-87c9-3ea42a3cee19"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{kodePaket}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="189" width="100" height="20" uuid="9de4f9fe-ccec-4b5b-8948-b555b147e884"/>
+				<reportElement x="418" y="27" width="100" height="20" uuid="38e129d6-9472-4bd4-9ac1-0a1c1919bcfb"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{jumlahCicilan}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="120" y="221" width="100" height="20" uuid="9400c9ba-345a-4faa-bacd-e1386ee8e992"/>
+				<reportElement x="417" y="59" width="113" height="20" uuid="bb458fc7-7e02-4cbf-ba0e-000c1c8c89f2"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{nilaiCicilan}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00 %">
-				<reportElement x="376" y="157" width="100" height="20" uuid="85c0f777-5935-4a13-8049-b594f1dca79f"/>
+			<textField pattern="">
+				<reportElement x="417" y="91" width="113" height="20" uuid="2030169c-e532-4c8a-aaf5-ab075841bdad"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{tglBeli}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="417" y="126" width="100" height="20" uuid="dd2ebc17-1346-4114-8e7e-20ca4776fabc"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{bunga}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="376" y="189" width="100" height="20" uuid="8c3033a5-6fdc-4fc8-9990-db7ae8310b49"/>
+				<reportElement x="417" y="158" width="100" height="20" uuid="b176f86a-3501-402f-ad82-fef90b291b7b"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{uangMuka}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="376" y="221" width="100" height="20" uuid="e9db0d34-1a78-4f60-a15a-6203234c90b0"/>
+				<reportElement x="417" y="192" width="100" height="20" uuid="296b04a0-a1ab-4c03-9c5e-bb8088fd1d28"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{hargaTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="27" width="100" height="20" uuid="0fa9940c-31f4-4600-9882-b068de8ab615"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Beli:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="139" y="27" width="100" height="20" uuid="c465c4ce-3560-40db-bf0e-b48f3bae0a7b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{kodeBeli}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="135" splitType="Stretch">
+		<band height="146" splitType="Stretch">
 			<staticText>
-				<reportElement x="395" y="18" width="100" height="20" uuid="151c483a-ffc1-477c-acb7-cc5bd906b1a9"/>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Mengetahui]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="395" y="99" width="100" height="20" uuid="bea1efa8-62af-462d-847e-a8b28f1fb68b"/>
-				<textElement textAlignment="Center">
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Pemilik]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="16" y="18" width="100" height="20" uuid="b50dadd2-7362-46b9-ab49-3b7ce1b660c1"/>
+				<reportElement x="26" y="28" width="100" height="20" uuid="38bbfdaf-605d-4808-9006-a5d64718fd4f"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Pembeli]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="405" y="28" width="100" height="20" uuid="ad448944-5c06-4e10-a6ad-36f0347b466a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="16" y="99" width="100" height="20" uuid="0a69bb47-23d1-4262-b5c3-49d427c4091d"/>
+				<reportElement x="26" y="109" width="100" height="20" uuid="651b9e1a-81e9-4db9-84f5-a8f2b7bebd70"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pembeli}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="405" y="109" width="100" height="20" uuid="df2fdb11-668b-4940-879a-41baf13ef885"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pemilik]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>

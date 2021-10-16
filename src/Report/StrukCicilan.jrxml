@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StrukCicilan" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab38996e-e383-42a1-bf05-10ad2c639679">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="121"/>
 	<parameter name="noBeli" class="java.lang.String"/>
 	<parameter name="noCicilan" class="java.lang.String"/>
 	<parameter name="namaMotor" class="java.lang.String"/>
@@ -13,7 +13,8 @@
 	<parameter name="tglCicil" class="java.lang.String"/>
 	<parameter name="pembeli" class="java.lang.String"/>
 	<parameter name="kodeMotor" class="java.lang.String"/>
-	<parameter name="cicilanKe" class="java.lang.String"/>
+	<parameter name="cicilanKe" class="java.lang.Integer"/>
+	<parameter name="denda" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -36,7 +37,7 @@
 		</band>
 	</title>
 	<detail>
-		<band height="211" splitType="Stretch">
+		<band height="238" splitType="Stretch">
 			<staticText>
 				<reportElement x="54" y="19" width="50" height="20" uuid="770f1430-1681-4b49-bd82-694ad06bc757"/>
 				<textElement>
@@ -53,6 +54,9 @@
 			</staticText>
 			<textField>
 				<reportElement x="376" y="88" width="100" height="20" uuid="2e0f5696-ba57-47ed-bc5d-afffc168c5bf"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{status}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -71,6 +75,9 @@
 			</staticText>
 			<textField>
 				<reportElement x="143" y="19" width="87" height="20" uuid="72aa32a2-5631-4250-a128-1331c8fd372f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{noBeli}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -82,6 +89,9 @@
 			</staticText>
 			<textField>
 				<reportElement x="146" y="53" width="84" height="20" uuid="7e1db9b6-3e43-4c13-bdf7-bbdab6de9d74"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{noCicilan}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -93,6 +103,9 @@
 			</staticText>
 			<textField>
 				<reportElement x="146" y="157" width="87" height="20" uuid="0cea9442-8763-4bd6-b43e-a6d4de6d6590"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{merkMotor}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -104,18 +117,30 @@
 			</staticText>
 			<textField>
 				<reportElement x="376" y="19" width="100" height="20" uuid="5ed6c7e4-0a66-4f2c-8db7-2221735684c5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{warna}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="146" y="125" width="84" height="20" uuid="76b9f80f-21b7-459f-91e0-d37876e53b7b"/>
+				<reportElement x="146" y="125" width="87" height="20" uuid="76b9f80f-21b7-459f-91e0-d37876e53b7b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{namaMotor}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="376" y="53" width="100" height="20" uuid="97323983-03e3-4cc3-a8f3-50092d4c5dee"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{jmlBayar}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy HH.mm.ss">
 				<reportElement x="376" y="157" width="125" height="20" uuid="c395b15c-1c30-40ed-9f94-de972999a58e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{tglCicil}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -141,11 +166,31 @@
 			</staticText>
 			<textField>
 				<reportElement x="146" y="88" width="87" height="20" uuid="3ecb80a4-b568-4057-a919-9e1e1d797460"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{kodeMotor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="376" y="125" width="100" height="20" uuid="27f3e5b9-d8a2-4096-a735-15ad52b2012e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$P{cicilanKe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="288" y="191" width="71" height="20" uuid="8d63b2b0-6552-40cc-8a1d-4539919905be"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tgl Cicil:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="376" y="191" width="100" height="20" uuid="9acfb91f-59a1-4ceb-97f6-4ac47291bffc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{denda}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -14,8 +14,9 @@
         <group>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Controller/cicilanController.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Form/BayarCicilanForm.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Controller/BeliCreditController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Form/DashboardForm.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Dao/CicilanDao.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Controller/BeliCashController.java</file>
             <file>file:/C:/Users/LENOVO/Documents/NetBeansProjects/DealerMobil/src/Dao/InterfaceCicilan.java</file>
         </group>
     </open-files>

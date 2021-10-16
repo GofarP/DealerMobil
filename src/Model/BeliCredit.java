@@ -138,8 +138,7 @@ public class BeliCredit {
     public void setKodeMotor(String kodeMotor) {
         this.kodeMotor = kodeMotor;
     }
-    
-    
+   
 
     public String getNamaMotor() {
         return namaMotor;
@@ -187,6 +186,14 @@ public class BeliCredit {
 
     public void setIdPaket(int idPaket) {
         this.idPaket = idPaket;
+    }
+
+    public String getKodePaket() {
+        return kodePaket;
+    }
+
+    public void setKodePaket(String kodePaket) {
+        this.kodePaket = kodePaket;
     }
     
     

@@ -187,7 +187,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
             conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
             
-            sql="insert into beli_credit(no_beli, no_ktp, nama, jenis_kelamin, alamat, notelp, id_paket, tgl_beli, uang_muka,  status) values(?,?,?,?,?,?,?,?,?)";
+            sql="insert into beli_credit(no_beli, no_ktp, nama, jenis_kelamin, alamat, notelp, id_paket, tgl_beli, uang_muka,  status) values(?,?,?,?,?,?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, beliCredit.getNoBeli());
             pst.setString(2, beliCredit.getNoKtp());

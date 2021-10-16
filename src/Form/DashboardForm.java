@@ -63,6 +63,9 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         rSPanelImage10 = new rojerusan.RSPanelImage();
+        jPanel10 = new javax.swing.JPanel();
+        rSPanelImage11 = new rojerusan.RSPanelImage();
+        jLabel18 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
         rSPanelImage8 = new rojerusan.RSPanelImage();
@@ -316,7 +319,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel7.add(rSPanelImage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 10, 30, 30));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 50));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 220, 50));
 
         jPanel9.setBackground(new java.awt.Color(51, 51, 51));
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -353,6 +356,42 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel9.add(rSPanelImage10, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 10, 30, 30));
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 220, 50));
+
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel10MouseExited(evt);
+            }
+        });
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rSPanelImage11.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/pay.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage11Layout = new javax.swing.GroupLayout(rSPanelImage11);
+        rSPanelImage11.setLayout(rSPanelImage11Layout);
+        rSPanelImage11Layout.setHorizontalGroup(
+            rSPanelImage11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+        rSPanelImage11Layout.setVerticalGroup(
+            rSPanelImage11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        jPanel10.add(rSPanelImage11, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 10, 30, 30));
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel18.setText("Bayar Cicilan");
+        jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 12, -1, -1));
+
+        jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 220, 50));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -598,6 +637,24 @@ public class DashboardForm extends javax.swing.JFrame {
         new LaporanForm().setVisible(true);
     }//GEN-LAST:event_jPanel7MouseClicked
 
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new BayarCicilanForm().setVisible(true);
+    }//GEN-LAST:event_jPanel10MouseClicked
+
+    private void jPanel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseEntered
+        // TODO add your handling code here:
+        jPanel10.setBackground(new Color(99,111,254));
+        jLabel18.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jPanel10MouseEntered
+
+    private void jPanel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseExited
+        // TODO add your handling code here:
+        jPanel10.setBackground(new Color(51,51,51));
+        jLabel18.setForeground(new Color(153,153,153));
+    }//GEN-LAST:event_jPanel10MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -644,6 +701,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -653,6 +711,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -666,6 +725,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private com.k33ptoo.components.KGradientPanel kGradientPanel5;
     private rojerusan.RSPanelImage rSPanelImage1;
     private rojerusan.RSPanelImage rSPanelImage10;
+    private rojerusan.RSPanelImage rSPanelImage11;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
     private rojerusan.RSPanelImage rSPanelImage4;

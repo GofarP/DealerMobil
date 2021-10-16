@@ -15,13 +15,13 @@ import java.util.ArrayList;
 public interface InterfaceCicilan {
     
     public void bayarCicilan(Cicilan cicilan);
-    public  void updateStatus(String idBeli);
-    public boolean cekTerlambat(String idBeli);
+    public void updateStatus(String idBeli);
     public boolean cekCicilan(int id);
     public void hapusCicilan(int idCicilan);
     public ArrayList<Cicilan>showDataCicilan();
     public ArrayList<Cicilan>cariDataByKode(String kode);
     public ArrayList<Cicilan>cariDatByNama(String nama);
+    public ArrayList<Cicilan>cariDataById(String id);
     public String autoNumber();
     
 }

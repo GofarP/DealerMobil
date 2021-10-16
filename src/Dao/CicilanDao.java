@@ -37,62 +37,20 @@ public class CicilanDao implements InterfaceCicilan{
     public void bayarCicilan(Cicilan cicilan) {
         try 
         {
-         
-            Calendar tglSekarang=Calendar.getInstance();
-            Calendar tglBayar=Calendar.getInstance();
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        
             
-            String status="";
-            int cicilanKe;
-            int jumlahBayar;
-                        
             conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
-            String sqlCari="SELECT MAX(cicilan_ke) AS jml_cicilan, MAX(tgl_bayar) AS tgl_bayar FROM cicilan WHERE id_beli=?  HAVING MAX(tgl_bayar) IS NOT NULL ";
-            pst=conn.prepareStatement(sqlCari);
-            pst.setInt(1, cicilan.getIdBeli());
-            rs=pst.executeQuery();
-            
-            if(rs.next())
-            {
-                cicilanKe=rs.getInt("jml_cicilan")+1;
-                tglBayar.setTime(sdf.parse(rs.getString("tgl_bayar")));
-                                
-                long bedaHari=Duration.between(tglBayar.toInstant(), tglSekarang.toInstant()).toDays();
-                
-                if(bedaHari>30)
-                {
-                    status="telat";
-                    jumlahBayar=(int) (cicilan.getJumlahBayar() * bedaHari);
-                }
-                
-                else
-                {
-                    status="tepat";
-                    jumlahBayar=cicilan.getJumlahBayar();
-                }
-
-            }
-            
-            else
-            {
-                 cicilanKe=1;
-                 status="tepat";
-                 jumlahBayar=cicilan.getJumlahBayar();
-            }
-            
-            sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            
-            Date date=new Date();
-            sql="insert into cicilan(kode_cicilan, id_beli, id_paket, cicilan_ke, jml_bayar, status, tgl_bayar) values(?,?,?,?,?,?,?)";
+                           
+            sql="insert into cicilan(kode_cicilan, id_beli, id_paket, cicilan_ke, jml_bayar, status_cicilan, tgl_bayar) values(?,?,?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, cicilan.getKodeCicilan());
             pst.setInt(2, cicilan.getIdBeli());
             pst.setInt(3, cicilan.getIdPaket());
-            pst.setInt(4, cicilanKe);
+            pst.setInt(4, cicilan.getCicilanKe());
             pst.setInt(5, cicilan.getJumlahBayar());
-            pst.setString(6, status);
-            pst.setString(7, sdf.format(date));
+            pst.setString(6, cicilan.getStatus());
+            pst.setString(7, cicilan.getTglCicil());
             
             pst.executeUpdate();
             
@@ -402,27 +360,45 @@ public class CicilanDao implements InterfaceCicilan{
     public void updateStatus(String idBeli) {
         try
         {
+            
+            int jmlCicilan;
+            conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
             
-            conn=(Connection)koneksi.configDB();
-            sql="select status from beli_credit where id_beli=?";
+            sql="SELECT jumlah_cicilan FROM paket INNER JOIN beli_credit ON beli_credit.`id_paket`=paket.`id_paket` WHERE id_beli=?";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, idBeli);
+            rs=pst.executeQuery();
+            rs.next();
+            jmlCicilan=rs.getInt("jumlah_cicilan");
+            
+            sql="select count(*) as cicilan_dibayar from cicilan where id_beli=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, idBeli);
             rs=pst.executeQuery();
             rs.next();
             
-            String sqlUpdateStatus="update beli_credit set status=? where id_beli=?";
-            pst=conn.prepareStatement(sqlUpdateStatus);
-            
-            if(rs.getString("status").equals("belum"))
+            if (rs.getInt("cicilan_dibayar")==jmlCicilan) 
             {
+                sql="update beli_credit set status=? where id_beli=?";
+                pst=conn.prepareStatement(sql);
                 pst.setString(1, "lunas");
                 pst.setString(2,idBeli);
+                pst.executeUpdate();    
             }
             
-            pst.executeUpdate();
+            else
+            {
+                sql="update beli_credit set status=? where id_beli=?";
+                pst=conn.prepareStatement(sql);
+                pst.setString(1, "belum");
+                pst.setString(2,idBeli);
+                pst.executeUpdate();
+            }
+            
             
             conn.commit();
+           
         }
         
         catch(SQLException e)
@@ -440,47 +416,31 @@ public class CicilanDao implements InterfaceCicilan{
         }
     }
 
+    
+
     @Override
-    public boolean cekTerlambat(String idBeli) {
-        
-        boolean terlambat=false;
-        
+    public ArrayList<Cicilan> cariDataById(String id) {
         try 
         {
-            Calendar tglBayar=Calendar.getInstance();
-            Calendar tglSekarang=Calendar.getInstance();
-            
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            
+            arrayListCicilan=new ArrayList<>();
             conn=(Connection)koneksi.configDB();
-            conn.setAutoCommit(false);
-            String sqlCari="SELECT MAX(cicilan_ke) AS jml_cicilan, MAX(tgl_bayar) AS tgl_bayar FROM cicilan WHERE id_beli=?  HAVING MAX(tgl_bayar) IS NOT NULL ";
-            pst=conn.prepareStatement(sqlCari);
-            pst.setInt(1, cicilan.getIdBeli());
+            sql="SELECT id_beli,MAX(cicilan_ke) AS cicilan_ke, MAX(tgl_bayar) AS tgl_bayar FROM cicilan WHERE id_beli=?  HAVING MAX(tgl_bayar) IS NOT NULL ";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, id);
             rs=pst.executeQuery();
             
             if(rs.next())
             {
-                tglBayar.setTime(sdf.parse(rs.getString("tgl_bayar")));
-                                
-                long bedaHari=Duration.between(tglBayar.toInstant(), tglSekarang.toInstant()).toDays();
+                cicilan=new Cicilan();
+                cicilan.setIdBeli(rs.getInt("id_beli"));
+                cicilan.setCicilanKe(rs.getInt("cicilan_ke"));
+                cicilan.setTglCicil(rs.getString("tgl_bayar"));
                 
-                if(bedaHari>30)
-                {
-                    terlambat=true;
-                }
-                
-                else
-                {
-                    terlambat=false;
-                }
-
+                arrayListCicilan.add(cicilan);
             }
             
-            else
-            {
-                 terlambat=false;
-            }
+            
+            
         } 
         
         catch (Exception e) 
@@ -488,7 +448,9 @@ public class CicilanDao implements InterfaceCicilan{
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         
-        return terlambat;
+        return arrayListCicilan;
     }
+
+   
     
 }

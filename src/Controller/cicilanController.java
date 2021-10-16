@@ -17,7 +17,9 @@ import Table.TableModelDataCicilan;
 import java.io.File;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +43,7 @@ public class cicilanController {
     BayarCicilanForm bayarCicilanForm;
     ArrayList<BeliCredit> beliCreditArrayList;
     ArrayList<Cicilan> cicilanArrayList;
+    ArrayList<Cicilan>strukCicilanArrayList;
     InterfaceBeliCredit interfaceBeliCredit;
     InterfaceCicilan interfaceCicilan;
     
@@ -79,7 +82,7 @@ public class cicilanController {
     public void showDataCicilan()
     {
         bayarCicilanForm.getJButtonTambah().setEnabled(false);
-        bayarCicilanForm.getJButtonHapus().setEnabled(false);
+        bayarCicilanForm.getJButtonHapus().setEnabled(true);
         bayarCicilanForm.getJButtonCetak().setEnabled(true);
         
         cicilanArrayList.clear();
@@ -88,6 +91,35 @@ public class cicilanController {
         TableModelDataCicilan modelDataCicilan=new TableModelDataCicilan(cicilanArrayList);
         bayarCicilanForm.getTblCicilan().setModel(modelDataCicilan);
         
+    }
+    
+    public void resetTable()
+    {
+        if(bayarCicilanForm.getRbDataCicilan().isSelected())
+        {
+            bayarCicilanForm.getJButtonTambah().setEnabled(false);
+            bayarCicilanForm.getJButtonHapus().setEnabled(true);
+            bayarCicilanForm.getJButtonCetak().setEnabled(true);
+
+            cicilanArrayList.clear();
+
+            cicilanArrayList=interfaceCicilan.showDataCicilan();
+            TableModelDataCicilan modelDataCicilan=new TableModelDataCicilan(cicilanArrayList);
+            bayarCicilanForm.getTblCicilan().setModel(modelDataCicilan);
+        }
+        
+        else if(bayarCicilanForm.getRbDataBeli().isSelected())
+        {
+            bayarCicilanForm.getJButtonTambah().setEnabled(true);
+            bayarCicilanForm.getJButtonHapus().setEnabled(false);
+            bayarCicilanForm.getJButtonCetak().setEnabled(false);
+
+            beliCreditArrayList.clear();
+
+            beliCreditArrayList=interfaceBeliCredit.showDataBeliCredit();
+            TableModelDataBeliCredit modelDataBeliCredit=new TableModelDataBeliCredit(beliCreditArrayList);
+            bayarCicilanForm.getTblCicilan().setModel(modelDataBeliCredit);
+        }
     }
     
     public void bayarCicilan()
@@ -100,34 +132,101 @@ public class cicilanController {
         else if(interfaceCicilan.cekCicilan(Integer.parseInt(idBeli)))
         {
             JOptionPane.showMessageDialog(null, "Pembayaran Sudah Lunas Untuk Cicilan Ini");
-            //update status pembelian jika sudah lunas
-            interfaceCicilan.updateStatus(idBeli);
         }
         
         else
         {
+            try 
+            {
+                Calendar tglSkrg=Calendar.getInstance();
+                Calendar tglCicilTerakhir=Calendar.getInstance();
+                
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                int row=bayarCicilanForm.getTblCicilan().getSelectedRow();
+                
+                String kodeCicilan=interfaceCicilan.autoNumber();
+                int idBeli=beliCreditArrayList.get(row).getIdBeli();
+                int idPaket=beliCreditArrayList.get(row).getIdPaket();
+                int jumlahBayar=beliCreditArrayList.get(row).getNilaiCicilan();
+                String noBeli=beliCreditArrayList.get(row).getNoBeli();
+                String status="";
+                int cicilanKe=1;
+                int denda=2000;
+                int totalDenda=0;
+                
+                strukCicilanArrayList=interfaceCicilan.cariDataById(String.valueOf(idBeli));
+                
+                if(strukCicilanArrayList.size()>0)
+                {
+                    
+                    cicilanKe=strukCicilanArrayList.get(0).getCicilanKe()+1;
+                    tglCicilTerakhir.setTime(sdf.parse(strukCicilanArrayList.get(0).getTglCicil()));
+                    
+                    long bedaHari=Duration.between(tglCicilTerakhir.toInstant(), tglSkrg.toInstant()).toDays();
+                    
+                    if(bedaHari>30)
+                    {
+                        status="telat";
+                        totalDenda=(int) (denda*bedaHari);
+                        jumlahBayar=jumlahBayar+totalDenda;
+                    }
+                    
+                    else
+                    {
+                        status="tepat";
+                    }
+                    
+                }
+                
+                else
+                {
+                    status="tepat";
+                }
+
+                cicilan=new Cicilan();
+
+                cicilan.setKodeCicilan(kodeCicilan);
+                cicilan.setIdBeli(idBeli);
+                cicilan.setIdPaket(idPaket);
+                cicilan.setJumlahBayar(jumlahBayar);
+                cicilan.setCicilanKe(cicilanKe);
+                cicilan.setStatus(status);
+                cicilan.setTglCicil(sdf.format(tglSkrg.getTime()));
+
+                interfaceCicilan.bayarCicilan(cicilan);
+                
+                
+                sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+                File reportFile=new File("src/report/StrukCicilan.jrxml");
+                JasperDesign jDesign=JRXmlLoader.load(reportFile);
+                Map formValues=new HashMap();
+
+                formValues.put("noBeli", noBeli);
+                formValues.put("noCicilan", kodeCicilan);
+                formValues.put("kodeMotor", beliCreditArrayList.get(row).getKodeMotor());
+                formValues.put("namaMotor", beliCreditArrayList.get(row).getNamaMotor());
+                formValues.put("merkMotor", beliCreditArrayList.get(row).getMerkMotor());
+                formValues.put("warna", beliCreditArrayList.get(row).getWarna());
+                formValues.put("jmlBayar", jumlahBayar);
+                formValues.put("status", status);
+                formValues.put("cicilanKe", cicilanKe);
+                formValues.put("tglCicil", sdf.format(tglSkrg.getTime()));
+                formValues.put("pembeli", bayarCicilanForm.getJLabelNama().getText());
+                formValues.put("denda", totalDenda);
+
+                JasperReport jr=JasperCompileManager.compileReport(jDesign);
+                JasperPrint jp = JasperFillManager.fillReport(jr, formValues,new JREmptyDataSource());
+                JasperViewer.viewReport(jp,false);
+
+
+                clear();
+            } 
             
-            Date tglSkrg=new Date();
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            int row=bayarCicilanForm.getTblCicilan().getSelectedRow();
+            catch (Exception e) 
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
             
-            String kodeCicilan=interfaceCicilan.autoNumber();
-            int idBeli=beliCreditArrayList.get(row).getIdBeli();
-            int idPaket=beliCreditArrayList.get(row).getIdPaket();
-            int jumlahBayar=beliCreditArrayList.get(row).getNilaiCicilan();
-           
-            cicilan=new Cicilan();
-            
-            cicilan.setKodeCicilan(kodeCicilan);
-            cicilan.setIdBeli(idBeli);
-            cicilan.setIdPaket(idPaket);
-            cicilan.setJumlahBayar(jumlahBayar);
-            cicilan.setTglCicil(sdf.format(tglSkrg));
-            
-            interfaceCicilan.bayarCicilan(cicilan);
-            
-            
-            clear();
         }
     }
     
@@ -142,7 +241,11 @@ public class cicilanController {
         {
             int opsi=JOptionPane.showConfirmDialog(null, "Hapus data cicilan ini ?","Hapus Data Cicilan",JOptionPane.YES_NO_OPTION);
             
-            if(opsi==JOptionPane.YES_OPTION)interfaceCicilan.hapusCicilan(Integer.parseInt(idCicilan));
+            if(opsi==JOptionPane.YES_OPTION)
+            {
+                interfaceCicilan.hapusCicilan(Integer.parseInt(idCicilan));
+                interfaceCicilan.updateStatus(idBeli);
+            }
         }
     }
     

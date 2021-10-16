@@ -310,7 +310,7 @@ public class DataMotorForm extends javax.swing.JFrame {
         jPanel1.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 75, 140, -1));
 
         rSButtonMetro6.setBackground(new java.awt.Color(99, 111, 254));
-        rSButtonMetro6.setText("Isi tabel");
+        rSButtonMetro6.setText("Reset");
         rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSButtonMetro6ActionPerformed(evt);

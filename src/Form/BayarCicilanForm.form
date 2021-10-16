@@ -325,7 +325,7 @@
             </Component>
             <Component class="rojerusan.RSButtonMetro" name="btntambah">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tambah"/>
+                <Property name="text" type="java.lang.String" value="Bayar"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>

@@ -278,7 +278,7 @@ public class PaketDao implements InterfacePaket{
         {   
             conn=(Connection)koneksi.configDB();
             sql="SELECT cicilan.`id_beli`, beli_credit.`status`, cicilan.`id_paket` FROM cicilan "
-            + "INNER JOIN beli_credit ON cicilan.`id_beli`=beli_credit.`id_beli` WHERE  cicilan.`id_paket`=? AND beli_credit.status='belum";
+            + "INNER JOIN beli_credit ON cicilan.`id_beli`=beli_credit.`id_beli` WHERE  cicilan.`id_paket`=? AND beli_credit.status='belum'";
             pst=conn.prepareStatement(sql);
             pst.setInt(1, idpaket);
             rs=pst.executeQuery();

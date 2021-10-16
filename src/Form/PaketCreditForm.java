@@ -333,6 +333,7 @@ public class PaketCreditForm extends javax.swing.JFrame {
         txtbunga.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanel4.add(txtbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 40, 25));
 
+        rSButtonMetro1.setBackground(new java.awt.Color(225, 0, 0));
         rSButtonMetro1.setText("Hapus");
         rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -537,20 +538,20 @@ public class PaketCreditForm extends javax.swing.JFrame {
 
     private void txtcaridataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcaridataActionPerformed
         // TODO add your handling code here:
-       paketController.clear();
     }//GEN-LAST:event_txtcaridataActionPerformed
 
     private void rbpaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpaketActionPerformed
         // TODO add your handling code here:
-        paketController.clear();
         paketController.showDataPaket();
+        paketController.clear();
         
     }//GEN-LAST:event_rbpaketActionPerformed
 
     private void rbmotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmotorActionPerformed
         // TODO add your handling code here:
-        paketController.clear();
         paketController.showDataMotor();
+        paketController.clear();
+        
     }//GEN-LAST:event_rbmotorActionPerformed
 
     private void tblpaketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpaketMouseClicked
@@ -580,6 +581,8 @@ public class PaketCreditForm extends javax.swing.JFrame {
 
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
+        paketController.hapusPaket();
+        paketController.showDataPaket();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     /**

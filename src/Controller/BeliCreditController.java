@@ -44,9 +44,11 @@ public class BeliCreditController  {
     InterfacePaket interfacePaket;
     ArrayList<BeliCredit> beliCreditArrayList;
     ArrayList<Paket> paketArrayList;
-    String idBeli="", idMotor="", idPaket="";
+    ArrayList<Paket>strukPaketArrayList;
+    String idBeli="", idMotor="", idPaket="",kodePaket="";
     BeliCredit beliCredit;
-  
+    TableModelDataPaket modelDataPaket;
+    TableModelDataBeliCredit modelDataBeliCredit;
     
     public BeliCreditController(BeliCreditForm beliCreditForm)
     {
@@ -69,22 +71,60 @@ public class BeliCreditController  {
         beliCreditArrayList.clear();
       
         beliCreditArrayList=interfaceBeliCredit.showDataBeliCredit();
-        TableModelDataBeliCredit modelDataBeliCredit=new TableModelDataBeliCredit(beliCreditArrayList);
+        modelDataBeliCredit=new TableModelDataBeliCredit(beliCreditArrayList);
         beliCreditForm.getTblKredit().setModel(modelDataBeliCredit);
         
+        beliCreditForm.getJButtonTambah().setEnabled(false);
         beliCreditForm.getJButtonEdit().setEnabled(true);
         beliCreditForm.getJButtonHapus().setEnabled(true);
+        beliCreditForm.getJButtonCetak().setEnabled(true);
     }
     
     public void showPaket()
     {
         paketArrayList.clear();
+        
         paketArrayList=interfacePaket.showDataPaket();
-        TableModelDataPaket modelDataPaket=new TableModelDataPaket(paketArrayList);
+        modelDataPaket=new TableModelDataPaket(paketArrayList);
         beliCreditForm.getTblKredit().setModel(modelDataPaket);
         
+        beliCreditForm.getJButtonTambah().setEnabled(true);
         beliCreditForm.getJButtonEdit().setEnabled(false);
         beliCreditForm.getJButtonHapus().setEnabled(false);
+        beliCreditForm.getJButtonCetak().setEnabled(false);
+    }
+    
+    
+    public void resetTable()
+    {
+        if(beliCreditForm.getRbpaket().isSelected())
+        {
+            paketArrayList.clear();
+        
+            paketArrayList=interfacePaket.showDataPaket();
+            modelDataPaket=new TableModelDataPaket(paketArrayList);
+            beliCreditForm.getTblKredit().setModel(modelDataPaket);
+
+            beliCreditForm.getJButtonTambah().setEnabled(true);
+            beliCreditForm.getJButtonEdit().setEnabled(false);
+            beliCreditForm.getJButtonHapus().setEnabled(false);
+            beliCreditForm.getJButtonCetak().setEnabled(false);
+            
+        }
+        
+        else if(beliCreditForm.getRbPembeli().isSelected())
+        {
+            beliCreditArrayList.clear();
+      
+            beliCreditArrayList=interfaceBeliCredit.showDataBeliCredit();
+            modelDataBeliCredit=new TableModelDataBeliCredit(beliCreditArrayList);
+            beliCreditForm.getTblKredit().setModel(modelDataBeliCredit);
+
+            beliCreditForm.getJButtonTambah().setEnabled(false);
+            beliCreditForm.getJButtonEdit().setEnabled(true);
+            beliCreditForm.getJButtonHapus().setEnabled(true);
+            beliCreditForm.getJButtonCetak().setEnabled(true);
+        }
     }
     
     public boolean validation()
@@ -117,37 +157,79 @@ public class BeliCreditController  {
         
         else
         {
-           SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-           Date tglSekarang=new Date();
-           int row=beliCreditForm.getTblKredit().getSelectedRow();
-           
-           String noBeli=interfaceBeliCredit.noOtomatis();
-           String noKtp=beliCreditForm.getJTextFieldNoKtp().getText().trim();
-           String nama=beliCreditForm.getJTextFieldNama().getText().trim();
-           String jenisKelamin=beliCreditForm.getCbJenisKelamin().getSelectedItem().toString();
-           String alamat=beliCreditForm.getJTextFieldAlamat().getText().trim();
-           String noTelp=beliCreditForm.getJTextFieldNoTelp().getText().trim();
-           int uangmuka=beliCreditArrayList.get(row).getUangMuka();
-           
-           
-           beliCredit=new BeliCredit();
-           
-           beliCredit.setNoBeli(noBeli);
-           beliCredit.setNoKtp(noKtp);
-           beliCredit.setNama(nama);
-           beliCredit.setJenisKelamin(jenisKelamin);
-           beliCredit.setAlamat(alamat);
-           beliCredit.setNoTelp(noTelp);
-           beliCredit.setIdPaket(Integer.parseInt(idPaket));
-           beliCredit.setTglBeli(sdf.format(tglSekarang));
-           beliCredit.setUangMuka(uangmuka);
-           beliCredit.setStatus("belum");
-           
-           interfaceBeliCredit.tambahData(beliCredit);
-           
-           
-           
-           clearPembeli();
+            try 
+            {
+                File reportFile=new File("src/report/NotaCredit.jrxml");
+                JasperDesign jDesign=JRXmlLoader.load(reportFile);
+                Map formValues=new HashMap();
+
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date tglSekarang=new Date();
+                beliCredit=new BeliCredit();
+                strukPaketArrayList=new ArrayList<>();
+                strukPaketArrayList=interfacePaket.searchDataPaketByKode(kodePaket);
+ 
+                
+                int row=beliCreditForm.getTblKredit().getSelectedRow();
+                String noBeli=interfaceBeliCredit.noOtomatis();
+                String noKtp=beliCreditForm.getJTextFieldNoKtp().getText().trim();
+                String nama=beliCreditForm.getJTextFieldNama().getText().trim();
+                String jenisKelamin=beliCreditForm.getCbJenisKelamin().getSelectedItem().toString();
+                String alamat=beliCreditForm.getJTextFieldAlamat().getText().trim();
+                String noTelp=beliCreditForm.getJTextFieldNoTelp().getText().trim();
+                int uangmuka=paketArrayList.get(row).getUangMuka();
+                
+
+                beliCredit.setNoBeli(noBeli);
+                beliCredit.setNoKtp(noKtp);
+                beliCredit.setNama(nama);
+                beliCredit.setJenisKelamin(jenisKelamin);
+                beliCredit.setAlamat(alamat);
+                beliCredit.setNoTelp(noTelp);
+                beliCredit.setIdPaket(Integer.parseInt(idPaket));
+                beliCredit.setTglBeli(sdf.format(tglSekarang));
+                beliCredit.setUangMuka(uangmuka);
+                beliCredit.setStatus("belum");
+
+                interfaceBeliCredit.tambahData(beliCredit);
+                
+                
+                sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+                
+                formValues.put("pembeli", nama);
+                formValues.put("kodeBeli", interfaceBeliCredit.noOtomatis());
+                formValues.put("kodeMotor", beliCreditForm.getJlabelKodeMotor().getText());
+                formValues.put("namaMotor", beliCreditForm.getJlabelNamaMotor().getText());
+                formValues.put("merkMotor", beliCreditForm.getJlabelMerk().getText());
+                formValues.put("warnaMotor", beliCreditForm.getJlabelWarna().getText());
+                formValues.put("kodePaket", strukPaketArrayList.get(0).getKodePaket());
+                formValues.put("jumlahCicilan", strukPaketArrayList.get(0).getJumlahCicilan());
+                formValues.put("nilaiCicilan", strukPaketArrayList.get(0).getNilaiCicilan());
+                formValues.put("harga", strukPaketArrayList.get(0).getHarga());
+                formValues.put("tglBeli", sdf.format(tglSekarang));
+                formValues.put("bunga", strukPaketArrayList.get(0).getBunga()+"%");
+                formValues.put("uangMuka", strukPaketArrayList.get(0).getUangMuka());
+                formValues.put("hargaTotal", strukPaketArrayList.get(0).getHargaTotal());
+
+                JasperReport jr=JasperCompileManager.compileReport(jDesign);
+                JasperPrint jp = JasperFillManager.fillReport(jr, formValues,new JREmptyDataSource());
+                JasperViewer.viewReport(jp,false); 
+
+                
+                idPaket="";
+                idMotor="";
+                kodePaket="";
+                
+                strukPaketArrayList.clear();
+                
+
+            } 
+            
+            catch (Exception e) 
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+                      
         }
     }
     
@@ -212,11 +294,12 @@ public class BeliCreditController  {
         int row=beliCreditForm.getTblKredit().getSelectedRow();
         
         idPaket=String.valueOf(paketArrayList.get(row).getIdPaket());
-        idBeli=String.valueOf(beliCreditArrayList.get(row).getIdBeli());
-        idMotor=String.valueOf(beliCreditArrayList.get(row).getIdMotor());
         
         if(beliCreditForm.getRbPembeli().isSelected())
         {
+            idBeli=String.valueOf(beliCreditArrayList.get(row).getIdBeli());
+            idMotor=String.valueOf(beliCreditArrayList.get(row).getIdMotor());
+        
             beliCreditForm.getJTextFieldNoKtp().setText(beliCreditArrayList.get(row).getNoKtp());
             beliCreditForm.getJTextFieldNama().setText(beliCreditArrayList.get(row).getNama());
             beliCreditForm.getCbJenisKelamin().setSelectedItem(beliCreditArrayList.get(row).getJenisKelamin());
@@ -225,6 +308,7 @@ public class BeliCreditController  {
             
         }
         
+        kodePaket=paketArrayList.get(row).getKodePaket();
         beliCreditForm.getJlabelKodePaket().setText(paketArrayList.get(row).getKodePaket());
         beliCreditForm.getJlabelKodeMotor().setText(paketArrayList.get(row).getKodeMotor());
         beliCreditForm.getJlabelNamaMotor().setText(paketArrayList.get(row).getNamaMotor());
@@ -252,7 +336,6 @@ public class BeliCreditController  {
             
             beliCreditArrayList=new ArrayList<>();
             
-            TableModelDataBeliCredit tableModelDataBeliCredit;
             
             switch(indexBerdasarkan)
             {
@@ -274,8 +357,8 @@ public class BeliCreditController  {
             
             else
             {
-                tableModelDataBeliCredit=new TableModelDataBeliCredit(beliCreditArrayList);
-                beliCreditForm.getTblKredit().setModel(tableModelDataBeliCredit);
+                modelDataBeliCredit=new TableModelDataBeliCredit(beliCreditArrayList);
+                beliCreditForm.getTblKredit().setModel(modelDataBeliCredit);
             }
         }
         
@@ -284,9 +367,7 @@ public class BeliCreditController  {
             paketArrayList.clear();
             
             paketArrayList=new ArrayList<>();
-            
-            TableModelDataPaket tableModelDataPaket;
-            
+                        
             beliCreditForm.getRbpaket().setSelected(true);
             
             switch(indexBerdasarkan)
@@ -309,39 +390,46 @@ public class BeliCreditController  {
             else 
             {
                 beliCreditForm.getTblKredit().remove(0);
-                tableModelDataPaket=new TableModelDataPaket(paketArrayList);
-                beliCreditForm.getTblKredit().setModel(tableModelDataPaket);
+                modelDataPaket=new TableModelDataPaket(paketArrayList);
+                beliCreditForm.getTblKredit().setModel(modelDataPaket);
             }
         }
     }
     
     
-    public void cetaStrukBeliCredit(ArrayList<BeliCredit>beliCreditArrayList)
+    public void cetakStrukBeliCredit()
     {
         try
         {
            int row=beliCreditForm.getTblKredit().getSelectedRow();
-           File reportFile=new File("src/report/NoteCredit.jrxml");
+           File reportFile=new File("src/report/NotaCredit.jrxml");
            JasperDesign jDesign=JRXmlLoader.load(reportFile);
            Map formValues=new HashMap();
-                
+           
+           SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+           Date tglBeli=sdf.parse(beliCreditArrayList.get(row).getTanggal());
+           sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+           
+           formValues.put("kodeBeli", beliCreditArrayList.get(row).getNoBeli());
            formValues.put("kodeMotor", beliCreditArrayList.get(row).getKodeMotor());
            formValues.put("namaMotor", beliCreditArrayList.get(row).getNamaMotor());
-           formValues.put("merk", beliCreditArrayList.get(row).getMerkMotor());
+           formValues.put("merkMotor", beliCreditArrayList.get(row).getMerkMotor());
+           formValues.put("warnaMotor", beliCreditArrayList.get(row).getWarna());
            formValues.put("kodePaket", beliCreditArrayList.get(row).getKodePaket());
            formValues.put("jumlahCicilan", beliCreditArrayList.get(row).getJumlahCicilan());
            formValues.put("nilaiCicilan", beliCreditArrayList.get(row).getNilaiCicilan());
-           formValues.put("warna", beliCreditArrayList.get(row).getWarna());
            formValues.put("harga", beliCreditArrayList.get(row).getHarga());
-           formValues.put("tglBeli", beliCreditArrayList.get(row).getTglBeli());
-           formValues.put("bunga", beliCreditArrayList.get(row).getBunga());
-           
+           formValues.put("tglBeli", String.valueOf(sdf.format(tglBeli)));
+           formValues.put("bunga", beliCreditArrayList.get(row).getBunga()+"%");
            formValues.put("uangMuka", beliCreditArrayList.get(row).getUangMuka());
-           formValues.put("hargaTotal", beliCreditArrayList.get(row).getTglBeli());
+           formValues.put("hargaTotal", beliCreditArrayList.get(row).getHarga());
+           formValues.put("pembeli", beliCreditArrayList.get(row).getNama());
                 
            JasperReport jr=JasperCompileManager.compileReport(jDesign);
            JasperPrint jp = JasperFillManager.fillReport(jr, formValues,new JREmptyDataSource());
            JasperViewer.viewReport(jp,false); 
+           
+           clearPembeli();
         }
         
         catch(Exception e)
@@ -356,6 +444,7 @@ public class BeliCreditController  {
     {
         idMotor="";
         idPaket="";
+        kodePaket="";
         
         beliCreditForm.getJlabelKodePaket().setText("...");
         beliCreditForm.getJlabelKodeMotor().setText("...");
