@@ -89,14 +89,16 @@ public class BeliCashController {
        idBeli="";
        
        beliCashForm.getCbJenisKelamin().setSelectedIndex(0);
+       beliCashForm.getLblTglBeli().setText("...");
     }
     
     public void clearMotor()
     {
         idMotor="";
-        stok=null;
         
-        JLabel jLabel[]={beliCashForm.getLblkodemotor(),beliCashForm.getLblnamamotor(), beliCashForm.getLblmerkmotor(),beliCashForm.getLblwarnamotor(),beliCashForm.getLblhargamotor()};
+        
+        JLabel jLabel[]={beliCashForm.getLblkodemotor(),beliCashForm.getLblnamamotor(), beliCashForm.getLblmerkmotor(),
+            beliCashForm.getLblwarnamotor(),beliCashForm.getLblhargamotor(), beliCashForm.getLblStok()};
         
         for(JLabel jl:jLabel)
         {
@@ -211,6 +213,7 @@ public class BeliCashController {
     {
         try
         {
+            stok=Integer.parseInt(beliCashForm.getLblStok().getText());
             
             if(validasiPembeli())
             {
@@ -242,7 +245,7 @@ public class BeliCashController {
                 beliCash.setNoTelp(beliCashForm.getTxtnoTelp().getText().trim());
                 beliCash.setIdMotor(Integer.parseInt(idMotor));
                 beliCash.setStatus("Cash");
-                beliCash.setTglbayar(String.valueOf(sdf.format(date)));
+                beliCash.setTglBeli(String.valueOf(sdf.format(date)));
 
                 interfaceBeliCash.tambahPembelian(beliCash);
                             
@@ -322,43 +325,60 @@ public class BeliCashController {
     
     
     
-    public void getRowDataBeli()
-    {
-      
-        int row=beliCashForm.getTblBeliCash().getSelectedRow();
-        idMotor=String.valueOf(beliCashArrayList.get(row).getIdMotor());
-        idBeli=String.valueOf(beliCashArrayList.get(row).getIdBeli());
-        
-        beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
-        beliCashForm.getTxtNoKtp().setText(beliCashArrayList.get(row).getNoKtp());
-        beliCashForm.getTxtNamaPembeli().setText(beliCashArrayList.get(row).getNama());
-        beliCashForm.getCbJenisKelamin().setSelectedItem(beliCashArrayList.get(row).getJeniKelamin());
-        beliCashForm.getTxtalamat().setText(beliCashArrayList.get(row).getAlamat());
-        beliCashForm.getTxtNamaPembeli().setText(beliCashArrayList.get(row).getNama());
-        beliCashForm.getTxtnoTelp().setText(beliCashArrayList.get(row).getNoTelp());
-        
-        beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
-        beliCashForm.getLblnamamotor().setText(beliCashArrayList.get(row).getNamaMotor());
-        beliCashForm.getLblmerkmotor().setText(beliCashArrayList.get(row).getMerkMotor());
-        beliCashForm.getLblwarnamotor().setText(beliCashArrayList.get(row).getWarnaMotor());        
-        beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(beliCashArrayList.get(row).getHargaMotor()));
-        
-        
-    }
+//    public void getRowDataBeli()
+//    {
+//      
+//        int row=beliCashForm.getTblBeliCash().getSelectedRow();
+//        idMotor=String.valueOf(beliCashArrayList.get(row).getIdMotor());
+//        idBeli=String.valueOf(beliCashArrayList.get(row).getIdBeli());
+//        
+//        beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
+//        beliCashForm.getTxtNoKtp().setText(beliCashArrayList.get(row).getNoKtp());
+//        beliCashForm.getTxtNamaPembeli().setText(beliCashArrayList.get(row).getNama());
+//        beliCashForm.getCbJenisKelamin().setSelectedItem(beliCashArrayList.get(row).getJeniKelamin());
+//        beliCashForm.getTxtalamat().setText(beliCashArrayList.get(row).getAlamat());
+//        beliCashForm.getTxtNamaPembeli().setText(beliCashArrayList.get(row).getNama());
+//        beliCashForm.getTxtnoTelp().setText(beliCashArrayList.get(row).getNoTelp());
+//        
+//        beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
+//        beliCashForm.getLblnamamotor().setText(beliCashArrayList.get(row).getNamaMotor());
+//        beliCashForm.getLblmerkmotor().setText(beliCashArrayList.get(row).getMerkMotor());
+//        beliCashForm.getLblwarnamotor().setText(beliCashArrayList.get(row).getWarnaMotor());        
+//        beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(beliCashArrayList.get(row).getHargaMotor()));
+//        
+//        
+//    }
     
     
-    public void getRowDataMotor()
+    public void getValueAt()
     {
         int row=beliCashForm.getTblBeliCash().getSelectedRow();
-            
-        idMotor=String.valueOf(motorArrayList.get(row).getId());
-        beliCashForm.getLblkodemotor().setText(motorArrayList.get(row).getKodeMotor());
-        beliCashForm.getLblnamamotor().setText(motorArrayList.get(row).getNama());
-        beliCashForm.getLblmerkmotor().setText(motorArrayList.get(row).getMerk());
-        beliCashForm.getLblwarnamotor().setText(motorArrayList.get(row).getWarna());        
-        beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(motorArrayList.get(row).getHarga()));
-        beliCashForm.getLblStok().setText(String.valueOf(motorArrayList.get(row).getStok()));
-        stok=motorArrayList.get(row).getStok();
+        
+        if(beliCashForm.getRbDataMotor().isSelected())
+        {
+            idMotor=String.valueOf(motorArrayList.get(row).getId());
+            beliCashForm.getLblkodemotor().setText(motorArrayList.get(row).getKodeMotor());
+            beliCashForm.getLblnamamotor().setText(motorArrayList.get(row).getNama());
+            beliCashForm.getLblmerkmotor().setText(motorArrayList.get(row).getMerk());
+            beliCashForm.getLblwarnamotor().setText(motorArrayList.get(row).getWarna());        
+            beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(motorArrayList.get(row).getHarga()));
+            beliCashForm.getLblStok().setText(String.valueOf(motorArrayList.get(row).getStok()));
+        
+        }
+        
+        else if(beliCashForm.getRbDataBeli().isSelected())
+        {
+            idBeli=String.valueOf(beliCashArrayList.get(row).getIdBeli());
+            idMotor=String.valueOf(beliCashArrayList.get(row).getIdMotor());
+            beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
+            beliCashForm.getLblnamamotor().setText(beliCashArrayList.get(row).getNamaMotor());
+            beliCashForm.getLblmerkmotor().setText(beliCashArrayList.get(row).getMerkMotor());
+            beliCashForm.getLblwarnamotor().setText(beliCashArrayList.get(row).getWarnaMotor());        
+            beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(beliCashArrayList.get(row).getHargaMotor()));
+            beliCashForm.getLblTglBeli().setText(beliCashArrayList.get(row).getTglBeli());
+        }
+        
+        //stok=motorArrayList.get(row).getStok();
         
     }
     

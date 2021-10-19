@@ -183,7 +183,7 @@
 				<textElement>
 					<font size="13" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Tgl Cicil:]]></text>
+				<text><![CDATA[Denda]]></text>
 			</staticText>
 			<textField pattern="¤ #,##0.00">
 				<reportElement x="376" y="191" width="100" height="20" uuid="9acfb91f-59a1-4ceb-97f6-4ac47291bffc"/>

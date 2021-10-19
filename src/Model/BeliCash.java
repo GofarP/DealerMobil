@@ -13,132 +13,137 @@ import java.util.Date;
  */
 public class BeliCash {
     
-    private Pelanggan pelanggan=new Pelanggan();
-    private Pembelian pembelian=new Pembelian();
-    private Motor motor=new Motor(); 
+//    private Pelanggan pelanggan=new Pelanggan();
+//    private Pembelian pembelian=new Pembelian();
+//    private Motor motor=new Motor(); 
+    private int idBeli, idMotor, hargaMotor;
+    private String noBeli, noKtp, nama, jenisKelamin,alamat, noTelp, kodeMotor, namaMotor;
+    private String merkMotor,warnaMotor, status, tglBeli;
     
-    public String getIdBeli()
+    
+            
+    public int getIdBeli()
     {
-        return  pembelian.getIdBeli();
+        return  idBeli;
     }
     
-    public void setIdBeli(String idBeli)
+    public void setIdBeli(int idBeli)
     {
-        pembelian.setIdBeli(idBeli);
+        this.idBeli=idBeli;
     }
     
     public String getNoBeli() {
-        return pembelian.getNoBeli();
+        return noBeli;
     }
 
     public void setNoBeli(String noBeli) {
-        pembelian.setNoBeli(noBeli);
+       this.noBeli=noBeli;
     }
 
     public String getNoKtp() {
-        return pelanggan.getNoKtp();
+        return noKtp;
     }
 
     public void setNoKtp(String noKtp) {
-        pelanggan.setNoKtp(noKtp);
+        this.noKtp=noKtp;
     }
 
     public String getNama() {
-        return pelanggan.getNama();
+        return nama;
     }
 
     public void setNama(String nama) {
-        pelanggan.setNama(nama);
+        this.nama=nama;
     }
 
     public String getJeniKelamin() {
-        return pelanggan.getJeniKelamin();
+        return jenisKelamin;
     }
 
-    public void setJeniKelamin(String jeniKelamin) {
-       pelanggan.setJeniKelamin(jeniKelamin);
+    public void setJeniKelamin(String jenisKelamin) {
+        this.jenisKelamin=jenisKelamin;
     }
 
     public String getAlamat() {
-        return pelanggan.getAlamat();
+        return alamat;
     }
 
     public void setAlamat(String alamat) {
-        pelanggan.setAlamat(alamat);
+        this.alamat=alamat;
     }
 
     public String getNoTelp() {
-        return pelanggan.getNoTelp();
+        return noTelp;
     }
 
     public void setNoTelp(String noTelp) {
-        pelanggan.setNoTelp(noTelp);
+        this.noTelp=noTelp;
     }
 
     public int getIdMotor() {
-        return motor.getId();
+        return idMotor;
     }
 
     public void setIdMotor(int idMotor) {
-        motor.setId(idMotor);
+       this.idMotor=idMotor;
     }
     
     
     public String getKodeMotor() {
-        return motor.getKodeMotor();
+        return kodeMotor;
     }
 
     public void setKodeMotor(String kodeMotor) {
-        motor.setKodeMotor(kodeMotor);
+        this.kodeMotor=kodeMotor;
     }
 
     public String getNamaMotor() {
-        return motor.getNama();
+        return namaMotor;
     }
 
     public void setNamaMotor(String namaMotor) {
-        motor.setNama(namaMotor);
+        this.namaMotor=namaMotor;
     }
 
     public String getMerkMotor() {
-        return motor.getMerk();
+        return merkMotor;
     }
 
     public void setMerkMotor(String merkMotor) {
-        motor.setMerk(merkMotor);
+       this.merkMotor=merkMotor;
     }
     
     public String getWarnaMotor() {
-        return motor.getWarna();
+       return warnaMotor;
     }
 
     public void setWarnaMotor(String warnaMotor) {
-        motor.setWarna(warnaMotor);
+       this.warnaMotor=warnaMotor;
     }
     
     public int getHargaMotor() {
-        return motor.getHarga();
+       return  hargaMotor;
     }
 
     public void setHargaMotor(int hargaMotor) {
-        motor.setHarga(hargaMotor);
+        this.hargaMotor=hargaMotor;
     }
     
     
     public String getStatus() {
-        return pembelian.getStatus();
+       return status;
     }
 
     public void setStatus(String status) {
-        pembelian.setStatus(status);
+        this.status=status;
     }
 
-    public String getTglbayar() {
-        return pembelian.getTglbayar();
+    public String getTglBeli() {
+        return tglBeli;
     }
 
-    public void setTglbayar(String tglbayar) {
-        pembelian.setTglbayar(tglbayar);
+    public void setTglBeli(String tglBeli) {
+        this.tglBeli=tglBeli;
     }
     
     

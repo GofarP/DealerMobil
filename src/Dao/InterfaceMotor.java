@@ -22,5 +22,5 @@ public interface InterfaceMotor {
     public void saveDataMotor(Motor motor);
     public void updateDataMotor(Motor motor);
     public void  deleteDataMotor(int id);
-    
+    public boolean cekMotor(int id);
 }

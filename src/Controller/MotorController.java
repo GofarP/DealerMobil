@@ -139,9 +139,14 @@ public class MotorController {
             JOptionPane.showMessageDialog(null, "Silahkan Pilih Motor Yang Mau Dihapus");
         }
         
+        else if(interfaceMotor.cekMotor(Integer.parseInt(id)))
+        {
+            JOptionPane.showMessageDialog(null, "Motor Tidak Bisa Dihapus, masih ada pembelian credit yang masih berjalan");
+        }
+        
         else
         {
-            int opsi=JOptionPane.showConfirmDialog(null, "Hapus data mobil ini ?","Hapus Mobil",JOptionPane.YES_NO_OPTION);
+            int opsi=JOptionPane.showConfirmDialog(null, "Hapus data motor ini ?","Hapus Motor",JOptionPane.YES_NO_OPTION);
             if(opsi==JOptionPane.YES_OPTION)interfaceMotor.deleteDataMotor(Integer.parseInt(id));
         }
          
@@ -155,7 +160,7 @@ public class MotorController {
         
         if(motorArrayList.size()==0)
         {
-            JOptionPane.showMessageDialog(null, "Nama Mobil Tidak Ditemukan");
+            JOptionPane.showMessageDialog(null, "Nama Motor Tidak Ditemukan");
             motorArrayList=interfaceMotor.showDataMotor();
             TableModelDataMotor tableModelDataMhs=new TableModelDataMotor(motorArrayList);
             dataMotorForm.getTable().setModel(tableModelDataMhs);
@@ -174,7 +179,7 @@ public class MotorController {
         motorArrayList=interfaceMotor.searchMerkMotor(dataMotorForm.getTxtCari().getText().trim());
         if(motorArrayList.size()==0)
         {
-            JOptionPane.showMessageDialog(null, "Merk mobil tidak ditemukan");
+            JOptionPane.showMessageDialog(null, "Merk motor tidak ditemukan");
             motorArrayList=interfaceMotor.showDataMotor();
             TableModelDataMotor tableModelDataMhs=new TableModelDataMotor(motorArrayList);
             dataMotorForm.getTable().setModel(tableModelDataMhs);

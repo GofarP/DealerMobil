@@ -8,6 +8,9 @@ package Controller;
 import Dao.InterfaceLaporan;
 import Dao.LaporanDao;
 import Form.LaporanForm;
+import Model.BeliCash;
+import Model.BeliCredit;
+import Model.Cicilan;
 import Model.Motor;
 import Model.Paket;
 import java.util.ArrayList;
@@ -30,6 +33,10 @@ public class LaporanController {
     LaporanForm laporanForm;
     ArrayList<Motor>motorArrayList;
     ArrayList<Paket>paketArrayList;
+    ArrayList<BeliCash>beliCashArrayList;
+    ArrayList<BeliCredit>beliCreditArrayList;
+    ArrayList<Cicilan>cicilanCreditArrayList;
+    
     InterfaceLaporan interfaceLaporan;
     
     JRBeanCollectionDataSource itemsJRBean=null;
@@ -79,7 +86,6 @@ public class LaporanController {
              itemsJRBean = new JRBeanCollectionDataSource(motorArrayList);
              parameters.put("MotorDataSource", itemsJRBean);
              
-             JasperCompileManager.compileReportToFile("src/report/LaporanPaket.jrxml","src/report/LaporanPaket.jasper");
              jasperPrint = JasperFillManager.fillReport("src/report/LaporanMotor.jasper", parameters, new JREmptyDataSource());
              jasperViewer=new JasperViewer(jasperPrint, false);
              jasperViewer.viewReport(jasperPrint,false);
@@ -136,6 +142,125 @@ public class LaporanController {
             JOptionPane.showMessageDialog(null, "controller Error:"+e.getMessage());
         }
             
+    }
+    
+    public void cetakLaporanTransaksi()
+    {
+        try 
+        {
+            int jenis=laporanForm.getCbTransaksiJenis().getSelectedIndex();
+            int berdasarkan=laporanForm.getCbTransaksiBerdasarkan().getSelectedIndex();
+            String cari=laporanForm.getTxtCariPenjualan().getText().trim();
+            
+            if(jenis==0)
+            {
+                switch(berdasarkan)
+                {
+                    case 0:
+                        beliCashArrayList=interfaceLaporan.laporanBeliCash();
+                        break;
+                        
+                    case 1:
+                        beliCashArrayList=interfaceLaporan.laporanBeliCashByKodeTransaksi(cari);
+                        break;    
+                        
+                    case 2:
+                        beliCashArrayList=interfaceLaporan.laporanBeliCashByNamaPembeli(cari);
+                        break;
+                }
+                
+                
+                if(beliCashArrayList.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null, "Data beli cash tidak Ditemukan atau masih kosong");
+                }
+                
+                else
+                {
+                    itemsJRBean = new JRBeanCollectionDataSource(beliCashArrayList);
+                    parameters.put("BeliCashDataSource", itemsJRBean);
+                    jasperPrint = JasperFillManager.fillReport("src/report/LaporanBeliCash.jasper", parameters, new JREmptyDataSource());
+                    beliCashArrayList.clear();
+                }
+                
+                
+            }
+            
+            else if(jenis==1)
+            {
+                switch(berdasarkan)
+                {
+                    case 0:
+                        beliCreditArrayList=interfaceLaporan.laporanBeliCredit();
+                        break;
+                        
+                    case 1:
+                        beliCreditArrayList=interfaceLaporan.laporanBeliCreditByKodeTransaksi(cari);
+                        break;
+                        
+                    case 2:
+                        beliCreditArrayList=interfaceLaporan.laporanBeliCreditByNama(cari);
+                        break;
+                }
+                
+                if(beliCreditArrayList.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null, "Data beli credit kosong atau tidak ditemukan");
+                }
+                
+                else
+                {
+                    itemsJRBean = new JRBeanCollectionDataSource(beliCreditArrayList);
+                    parameters.put("BeliCreditDataSource", itemsJRBean);
+                    jasperPrint = JasperFillManager.fillReport("src/report/LaporanBelicredit.jasper", parameters, new JREmptyDataSource());
+                    beliCreditArrayList.clear();
+                }
+                
+            }
+            
+            else if(jenis==2)
+            {
+                switch(berdasarkan)
+                {
+                    case 0:
+                        cicilanCreditArrayList=interfaceLaporan.laporanCicilan();
+                        break;
+                        
+                    case 1:
+                        cicilanCreditArrayList=interfaceLaporan.laporanCicilanByKodeCicilan(cari);
+                        break;
+                        
+                    case 2:
+                        cicilanCreditArrayList=interfaceLaporan.laporanCicilanByNama(cari);
+                        break;
+                }
+                
+                if(cicilanCreditArrayList.isEmpty())
+                {
+                    JOptionPane.showMessageDialog(null, "Data cicilan tidak ditemukan atau masih kosong");
+                }
+                
+                else
+                {
+                    itemsJRBean = new JRBeanCollectionDataSource(cicilanCreditArrayList);
+                    parameters.put("CicilanDataSource", itemsJRBean);
+                    jasperPrint = JasperFillManager.fillReport("src/report/LaporanCicilan.jasper", parameters, new JREmptyDataSource());
+                    cicilanCreditArrayList.clear();
+                }
+                
+                
+            }
+            
+            
+            jasperViewer=new JasperViewer(jasperPrint, false);
+            jasperViewer.viewReport(jasperPrint,false);
+            
+        } 
+        
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
     
 }

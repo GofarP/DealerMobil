@@ -192,6 +192,7 @@ public class cicilanController {
                 cicilan.setCicilanKe(cicilanKe);
                 cicilan.setStatus(status);
                 cicilan.setTglCicil(sdf.format(tglSkrg.getTime()));
+                cicilan.setDenda(totalDenda);
 
                 interfaceCicilan.bayarCicilan(cicilan);
                 
@@ -260,10 +261,14 @@ public class cicilanController {
         {
             try 
             {
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 int row=bayarCicilanForm.getTblCicilan().getSelectedRow();
                 File reportFile=new File("src/report/StrukCicilan.jrxml");
                 JasperDesign jDesign=JRXmlLoader.load(reportFile);
                 Map formValues=new HashMap();
+                
+                Date tglCicil=sdf.parse(cicilanArrayList.get(row).getTglCicil());
+                sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 
                 formValues.put("noBeli", cicilanArrayList.get(row).getNoBeli());
                 formValues.put("noCicilan", cicilanArrayList.get(row).getKodeCicilan());
@@ -273,9 +278,10 @@ public class cicilanController {
                 formValues.put("warna", cicilanArrayList.get(row).getWarnaMotor());
                 formValues.put("jmlBayar", cicilanArrayList.get(row).getJumlahBayar());
                 formValues.put("status", cicilanArrayList.get(row).getStatus());
-                formValues.put("cicilanKe", String.valueOf(cicilanArrayList.get(row).getCicilanKe()));
-                formValues.put("tglCicil", cicilanArrayList.get(row).getTglCicil());
+                formValues.put("cicilanKe", cicilanArrayList.get(row).getCicilanKe());
+                formValues.put("tglCicil", sdf.format(tglCicil));
                 formValues.put("pembeli", cicilanArrayList.get(row).getNama());
+                formValues.put("denda",cicilanArrayList.get(row).getDenda());
                 
                 JasperReport jr=JasperCompileManager.compileReport(jDesign);
                 JasperPrint jp = JasperFillManager.fillReport(jr, formValues,new JREmptyDataSource());

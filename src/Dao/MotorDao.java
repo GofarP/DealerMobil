@@ -289,6 +289,36 @@ public class MotorDao implements InterfaceMotor{
         return kodeMotor;
     }
 
+    @Override
+    public boolean cekMotor(int id) {
+        
+        boolean ada=false;
+
+        try 
+        {            
+            conn=(Connection)koneksi.configDB();
+            sql="SELECT motor.`id` FROM motor " +
+                "INNER JOIN paket ON motor.`id`=paket.`id_motor`" +
+                "INNER JOIN beli_credit ON paket.`id_paket`=beli_credit.`id_paket`" +
+                "WHERE beli_credit.`status`='belum' AND motor.`id`=?";
+            pst=conn.prepareStatement(sql);
+            pst.setInt(1, id);
+            rs=pst.executeQuery();
+            
+            if(rs.next())
+            {
+                ada=true;
+            }
+        } 
+        
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+        return ada;
+    }
+
     
     
 }

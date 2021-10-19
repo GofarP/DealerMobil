@@ -5,10 +5,9 @@
  */
 package Form;
 
-import Controller.LoginController;
-import Model.Login;
+import Controller.DashboardController;
 import java.awt.Color;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,13 +20,29 @@ public class DashboardForm extends javax.swing.JFrame {
      */
     
    
+    DashboardController dashboardController;
     
     public DashboardForm() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        dashboardController=new DashboardController(this);
     }
     
+    public JLabel getJLabelTerjual()
+    {
+        return lblterjual;
+    }
     
+    public JLabel getJLabelMerkMotor()
+    {
+        return lbljmlmerk;
+    }
+    
+    public JLabel getJLabelIncome()
+    {
+        return lblincome;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,14 +85,14 @@ public class DashboardForm extends javax.swing.JFrame {
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
         rSPanelImage8 = new rojerusan.RSPanelImage();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lbljmlmerk = new javax.swing.JLabel();
         kGradientPanel3 = new com.k33ptoo.components.KGradientPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lblincome = new javax.swing.JLabel();
         rSPanelImage9 = new rojerusan.RSPanelImage();
         kGradientPanel5 = new com.k33ptoo.components.KGradientPanel();
         rSPanelImage7 = new rojerusan.RSPanelImage();
-        jLabel10 = new javax.swing.JLabel();
+        lblterjual = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -417,13 +432,13 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Jumlah Jenis Mobil");
-        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 25, -1, -1));
+        jLabel12.setText("Jumlah Merk Motor");
+        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 25, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("...");
-        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
+        lbljmlmerk.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        lbljmlmerk.setForeground(new java.awt.Color(255, 255, 255));
+        lbljmlmerk.setText("...");
+        kGradientPanel2.add(lbljmlmerk, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
 
         jPanel8.add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 88, 220, 110));
 
@@ -436,10 +451,10 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel14.setText("Income Bulan Ini");
         kGradientPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 25, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("...");
-        kGradientPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
+        lblincome.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        lblincome.setForeground(new java.awt.Color(255, 255, 255));
+        lblincome.setText("...");
+        kGradientPanel3.add(lblincome, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
 
         rSPanelImage9.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Image/idr.png"))); // NOI18N
 
@@ -477,10 +492,10 @@ public class DashboardForm extends javax.swing.JFrame {
 
         kGradientPanel5.add(rSPanelImage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 27, 50, 60));
 
-        jLabel10.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("...");
-        kGradientPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
+        lblterjual.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        lblterjual.setForeground(new java.awt.Color(255, 255, 255));
+        lblterjual.setText("...");
+        kGradientPanel5.add(lblterjual, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 59, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -693,12 +708,9 @@ public class DashboardForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -723,6 +735,9 @@ public class DashboardForm extends javax.swing.JFrame {
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private com.k33ptoo.components.KGradientPanel kGradientPanel3;
     private com.k33ptoo.components.KGradientPanel kGradientPanel5;
+    private javax.swing.JLabel lblincome;
+    private javax.swing.JLabel lbljmlmerk;
+    private javax.swing.JLabel lblterjual;
     private rojerusan.RSPanelImage rSPanelImage1;
     private rojerusan.RSPanelImage rSPanelImage10;
     private rojerusan.RSPanelImage rSPanelImage11;

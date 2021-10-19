@@ -39,8 +39,9 @@ public class LaporanForm extends javax.swing.JFrame {
     
     public JTextField getTxtCariPenjualan()
     {
-        return txtcaribeli;
+        return txtcaritransaksi;
     }
+    
     
     public JComboBox getCbMotorBerdasarkan()
     {
@@ -50,6 +51,17 @@ public class LaporanForm extends javax.swing.JFrame {
     public JComboBox getCbPaketBerdasarkan()
     {
         return cbmotorberdasarkan;
+    }
+    
+    public JComboBox getCbTransaksiBerdasarkan()
+    {
+        return cbtransaksiberdasarkan;
+    }
+    
+    
+    public JComboBox getCbTransaksiJenis()
+    {
+        return cbtransaksijenis;
     }
 
     /**
@@ -72,12 +84,12 @@ public class LaporanForm extends javax.swing.JFrame {
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtcaribeli = new javax.swing.JTextField();
+        txtcaritransaksi = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbtransaksijenis = new javax.swing.JComboBox<>();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbtransaksiberdasarkan = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -154,23 +166,29 @@ public class LaporanForm extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(99, 111, 254));
         jLabel3.setText("Berdasarkan:");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
-        jPanel4.add(txtcaribeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 161, -1));
+        jPanel4.add(txtcaritransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 161, -1));
 
         jLabel4.setForeground(new java.awt.Color(99, 111, 254));
         jLabel4.setText("Sampai:");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash ", "Credit" }));
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 160, -1));
+        cbtransaksijenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash ", "Credit", "Cicilan" }));
+        jPanel4.add(cbtransaksijenis, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 160, -1));
 
         rSButtonMetro2.setText("Cetak");
+        rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro2ActionPerformed(evt);
+            }
+        });
         jPanel4.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 230, 33));
 
         jLabel5.setForeground(new java.awt.Color(99, 111, 254));
         jLabel5.setText("Jenis Transaksi:");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
-        jPanel4.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
+        cbtransaksiberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Kode", "Nama" }));
+        jPanel4.add(cbtransaksiberdasarkan, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 160, -1));
 
         jLabel8.setForeground(new java.awt.Color(99, 111, 254));
         jLabel8.setText("Cari:");
@@ -247,6 +265,11 @@ public class LaporanForm extends javax.swing.JFrame {
         laporanController.cetakLaporanMotor();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
+    private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
+        // TODO add your handling code here:
+        laporanController.cetakLaporanTransaksi();
+    }//GEN-LAST:event_rSButtonMetro2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,9 +308,9 @@ public class LaporanForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbmotorberdasarkan;
     private javax.swing.JComboBox<String> cbpaketberdasarkan;
+    private javax.swing.JComboBox<String> cbtransaksiberdasarkan;
+    private javax.swing.JComboBox<String> cbtransaksijenis;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
@@ -308,8 +331,8 @@ public class LaporanForm extends javax.swing.JFrame {
     private rojerusan.RSButtonMetro rSButtonMetro2;
     private rojerusan.RSButtonMetro rSButtonMetro3;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private javax.swing.JTextField txtcaribeli;
     private javax.swing.JTextField txtcarimotor;
     private javax.swing.JTextField txtcaripaket;
+    private javax.swing.JTextField txtcaritransaksi;
     // End of variables declaration//GEN-END:variables
 }

@@ -199,7 +199,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField pattern="¤ #,##0.00">
+							<textField pattern="">
 								<reportElement x="0" y="0" width="84" height="20" uuid="48dec92f-97e4-46c2-ab0e-3c195e35b45f"/>
 								<textFieldExpression><![CDATA[$F{jumlahCicilan}]]></textFieldExpression>
 							</textField>
@@ -233,10 +233,20 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField pattern="¤ #,##0.00">
-								<reportElement x="0" y="0" width="90" height="20" uuid="aeac9733-8bea-44ee-8c46-a91c8ff994a4"/>
+							<textField pattern="">
+								<reportElement x="0" y="0" width="47" height="20" uuid="aeac9733-8bea-44ee-8c46-a91c8ff994a4"/>
+								<textElement textAlignment="Right">
+									<font size="12"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{bunga}]]></textFieldExpression>
 							</textField>
+							<staticText>
+								<reportElement x="47" y="0" width="43" height="20" uuid="e2333e09-0d5b-4d0b-9eb7-3328a8c8a1c5"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
+								<text><![CDATA[%]]></text>
+							</staticText>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="62b19645-31af-4ae6-b82a-4cdbb9dadb09">

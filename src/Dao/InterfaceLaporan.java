@@ -5,6 +5,9 @@
  */
 package Dao;
 
+import Model.BeliCash;
+import Model.BeliCredit;
+import Model.Cicilan;
 import Model.Motor;
 import Model.Paket;
 import java.util.ArrayList;
@@ -24,6 +27,19 @@ public interface InterfaceLaporan {
     public ArrayList<Paket>laporanPaket();
     public ArrayList<Paket>laporanPaketByKodePaket(String kodePaket);
     public ArrayList<Paket>laporanPaketByNama(String nama);
+    
+    public ArrayList<BeliCash>laporanBeliCash();
+    public ArrayList<BeliCash>laporanBeliCashByKodeTransaksi(String kode);
+    public ArrayList<BeliCash>laporanBeliCashByNamaPembeli(String namaPembeli);
+    
+    public ArrayList<BeliCredit>laporanBeliCredit();
+    public ArrayList<BeliCredit>laporanBeliCreditByKodeTransaksi(String kode);
+    public ArrayList<BeliCredit>laporanBeliCreditByNama(String namaPembeli);
+    
+    public ArrayList<Cicilan>laporanCicilan();
+    public ArrayList<Cicilan>laporanCicilanByKodeCicilan(String kode);
+    public ArrayList<Cicilan>laporanCicilanByNama(String nama);
+    
     
     
     

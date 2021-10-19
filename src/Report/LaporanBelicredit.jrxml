@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanBelicredit" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31ace229-5798-4830-81ce-b0f06e9ae50a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="BeliCreditDataSet" uuid="c17afbd2-f487-43fe-9ac2-a2d49b12375d">
+		<field name="idBeli" class="java.lang.Integer"/>
+		<field name="noBeli" class="java.lang.String"/>
+		<field name="nama" class="java.lang.String"/>
+		<field name="namaMotor" class="java.lang.String"/>
+		<field name="merkMotor" class="java.lang.String"/>
+		<field name="warna" class="java.lang.String"/>
+		<field name="harga" class="java.lang.Integer"/>
+		<field name="tglBeli" class="java.lang.String"/>
+		<field name="alamat" class="java.lang.String"/>
+		<field name="status" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="BeliCreditDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="179" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="179" uuid="6f5f9225-53b3-4c11-a653-0e4a408583c2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="239" y="78" width="301" height="50" uuid="2ec90583-6b08-4716-8a0e-a4e21d2336be"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dealer Jaya Maju Motor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="29" width="222" height="36" uuid="19dd36fb-d567-4101-b299-894cf19d6da3"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Beli Credit]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="200" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="802" height="200" uuid="322df563-beab-4470-8fd7-2808099923cb"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="BeliCreditDataSet" uuid="1cb28557-e962-44f9-92e7-120c2d9eda4e">
+						<dataSourceExpression><![CDATA[$P{BeliCreditDataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="56" uuid="f703ed76-3ec7-4ca3-8f07-27affdc8ebfc">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="56" height="30" uuid="2e676e4a-7082-4a3b-97f9-22de46ea1a02"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Beli]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="56" height="27" uuid="1c2e62ca-b63a-413d-b9c0-97c978365160"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{idBeli}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="73" uuid="e11ba2ab-5434-453f-975c-e7bf167ef2ad">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="73" height="30" uuid="4461c52c-ce03-404e-8101-142ce6f9e91a"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[No Beli]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="73" height="27" uuid="d6d4003b-edfc-42d6-a43d-20f80c6f02f5"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{noBeli}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="586930f8-6f1d-4e5d-a3c6-fefde799e033">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="9959ce26-9005-4223-b8b1-aa9da6bb3c8e"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nama]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="27" uuid="9bcd6f2c-6e56-4197-9fa5-ce69e02e52b0"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="2cbd8514-b1d8-4d35-a560-757c0eef12ba">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="3447e324-484b-4bd0-8ab7-cadb2d796865"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nama Motor]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="27" uuid="a0411f02-1832-4c2e-801e-6be9d962026a"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{namaMotor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="74" uuid="a0c0b529-1615-4308-8725-6e41cd469c77">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="73" height="30" uuid="f9d208b6-8ccc-4b32-8cb0-097f28eca980"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Merk]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="73" height="27" uuid="3e056d77-2a68-4d09-99e3-7a720bf5273b"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{merkMotor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="ad77f68d-1fe0-45c9-8c93-d07f89df3ff2">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="be6ac7f5-5399-4178-9998-5eca25b78551"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Warna]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="27" uuid="1aa3dd76-6c1e-47e3-99cb-8ed11e798b15"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{warna}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="1c26d2b9-7a26-45c2-a230-a3f8db40267a">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="78" height="30" uuid="6023d8f0-2524-4a4b-ab9a-4f59317b3f92"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Harga]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="78" height="27" uuid="076bdd95-c959-4a04-910c-1760f6428ee9"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="04a45015-6c0e-46a2-9ac3-e046dd967cee">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="93697eb0-462e-4ea1-aa2c-c07641e6d8dc"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Tgl Beli]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="27" uuid="929d8c72-27ad-40e6-8759-ece4588ea0a4"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tglBeli}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="cdc5120a-80ed-43fc-a773-93c481e51410">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="419fa65e-e340-440d-8ea0-9a41a8a18ff0"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Alamat]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="27" uuid="3decff16-959b-42a8-8a4e-201847da9523"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="74" uuid="5e9d446f-3d6b-4260-842e-ff52b9ca2f4f">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="74" height="30" uuid="c2e32b6b-313a-44dd-a8d7-bb0b357cdf22"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Status]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="27" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="74" height="27" uuid="6fa95a9a-b6c2-4389-9412-7bee3e14556c"/>
+								<textElement textAlignment="Center">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

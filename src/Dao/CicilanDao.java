@@ -42,7 +42,7 @@ public class CicilanDao implements InterfaceCicilan{
             conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
                            
-            sql="insert into cicilan(kode_cicilan, id_beli, id_paket, cicilan_ke, jml_bayar, status_cicilan, tgl_bayar) values(?,?,?,?,?,?,?)";
+            sql="insert into cicilan(kode_cicilan, id_beli, id_paket, cicilan_ke, jml_bayar, status_cicilan, denda,tgl_bayar) values(?,?,?,?,?,?,?,?)";
             pst=conn.prepareStatement(sql);
             pst.setString(1, cicilan.getKodeCicilan());
             pst.setInt(2, cicilan.getIdBeli());
@@ -50,7 +50,8 @@ public class CicilanDao implements InterfaceCicilan{
             pst.setInt(4, cicilan.getCicilanKe());
             pst.setInt(5, cicilan.getJumlahBayar());
             pst.setString(6, cicilan.getStatus());
-            pst.setString(7, cicilan.getTglCicil());
+            pst.setInt(7, cicilan.getDenda());
+            pst.setString(8, cicilan.getTglCicil());
             
             pst.executeUpdate();
             
@@ -137,7 +138,7 @@ public class CicilanDao implements InterfaceCicilan{
                 cicilan.setStatus(rs.getString("status_cicilan"));
                 cicilan.setJumlahBayar(rs.getInt("jml_bayar"));
                 cicilan.setCicilanKe(rs.getInt("cicilan_ke"));
-                
+                cicilan.setDenda(rs.getInt("denda"));
                 
                 arrayListCicilan.add(cicilan);
             }
@@ -196,6 +197,7 @@ public class CicilanDao implements InterfaceCicilan{
                 cicilan.setHargaTotal(rs.getInt("harga_total"));
                 cicilan.setJumlahBayar(rs.getInt("jml_bayar"));
                 cicilan.setCicilanKe(rs.getInt("cicilan_ke"));
+                cicilan.setDenda(rs.getInt("denda"));
                 
                 
                 arrayListCicilan.add(cicilan);
@@ -253,6 +255,7 @@ public class CicilanDao implements InterfaceCicilan{
                 cicilan.setHargaTotal(rs.getInt("harga_total"));
                 cicilan.setJumlahBayar(rs.getInt("jml_bayar"));
                 cicilan.setCicilanKe(rs.getInt("cicilan_ke"));
+                cicilan.setDenda(rs.getInt("denda"));
                 
                 arrayListCicilan.add(cicilan);
             }

@@ -58,7 +58,7 @@ public class TableModelDataBeliCash extends AbstractTableModel{
             case 9:return  beliArrayList.get(rowIndex).getMerkMotor();
             case 10:return  beliArrayList.get(rowIndex).getWarnaMotor();
             case 11:return  "Rp."+NumberFormat.getInstance().format(beliArrayList.get(rowIndex).getHargaMotor());
-            case 12: return beliArrayList.get(rowIndex).getTglbayar();
+            case 12: return beliArrayList.get(rowIndex).getTglBeli();
             
             default:return null;
         }
@@ -75,7 +75,7 @@ public class TableModelDataBeliCash extends AbstractTableModel{
             case 4: return "Jenis Kelamin";
             case 5: return "Alamat";
             case 6: return "No.Telp";
-            case 7: return "ID Mobil";
+            case 7: return "ID Motor";
             case 8: return "Nama Motor";
             case 9: return "Merk Motor";
             case 10: return "Warna";

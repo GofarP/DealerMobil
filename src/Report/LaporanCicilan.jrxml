@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanCicilan" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="405bc5db-fb8e-4d06-9219-89248d0ca3e0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="44"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="CicilanDataSet" uuid="38c8547e-158d-4ac1-b294-6caf32675ed1">
+		<field name="idCicilan" class="java.lang.String"/>
+		<field name="kodeCicilan" class="java.lang.String"/>
+		<field name="namaPembeli" class="java.lang.String"/>
+		<field name="namaMotor" class="java.lang.String"/>
+		<field name="jumlahBayar" class="java.lang.String"/>
+		<field name="statusCicilan" class="java.lang.String"/>
+		<field name="denda" class="java.lang.String"/>
+		<field name="tglBayar" class="java.lang.String"/>
+		<field name="cicilanKe" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="CicilanDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="167" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="167" uuid="e00cbe13-2591-439f-92b5-4c82e03c8fcc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="324" y="20" width="222" height="36" uuid="fb10064e-9ff4-46b6-a013-fa672a23b6a7"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Cicilan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="71" width="301" height="50" uuid="038f4cd4-6305-41d0-bad4-07e919a5c6d4"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dealer Jaya Maju Motor]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="184" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="802" height="184" uuid="1b39508b-06d4-4c67-8ecf-4b650b07dfd0"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="CicilanDataSet" uuid="01e9db9a-bb85-4c59-8492-27b1564f8902">
+						<dataSourceExpression><![CDATA[$P{CicilanDataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="4eafdc87-d76c-4959-bc19-ff11c7970cc4">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="1b11b8ad-0a72-4252-9ef5-f913295cc0df"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Id Cicilan]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="ad5467ee-f526-412a-8896-788b1e1cd654"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{idCicilan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="75559001-2589-4dfc-be7d-c93455c0d95d">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="b977e629-102e-4ede-b735-57bcf33163b1"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kode Cicilan]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="e3d364b3-32ff-44ff-9e7e-803a9487f5d0"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{kodeCicilan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="4676bcff-0bb9-4cc0-8a07-dd0012014f31">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="c6329430-128d-4fb1-b5d1-d384602b1514"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nama Pembeli]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="05491efe-a9ef-4ae3-ac1b-0795b800e408"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{namaPembeli}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="aad378c7-6323-41f3-8014-05f3fa370e66">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="1f7ad68d-e273-403f-8a7d-8a90479c871c"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nama Motor]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="1fc56dc0-f4d9-4a3b-933b-2d4b572a7887"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{namaMotor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b3e3130e-3f4e-43c0-b77c-e41a23c0445b">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="cdcf7fd5-2152-4bed-9b2d-c2272f2c50a8"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Jumlah Bayar]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="24d2ffd2-fe58-4b3d-b7d6-3aadd0fd45d4"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{jumlahBayar}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="330024df-ef86-4060-88b4-ebe4526a7f4a">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="ee72e761-bc72-4931-8af5-0a8d0423de04"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Status Cicilan]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="f3a2cef5-03d8-466b-8f43-bb922c3b1904"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{statusCicilan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b7e2eebc-c995-4b8d-a579-570695f5c20e">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="a6896bc3-44eb-4457-a011-eeab09692a8d"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Denda]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField pattern="¤ #,##0.00">
+								<reportElement x="0" y="0" width="90" height="35" uuid="165923b5-2675-4761-8c66-5ff4dd9c7d2c"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{denda}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b2f5330f-80bf-4564-a5b4-fce8a4cf7b7e">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="f942dd20-1703-4280-83cd-c3576af104d7"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Tgl Bayar]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="40dc450d-da83-4c0d-b575-15aa3be69719"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tglBayar}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="92be8157-8437-4aab-abb5-4aa945ffe260">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="35" uuid="6e666dc0-405c-4910-8c89-18d50014a1e6"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Cicilan Ke]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="35" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="35" uuid="14afcb09-8c56-4104-9caf-9d543c6656d2"/>
+								<textElement textAlignment="Center">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cicilanKe}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

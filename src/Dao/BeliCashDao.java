@@ -113,7 +113,7 @@ public class BeliCashDao implements InterfaceBeliCash{
               sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
               String formattedDate=sdf.format(date);
               
-              beliCash.setIdBeli(rs.getString("id_beli"));
+              beliCash.setIdBeli(rs.getInt("id_beli"));
               beliCash.setNoKtp(rs.getString("no_ktp"));
               beliCash.setNoBeli(rs.getString("no_beli"));
               beliCash.setNama(rs.getString("nama"));
@@ -126,7 +126,7 @@ public class BeliCashDao implements InterfaceBeliCash{
               beliCash.setMerkMotor(rs.getString("merk"));
               beliCash.setWarnaMotor(rs.getString("warna"));
               beliCash.setHargaMotor(rs.getInt("harga"));
-              beliCash.setTglbayar(formattedDate);
+              beliCash.setTglBeli(formattedDate);
               
               beliCashArrayList.add(beliCash);
           }
@@ -159,7 +159,7 @@ public class BeliCashDao implements InterfaceBeliCash{
             pst.setString(5, beliCash.getAlamat());
             pst.setString(6, beliCash.getNoTelp());
             pst.setInt(7, beliCash.getIdMotor());
-            pst.setString(8, String.valueOf(beliCash.getTglbayar()));
+            pst.setString(8, String.valueOf(beliCash.getTglBeli()));
             
             pst.executeUpdate();
             
@@ -264,7 +264,7 @@ public class BeliCashDao implements InterfaceBeliCash{
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 String formattedDate=sdf.format(date);
                 
-                beliCash.setIdBeli(rs.getString("id_beli"));
+                beliCash.setIdBeli(rs.getInt("id_beli"));
                 beliCash.setNoKtp(rs.getString("no_ktp"));
                 beliCash.setNoBeli(rs.getString("no_beli"));
                 beliCash.setNama(rs.getString("nama"));
@@ -277,7 +277,7 @@ public class BeliCashDao implements InterfaceBeliCash{
                 beliCash.setMerkMotor(rs.getString("merk"));
                 beliCash.setWarnaMotor(rs.getString("warna"));
                 beliCash.setHargaMotor(rs.getInt("harga"));
-                beliCash.setTglbayar(formattedDate);
+                beliCash.setTglBeli(formattedDate);
 
                 beliCashArrayList.add(beliCash);
             }
@@ -312,7 +312,7 @@ public class BeliCashDao implements InterfaceBeliCash{
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 String formattedDate=sdf.format(date);
                 
-                beliCash.setIdBeli(rs.getString("id_beli"));
+                beliCash.setIdBeli(rs.getInt("id_beli"));
                 beliCash.setNoKtp(rs.getString("no_ktp"));
                 beliCash.setNoBeli(rs.getString("no_beli"));
                 beliCash.setNama(rs.getString("nama"));
@@ -325,7 +325,7 @@ public class BeliCashDao implements InterfaceBeliCash{
                 beliCash.setMerkMotor(rs.getString("merk"));
                 beliCash.setWarnaMotor(rs.getString("warna"));
                 beliCash.setHargaMotor(rs.getInt("harga"));
-                beliCash.setTglbayar(formattedDate);
+                beliCash.setTglBeli(formattedDate);
                 
                 beliCashArrayList.add(beliCash);
             }
