@@ -48,6 +48,7 @@ public class BeliCashController {
     String idMotor="",idBeli="",noBeli="";
     Integer stok;
     
+    BeliCash beliCash=new BeliCash();
     
     public BeliCashController(BeliCashForm beliCashForm)
     {
@@ -62,6 +63,7 @@ public class BeliCashController {
     {        
         boolean kosong=false;
         
+        
         JTextField jtf[]={beliCashForm.getTxtNoKtp(), beliCashForm.getTxtNamaPembeli(),beliCashForm.getTxtalamat(),beliCashForm.getTxtnoTelp()};
         
         for(JTextField jTextField:jtf)
@@ -70,6 +72,16 @@ public class BeliCashController {
             {
                 kosong=true;
             }
+            
+            else
+            {
+                kosong=false;
+            }
+        }
+        
+        if(beliCashForm.getLblStok().getText().equals("..."))
+        {
+            kosong=true;
         }
         
         return kosong;
@@ -213,6 +225,8 @@ public class BeliCashController {
     {
         try
         {
+            
+            
             stok=Integer.parseInt(beliCashForm.getLblStok().getText());
             
             if(validasiPembeli())
@@ -232,20 +246,21 @@ public class BeliCashController {
             
             else
             {
-                BeliCash beliCash=new BeliCash();
+                
+                
+                beliCash=new BeliCash();
                 Date date=new Date();
 
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
                 beliCash.setNoBeli(interfaceBeliCash.autoNumber());
-                beliCash.setNoKtp(beliCashForm.getTxtNoKtp().getText().toString());
+                beliCash.setNoKtp(beliCashForm.getTxtNoKtp().getText().trim());
                 beliCash.setNama(beliCashForm.getTxtNamaPembeli().getText().trim());
                 beliCash.setJeniKelamin(beliCashForm.getCbJenisKelamin().getSelectedItem().toString());
                 beliCash.setAlamat(beliCashForm.getTxtalamat().getText().trim());
                 beliCash.setNoTelp(beliCashForm.getTxtnoTelp().getText().trim());
                 beliCash.setIdMotor(Integer.parseInt(idMotor));
-                beliCash.setStatus("Cash");
-                beliCash.setTglBeli(String.valueOf(sdf.format(date)));
+                beliCash.setTglBeli(sdf.format(date));
 
                 interfaceBeliCash.tambahPembelian(beliCash);
                             

@@ -672,6 +672,7 @@ public class BeliCreditForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         beliCreditController.deleteCredit();
         beliCreditController.showDataBeliCredit();
+        beliCreditController.clearPembeli();
     }//GEN-LAST:event_btnhapusActionPerformed
 
     private void btntambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntambahActionPerformed
@@ -684,6 +685,7 @@ public class BeliCreditForm extends javax.swing.JFrame {
         
         beliCreditController.updateCredit();
         beliCreditController.showDataBeliCredit();
+        beliCreditController.clearPembeli();
        
     }//GEN-LAST:event_btneditActionPerformed
 

@@ -159,12 +159,12 @@ public class BeliCashDao implements InterfaceBeliCash{
             pst.setString(5, beliCash.getAlamat());
             pst.setString(6, beliCash.getNoTelp());
             pst.setInt(7, beliCash.getIdMotor());
-            pst.setString(8, String.valueOf(beliCash.getTglBeli()));
+            pst.setString(8, beliCash.getTglBeli());
             
             pst.executeUpdate();
             
-            String sqlKurangStock="update motor set stok=stok-1 where id=?";
-            pst=conn.prepareStatement(sqlKurangStock);
+            sql="update motor set stok=stok-1 where id=?";
+            pst=conn.prepareStatement(sql);
             pst.setInt(1, beliCash.getIdMotor());
             pst.executeUpdate();
             

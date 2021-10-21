@@ -512,11 +512,13 @@ public class BeliCashForm extends javax.swing.JFrame {
     private void rbpembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpembelianActionPerformed
         // TODO add your handling code here:
         beliCashController.showDataBeli();
+        beliCashController.clearMotor();
     }//GEN-LAST:event_rbpembelianActionPerformed
 
     private void rbmotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmotorActionPerformed
         // TODO add your handling code here:
         beliCashController.showMotor();
+        beliCashController.clearPembeli();
     }//GEN-LAST:event_rbmotorActionPerformed
 
     private void tblbelicashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblbelicashMouseClicked

@@ -70,7 +70,13 @@ public class MotorController {
             {
                 kosong=true;
             }
+            
+            else 
+            {
+                kosong=false;
+            }
         }
+        
         
         return kosong;
     

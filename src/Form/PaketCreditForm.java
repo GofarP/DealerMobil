@@ -443,7 +443,7 @@ public class PaketCreditForm extends javax.swing.JFrame {
         cbberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kode", "Nama" }));
         jPanel5.add(cbberdasarkan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 150, -1));
 
-        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paket", "Mobil" }));
+        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paket", "Motor" }));
         jPanel5.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 150, -1));
 
         rSButtonMetro5.setText("Reset Tabel");
