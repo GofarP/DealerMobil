@@ -319,6 +319,41 @@ public class MotorDao implements InterfaceMotor{
         return ada;
     }
 
+    @Override
+    public ArrayList<Motor> searchMotorById(String id) {
+        try 
+        {
+            conn=(Connection)koneksi.configDB();
+            sql="select * from motor where id=?";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, id);
+            rs=pst.executeQuery();
+            
+            
+            if(rs.next())
+            {
+               motor=new Motor();
+                                
+                motor.setId(rs.getInt("id"));
+                motor.setKodeMotor(rs.getString("kode_motor"));
+                motor.setNama(rs.getString("nama"));
+                motor.setMerk(rs.getString("merk"));
+                motor.setWarna(rs.getString("warna"));
+                motor.setStok(rs.getInt("stok"));
+                motor.setHarga(rs.getInt("harga"));
+                
+                motorArrayList.add(motor);
+            }
+        } 
+        
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+        return motorArrayList;
+    }
+
     
     
 }

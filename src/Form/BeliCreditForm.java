@@ -91,16 +91,8 @@ public class BeliCreditForm extends javax.swing.JFrame {
         return lblstok;
     }
     
-    public JLabel getJlabelHarga()
-    {
-        return lblharga;
-    }        
     
-    public JLabel getJLabelHutangPokok()
-    {
-        return lblhutangpokok;
-    }
-    
+
     public JLabel getJLabelTotalBunga()
     {
         return lbltotalbunga;
@@ -230,7 +222,6 @@ public class BeliCreditForm extends javax.swing.JFrame {
         btnclear = new rojerusan.RSButtonMetro();
         btncetak = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
-        lblharga = new javax.swing.JLabel();
         lblhargatotal = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -246,15 +237,12 @@ public class BeliCreditForm extends javax.swing.JFrame {
         lblstok = new javax.swing.JLabel();
         lbluangmuka = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         lblnilaicicilan = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         lbltotalbunga = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        lblhutangpokok = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         lbljumlahcicilan = new javax.swing.JLabel();
         lblbunga = new javax.swing.JLabel();
@@ -406,14 +394,9 @@ public class BeliCreditForm extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Paket Kredit:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblharga.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblharga.setForeground(new java.awt.Color(99, 111, 254));
-        lblharga.setText("...");
-        jPanel4.add(lblharga, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
-
         lblhargatotal.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblhargatotal.setForeground(new java.awt.Color(99, 111, 254));
-        lblhargatotal.setText("...");
+        lblhargatotal.setText("0");
         jPanel4.add(lblhargatotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -473,23 +456,18 @@ public class BeliCreditForm extends javax.swing.JFrame {
 
         lblstok.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblstok.setForeground(new java.awt.Color(99, 111, 254));
-        lblstok.setText("...");
+        lblstok.setText("0");
         jPanel4.add(lblstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
 
         lbluangmuka.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbluangmuka.setForeground(new java.awt.Color(99, 111, 254));
-        lbluangmuka.setText("...");
+        lbluangmuka.setText("0");
         jPanel4.add(lbluangmuka, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(99, 111, 254));
         jLabel19.setText("Bunga Per Tahun:");
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel20.setText("Harga:");
-        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 230, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(99, 111, 254));
@@ -499,11 +477,11 @@ public class BeliCreditForm extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(99, 111, 254));
         jLabel22.setText("Total Bunga:");
-        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 80, -1));
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 80, -1));
 
         lblnilaicicilan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblnilaicicilan.setForeground(new java.awt.Color(99, 111, 254));
-        lblnilaicicilan.setText("...");
+        lblnilaicicilan.setText("0");
         jPanel4.add(lblnilaicicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -518,18 +496,8 @@ public class BeliCreditForm extends javax.swing.JFrame {
 
         lbltotalbunga.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbltotalbunga.setForeground(new java.awt.Color(99, 111, 254));
-        lbltotalbunga.setText("...");
-        jPanel4.add(lbltotalbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 110, -1));
-
-        jLabel26.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel26.setText("Hutang Pokok:");
-        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 90, -1));
-
-        lblhutangpokok.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblhutangpokok.setForeground(new java.awt.Color(99, 111, 254));
-        lblhutangpokok.setText("...");
-        jPanel4.add(lblhutangpokok, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 110, -1));
+        lbltotalbunga.setText("0");
+        jPanel4.add(lbltotalbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 110, -1));
 
         jLabel25.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(99, 111, 254));
@@ -538,12 +506,12 @@ public class BeliCreditForm extends javax.swing.JFrame {
 
         lbljumlahcicilan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbljumlahcicilan.setForeground(new java.awt.Color(99, 111, 254));
-        lbljumlahcicilan.setText("...");
+        lbljumlahcicilan.setText("0");
         jPanel4.add(lbljumlahcicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, -1, -1));
 
         lblbunga.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblbunga.setForeground(new java.awt.Color(99, 111, 254));
-        lblbunga.setText("...");
+        lblbunga.setText("0");
         jPanel4.add(lblbunga, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 470, 290));
@@ -692,13 +660,14 @@ public class BeliCreditForm extends javax.swing.JFrame {
     private void rbpembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpembeliActionPerformed
         // TODO add your handling code here:
         beliCreditController.showDataBeliCredit();
+        beliCreditController.clearIdPaket();
         beliCreditController.clearPaket();
     }//GEN-LAST:event_rbpembeliActionPerformed
 
     private void rbpaketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpaketActionPerformed
         // TODO add your handling code here:
         beliCreditController.showPaket();
-        beliCreditController.clearPembeli();
+        beliCreditController.clearIdBeli();
     }//GEN-LAST:event_rbpaketActionPerformed
 
     private void tblkreditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkreditMouseClicked
@@ -780,13 +749,11 @@ public class BeliCreditForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -803,9 +770,7 @@ public class BeliCreditForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblbunga;
-    private javax.swing.JLabel lblharga;
     private javax.swing.JLabel lblhargatotal;
-    private javax.swing.JLabel lblhutangpokok;
     private javax.swing.JLabel lbljumlahcicilan;
     private javax.swing.JLabel lblkodemotor;
     private javax.swing.JLabel lblkodepaket;

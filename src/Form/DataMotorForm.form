@@ -99,7 +99,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="6f" red="63" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Data Mobil"/>
+            <Property name="text" type="java.lang.String" value="Data Motor"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -474,8 +474,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="Nama"/>
-                <StringItem index="1" value="Merk"/>
+                <StringItem index="0" value="Nama Motor"/>
+                <StringItem index="1" value="Merk Motor"/>
               </StringArray>
             </Property>
           </Properties>

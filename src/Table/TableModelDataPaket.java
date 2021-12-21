@@ -6,6 +6,7 @@
 package Table;
 
 import Model.Paket;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -43,10 +44,10 @@ public class TableModelDataPaket extends AbstractTableModel{
             case 2: return paketArrayList.get(rowIndex).getMerkMotor();
             case 3: return paketArrayList.get(rowIndex).getWarnaMotor();
             case 4: return paketArrayList.get(rowIndex).getJumlahCicilan();
-            case 5: return paketArrayList.get(rowIndex).getNilaiCicilan();
-            case 6: return paketArrayList.get(rowIndex).getBunga();
-            case 7: return paketArrayList.get(rowIndex).getUangMuka();
-            case 8: return paketArrayList.get(rowIndex).getHargaTotal();
+            case 5: return "Rp."+NumberFormat.getInstance().format(paketArrayList.get(rowIndex).getNilaiCicilan());
+            case 6: return paketArrayList.get(rowIndex).getBunga()+"%";
+            case 7: return "Rp."+NumberFormat.getInstance().format(paketArrayList.get(rowIndex).getUangMuka());
+            case 8: return "Rp."+NumberFormat.getInstance().format(paketArrayList.get(rowIndex).getHargaTotal());
             
             default:return null;
         }

@@ -32,6 +32,7 @@ public class CicilanDao implements InterfaceCicilan{
     ResultSet rs;
     ArrayList<Cicilan>arrayListCicilan;
     Cicilan cicilan;
+    SimpleDateFormat sdf=new SimpleDateFormat();
     
     @Override
     public void bayarCicilan(Cicilan cicilan) {
@@ -364,7 +365,7 @@ public class CicilanDao implements InterfaceCicilan{
         try
         {
             
-            int jmlCicilan;
+            int jmlCicilan=0;
             conn=(Connection)koneksi.configDB();
             conn.setAutoCommit(false);
             
@@ -372,13 +373,14 @@ public class CicilanDao implements InterfaceCicilan{
             pst=conn.prepareStatement(sql);
             pst.setString(1, idBeli);
             rs=pst.executeQuery();
-            rs.next();
-            jmlCicilan=rs.getInt("jumlah_cicilan");
             
+            if(rs.next())jmlCicilan=rs.getInt("jumlah_cicilan");
+
             sql="select count(*) as cicilan_dibayar from cicilan where id_beli=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, idBeli);
             rs=pst.executeQuery();
+            
             rs.next();
             
             if (rs.getInt("cicilan_dibayar")==jmlCicilan) 

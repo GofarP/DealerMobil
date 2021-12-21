@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NotaBarangMasuk" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7c95f64-46be-4477-a4f5-f74a346f6dd7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="137" uuid="e33bbd43-3ff4-4e53-bb0b-556085ae70d4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="141" y="27" width="279" height="42" uuid="b48402c2-8f42-4a43-aeee-cae0f08653fc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nota Barang Masuk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="71" width="279" height="42" uuid="990e328c-ae26-4507-93b4-dc6a14fb00f6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<text><![CDATA[X-ONE PUB & KARAOKE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="225" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="225" uuid="d0a23bee-deba-4e6a-ad42-cc8e38390d54"/>
+			</rectangle>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

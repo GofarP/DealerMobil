@@ -16,6 +16,7 @@ public interface InterfaceMotor {
     
     public String autoNumber();
     public ArrayList<Motor>showDataMotor();
+    public ArrayList<Motor>searchMotorById(String id);
     public ArrayList<Motor>searchKodeMotor(String kode);
     public ArrayList<Motor>searchNamaMotor(String nama);
     public ArrayList<Motor>searchMerkMotor(String merk);

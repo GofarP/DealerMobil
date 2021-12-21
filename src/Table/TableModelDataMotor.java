@@ -6,6 +6,7 @@
 package Table;
 
 import Model.Motor;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -42,7 +43,7 @@ public class TableModelDataMotor extends AbstractTableModel{
             case 3: return motorArrayList.get(rowIndex).getMerk();
             case 4: return motorArrayList.get(rowIndex).getWarna();
             case 5: return motorArrayList.get(rowIndex).getStok();
-            case 6: return motorArrayList.get(rowIndex).getHarga();
+            case 6: return "Rp."+NumberFormat.getInstance().format(motorArrayList.get(rowIndex).getHarga());
             
             default:return null;
         }

@@ -41,48 +41,6 @@ public class MotorController {
         return id;
     }
     
-    public void clear()
-    {
-        String noMobil=interfaceMotor.autoNumber();
-        id="";
-        dataMotorForm.getLblKodeMobil().setText(noMobil);
-        dataMotorForm.getTxtNamaMobil().setText("");
-        dataMotorForm.getTxtMerkMobil().setText("");
-        dataMotorForm.getTxtWarnaMobil().setText("");
-        dataMotorForm.getTxtStockMobil().setText("");
-        dataMotorForm.getTxtHargaMobil().setText("");
-    }
-    
-    public String autoNumber()
-    {
-        return interfaceMotor.autoNumber();
-    }
-    
-    
-    public boolean validasi()
-    {
-        JTextField[] jtfMobil={dataMotorForm.getTxtNamaMobil(),dataMotorForm.getTxtMerkMobil(),
-            dataMotorForm.getTxtWarnaMobil(), dataMotorForm.getTxtStockMobil(), dataMotorForm.getTxtHargaMobil()};
-        
-        for(JTextField jtf:jtfMobil)
-        {
-            if(jtf.getText().trim().equals(""))
-            {
-                kosong=true;
-            }
-            
-            else 
-            {
-                kosong=false;
-            }
-        }
-        
-        
-        return kosong;
-    
-    }
-    
-    
     public void showDataMotor()
     {
         motorArrayList=interfaceMotor.showDataMotor();
@@ -160,7 +118,7 @@ public class MotorController {
     }
     
     
-    public void cariNamaMobil()
+    public void cariNamaMotor()
     {
         motorArrayList=interfaceMotor.searchNamaMotor(dataMotorForm.getTxtCari().getText().trim());
         
@@ -180,7 +138,7 @@ public class MotorController {
         
     }
     
-    public void cariMerkMobil()
+    public void cariMerkMotor()
     {
         motorArrayList=interfaceMotor.searchMerkMotor(dataMotorForm.getTxtCari().getText().trim());
         if(motorArrayList.size()==0)
@@ -198,6 +156,50 @@ public class MotorController {
         }
         
     }
+    
+    public void clear()
+    {
+        String noMobil=interfaceMotor.autoNumber();
+        id="";
+        dataMotorForm.getLblKodeMobil().setText(noMobil);
+        dataMotorForm.getTxtNamaMobil().setText("");
+        dataMotorForm.getTxtMerkMobil().setText("");
+        dataMotorForm.getTxtWarnaMobil().setText("");
+        dataMotorForm.getTxtStockMobil().setText("");
+        dataMotorForm.getTxtHargaMobil().setText("");
+    }
+    
+    public String autoNumber()
+    {
+        return interfaceMotor.autoNumber();
+    }
+    
+    
+    public boolean validasi()
+    {
+        JTextField[] jtfMobil={dataMotorForm.getTxtNamaMobil(),dataMotorForm.getTxtMerkMobil(),
+            dataMotorForm.getTxtWarnaMobil(), dataMotorForm.getTxtStockMobil(), dataMotorForm.getTxtHargaMobil()};
+        
+        for(JTextField jtf:jtfMobil)
+        {
+            if(jtf.getText().trim().equals(""))
+            {
+                kosong=true;
+            }
+            
+            else 
+            {
+                kosong=false;
+            }
+        }
+        
+        
+        return kosong;
+    
+    }
+    
+    
+    
     
     public void getRowData()
     {

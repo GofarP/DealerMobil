@@ -18,8 +18,9 @@ public interface InterfaceBeliCash {
     public String autoNumber();
     public ArrayList<BeliCash> showDataBeli();
     public void tambahPembelian(BeliCash beliCash);
-    public void editPembelian(BeliCash beliCash);
-    public void deletePembelian(String idBeli,String idMobil);
+    public void editPembelian(BeliCash beliCash, int idLamaMotor);
+    public void deletePembelian(String idBeli,String idMotor);
+    public ArrayList<BeliCash>searchById(String id);
     public ArrayList<BeliCash>searchByKode(String no);
     public ArrayList<BeliCash>searchByName(String nama);
     

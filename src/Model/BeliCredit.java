@@ -15,7 +15,7 @@ public class BeliCredit {
     
     private String noBeli, noKtp, nama, jenisKelamin, alamat, noTelp,tglBeli, status,tanggal;
     private String kodePaket,kodeMotor,namaMotor, merkMotor, warna;
-    private int idBeli,idMotor, idPaket, jumlahCicilan, nilaiCicilan, Bunga,uangMuka,harga;
+    private int idBeli,idMotor, idPaket, jumlahCicilan, nilaiCicilan, Bunga,uangMuka,harga,stok;
 
     public String getNoBeli() {
         return noBeli;
@@ -72,6 +72,16 @@ public class BeliCredit {
     public void setHarga(int harga) {
         this.harga = harga;
     }
+
+    public int getStok() {
+        return stok;
+    }
+
+    public void setStok(int stok) {
+        this.stok = stok;
+    }
+    
+    
 
     public int getJumlahCicilan() {
         return jumlahCicilan;

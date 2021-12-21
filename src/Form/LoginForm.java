@@ -88,11 +88,18 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel4.setText("Username:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
+        txtusername.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtusername.setForeground(new java.awt.Color(99, 111, 254));
         txtusername.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtusername.setCaretColor(new java.awt.Color(99, 111, 254));
+        txtusername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusernameActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 320, 30));
 
+        txtpass.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtpass.setForeground(new java.awt.Color(99, 111, 254));
         txtpass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtpass.setCaretColor(new java.awt.Color(99, 111, 254));
@@ -152,7 +159,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Sitka Subheading", 0, 35)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Jaya Maju Motor");
+        jLabel5.setText("Maju Jaya Motor");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -201,6 +208,10 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setState(LoginForm.ICONIFIED);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameActionPerformed
 
     /**
      * @param args the command line arguments

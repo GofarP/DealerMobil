@@ -314,7 +314,7 @@ public class PaketCreditForm extends javax.swing.JFrame {
         jLabel17.setText("%");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
 
-        cbcicilan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "36", "48", "60", "72" }));
+        cbcicilan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "24", "36" }));
         jPanel4.add(cbcicilan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 130, -1));
 
         jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -327,7 +327,7 @@ public class PaketCreditForm extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel19.setText("Bunga Per Tahun:");
+        jLabel19.setText("Bunga Per Bulan:");
         jPanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
         txtbunga.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -572,17 +572,24 @@ public class PaketCreditForm extends javax.swing.JFrame {
     private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
         // TODO add your handling code here:
         paketController.tambahPaket();
+        paketController.autoNumber();
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
 
     private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
         // TODO add your handling code here:
         paketController.editPaket();
+        paketController.autoNumber();
+        rbpaket.setSelected(true);
+        paketController.showDataPaket();
+        paketController.clear();
     }//GEN-LAST:event_rSButtonMetro3ActionPerformed
 
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
         paketController.hapusPaket();
         paketController.showDataPaket();
+        paketController.clear();
+        paketController.autoNumber();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     /**

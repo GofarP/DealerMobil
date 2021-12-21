@@ -59,18 +59,18 @@ public class DashboardDao implements InterfaceDashboard{
     @Override
     public int getMerkMotor() {
         
-        int jumlahMerk=0;
+        int jumlahMotor=0;
         
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="select count(*) as jml_merk from motor";
+            sql="select count(*) as jml_motor from motor";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             
             if(rs.next())
             {
-                jumlahMerk=rs.getInt("jml_merk");
+                jumlahMotor=rs.getInt("jml_motor");
             }
         } 
         
@@ -79,7 +79,7 @@ public class DashboardDao implements InterfaceDashboard{
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         
-        return jumlahMerk;
+        return jumlahMotor;
     }
 
     @Override
@@ -103,16 +103,25 @@ public class DashboardDao implements InterfaceDashboard{
                 income+=rs.getInt("total_income");
             }
             
-            //ambil data dari tabel credit
-            sql="SELECT SUM(beli_credit.`uang_muka`) AS uang_muka, SUM(cicilan.`jml_bayar`) AS jml_bayar, SUM(cicilan.`denda`) AS denda " +
-                "FROM beli_credit INNER JOIN cicilan ON beli_credit.`id_beli`=cicilan.`id_beli`" +
-                "WHERE MONTH(tgl_beli)=MONTH(CURRENT_DATE()) AND YEAR(tgl_beli)=YEAR(CURRENT_DATE()) HAVING MAX(tgl_beli) IS NOT NULL";
+            //ambil data dari tabel kredit
+            sql="SELECT SUM(beli_credit.`uang_muka`) AS uang_muka FROM beli_credit "
+                 + "WHERE MONTH(tgl_beli)=MONTH(CURRENT_DATE()) AND YEAR(tgl_beli)=YEAR(CURRENT_DATE()) HAVING MAX(tgl_beli) IS NOT NULL";
+            pst=conn.prepareStatement(sql);
+            rs=pst.executeQuery();
+            if(rs.next())
+            {
+                income+=rs.getInt("uang_muka");
+            }
+            
+            //ambil data dari tabel cicilan
+            sql="SELECT SUM(cicilan.`jml_bayar`) AS jml_bayar, SUM(cicilan.`denda`) AS denda " +
+                "FROM cicilan WHERE MONTH(tgl_bayar)=MONTH(CURRENT_DATE()) AND YEAR(tgl_bayar)=YEAR(CURRENT_DATE()) HAVING MAX(tgl_bayar) IS NOT NULL";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             
             if(rs.next())
             {
-                income+=rs.getInt("uang_muka")+rs.getInt("jml_bayar")+rs.getInt("denda");
+                income+=rs.getInt("jml_bayar")+rs.getInt("denda");
             }
         } 
         

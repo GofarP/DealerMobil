@@ -272,7 +272,7 @@ public class LaporanDao implements InterfaceLaporan{
         {
             paketArrayList=new ArrayList<>();
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where paket.`kode_paket=?`";
+            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where paket.`kode_paket` = ? ";
             pst=conn.prepareStatement(sql);
             pst.setString(1, kodePaket);
             rs=pst.executeQuery();
@@ -292,6 +292,8 @@ public class LaporanDao implements InterfaceLaporan{
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
+                
+                paketArrayList.add(paket);
             }
         } 
         
@@ -309,7 +311,7 @@ public class LaporanDao implements InterfaceLaporan{
         {
             paketArrayList=new ArrayList<>();
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where motor.`nama=?`";
+            sql="SELECT paket.*, motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where motor.`nama`=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, nama);
             rs=pst.executeQuery();
@@ -329,6 +331,8 @@ public class LaporanDao implements InterfaceLaporan{
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
+                
+                paketArrayList.add(paket);
             }
         } 
         
@@ -593,7 +597,7 @@ public class LaporanDao implements InterfaceLaporan{
             {
                 cicilan=new Cicilan();
                 
-                tglBayar=sdf.parse(rs.getString("tgl_beli"));
+                tglBayar=sdf.parse(rs.getString("tgl_bayar"));
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 
                 cicilan.setIdCicilan(rs.getInt("id_cicilan"));
@@ -632,7 +636,7 @@ public class LaporanDao implements InterfaceLaporan{
             {
                 cicilan=new Cicilan();
                 
-                tglBayar=sdf.parse(rs.getString("tgl_beli"));
+                tglBayar=sdf.parse(rs.getString("tgl_bayar"));
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 
                 cicilan.setIdCicilan(rs.getInt("id_cicilan"));
@@ -671,7 +675,7 @@ public class LaporanDao implements InterfaceLaporan{
             {
                 cicilan=new Cicilan();
                 
-                tglBayar=sdf.parse(rs.getString("tgl_beli"));
+                tglBayar=sdf.parse(rs.getString("tgl_bayar"));
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 
                 cicilan.setIdCicilan(rs.getInt("id_cicilan"));

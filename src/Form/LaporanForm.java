@@ -50,7 +50,7 @@ public class LaporanForm extends javax.swing.JFrame {
     
     public JComboBox getCbPaketBerdasarkan()
     {
-        return cbmotorberdasarkan;
+        return cbpaketberdasarkan;
     }
     
     public JComboBox getCbTransaksiBerdasarkan()
@@ -85,16 +85,11 @@ public class LaporanForm extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtcaritransaksi = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         cbtransaksijenis = new javax.swing.JComboBox<>();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
         jLabel5 = new javax.swing.JLabel();
         cbtransaksiberdasarkan = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtcaripaket = new javax.swing.JTextField();
@@ -146,7 +141,7 @@ public class LaporanForm extends javax.swing.JFrame {
         jLabel2.setText("Cari:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 55, -1, -1));
 
-        cbmotorberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Kode Mobil", "Merk ", "Nama", "Warna" }));
+        cbmotorberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Kode Motor", "Merk ", "Nama", "Warna" }));
         jPanel3.add(cbmotorberdasarkan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 160, -1));
 
         rSButtonMetro1.setText("Cetak");
@@ -168,10 +163,6 @@ public class LaporanForm extends javax.swing.JFrame {
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
         jPanel4.add(txtcaritransaksi, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 161, -1));
 
-        jLabel4.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel4.setText("Sampai:");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
-
         cbtransaksijenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash ", "Credit", "Cicilan" }));
         jPanel4.add(cbtransaksijenis, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 160, -1));
 
@@ -181,7 +172,7 @@ public class LaporanForm extends javax.swing.JFrame {
                 rSButtonMetro2ActionPerformed(evt);
             }
         });
-        jPanel4.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 230, 33));
+        jPanel4.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 240, 33));
 
         jLabel5.setForeground(new java.awt.Color(99, 111, 254));
         jLabel5.setText("Jenis Transaksi:");
@@ -194,17 +185,7 @@ public class LaporanForm extends javax.swing.JFrame {
         jLabel8.setText("Cari:");
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
 
-        jLabel9.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel9.setText("Dari:");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
-        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 110, -1));
-        jPanel4.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 110, -1));
-
-        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Dengan Periode");
-        jPanel4.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 420, 330));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 420, 250));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Paket:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
@@ -219,7 +200,7 @@ public class LaporanForm extends javax.swing.JFrame {
         jLabel7.setText("Cari:");
         jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 55, -1, -1));
 
-        cbpaketberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Kode Paket", "Nama Mobil" }));
+        cbpaketberdasarkan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Kode Paket", "Nama Motor" }));
         jPanel5.add(cbpaketberdasarkan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 160, -1));
 
         rSButtonMetro3.setText("Cetak");
@@ -242,7 +223,9 @@ public class LaporanForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -256,7 +239,6 @@ public class LaporanForm extends javax.swing.JFrame {
 
     private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
         // TODO add your handling code here:
-        laporanController=new LaporanController(this);
         laporanController.cetakLaporanPaket();
     }//GEN-LAST:event_rSButtonMetro3ActionPerformed
 
@@ -310,18 +292,13 @@ public class LaporanForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbpaketberdasarkan;
     private javax.swing.JComboBox<String> cbtransaksiberdasarkan;
     private javax.swing.JComboBox<String> cbtransaksijenis;
-    private javax.swing.JCheckBox jCheckBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

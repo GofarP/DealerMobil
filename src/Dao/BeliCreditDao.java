@@ -30,6 +30,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
     ResultSet rs;
     String sql, kodeBeli;
     BeliCredit beliCredit;
+    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
     
     @Override
     public ArrayList<BeliCredit> showDataBeliCredit() {
@@ -67,7 +68,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
                 beliCredit.setBunga(rs.getInt("bunga"));
                 beliCredit.setUangMuka(rs.getInt("uang_muka"));
                 beliCredit.setHarga(rs.getInt("harga_total"));
-                beliCredit.setTanggal(rs.getString("tgl_beli"));
+                beliCredit.setTanggal(sdf.format(rs.getTimestamp("tgl_beli")));
                 beliCredit.setStatus(rs.getString("status"));
               
               
@@ -75,6 +76,55 @@ public class BeliCreditDao implements InterfaceBeliCredit{
           }
           
           
+        } 
+        
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+        return arrayListBeliCredit;
+    }
+    
+    @Override
+    public ArrayList<BeliCredit>searchDataKreditById(String id)
+    {
+        try 
+        {
+            arrayListBeliCredit=new ArrayList<>();
+            conn=(Connection)koneksi.configDB();
+            sql="select * from view_belicredit where id_beli=?";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, id);
+            rs=pst.executeQuery();
+            
+            while(rs.next())
+            {
+                beliCredit=new BeliCredit();
+                
+                beliCredit.setIdBeli(rs.getInt("id_beli"));
+                beliCredit.setIdPaket(rs.getInt("id_paket"));
+                beliCredit.setNoBeli(rs.getString("no_beli"));
+                beliCredit.setNoKtp(rs.getString("no_ktp"));
+                beliCredit.setNama(rs.getString("nama"));
+                beliCredit.setJenisKelamin(rs.getString("jenis_kelamin"));
+                beliCredit.setAlamat(rs.getString("alamat"));
+                beliCredit.setNoTelp(rs.getString("notelp"));
+                beliCredit.setKodeMotor(rs.getString("kode_motor"));
+                beliCredit.setKodePaket(rs.getString("kode_paket"));
+                beliCredit.setNamaMotor(rs.getString("nama_motor"));
+                beliCredit.setMerkMotor(rs.getString("merk"));
+                beliCredit.setWarna(rs.getString("warna"));
+                beliCredit.setJumlahCicilan(rs.getInt("jumlah_cicilan"));
+                beliCredit.setNilaiCicilan(rs.getInt("nilai_cicilan"));
+                beliCredit.setBunga(rs.getInt("bunga"));
+                beliCredit.setUangMuka(rs.getInt("uang_muka"));
+                beliCredit.setHarga(rs.getInt("harga_total"));
+                beliCredit.setTanggal(sdf.format(rs.getTimestamp("tgl_beli")));
+                beliCredit.setStatus(rs.getString("status"));
+                
+                arrayListBeliCredit.add(beliCredit);
+            }
         } 
         
         catch (Exception e) 
@@ -118,7 +168,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
                 beliCredit.setBunga(rs.getInt("bunga"));
                 beliCredit.setUangMuka(rs.getInt("uang_muka"));
                 beliCredit.setHarga(rs.getInt("harga_total"));
-                beliCredit.setTanggal(rs.getString("tgl_beli"));
+                beliCredit.setTanggal(sdf.format(rs.getTimestamp("tgl_beli")));
                 beliCredit.setStatus(rs.getString("status"));
                 
                 arrayListBeliCredit.add(beliCredit);
@@ -165,7 +215,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
                 beliCredit.setBunga(rs.getInt("bunga"));
                 beliCredit.setUangMuka(rs.getInt("uang_muka"));
                 beliCredit.setHarga(rs.getInt("harga_total"));
-                beliCredit.setTanggal(rs.getString("tgl_beli"));
+                beliCredit.setTanggal(sdf.format(rs.getTimestamp("tgl_beli")));
                 beliCredit.setStatus(rs.getString("status"));
                 
                 arrayListBeliCredit.add(beliCredit);
@@ -228,7 +278,7 @@ public class BeliCreditDao implements InterfaceBeliCredit{
     }
 
     @Override
-    public void editData(BeliCredit beliCredit) {
+    public void editData(BeliCredit beliCredit, String idLamaPaket) {
         try 
         {            
             conn=(Connection)koneksi.configDB();

@@ -23,15 +23,15 @@ public class DataMotorForm extends javax.swing.JFrame {
      */
     int idMobil=0;
     
-    Motor mobil;
-    MotorController mobilController;
+    Motor motor;
+    MotorController motorController;
     
     public DataMotorForm() {
         initComponents();
         setLocationRelativeTo(null);
-        mobilController=new MotorController(this);
-        mobilController.showDataMotor();
-        lblkodemobil.setText(mobilController.autoNumber());
+        motorController=new MotorController(this);
+        motorController.showDataMotor();
+        lblkodemobil.setText(motorController.autoNumber());
     }
     
     
@@ -157,7 +157,7 @@ public class DataMotorForm extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel8.setText("Data Mobil");
+        jLabel8.setText("Data Motor");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -306,7 +306,7 @@ public class DataMotorForm extends javax.swing.JFrame {
         jLabel9.setText("Cari:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 35, -1, -1));
 
-        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama", "Merk" }));
+        cbkategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nama Motor", "Merk Motor" }));
         jPanel1.add(cbkategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 75, 140, -1));
 
         rSButtonMetro6.setBackground(new java.awt.Color(99, 111, 254));
@@ -340,51 +340,51 @@ public class DataMotorForm extends javax.swing.JFrame {
 
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
-      
+      motorController.clear();
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
         // TODO add your handling code here:
         
-        if(mobilController.validasi())
+        if(motorController.validasi())
         {
             JOptionPane.showMessageDialog(null, "Silahkan isi Kolom Yang Kosong");
         }
         
         else
         {
-            mobilController.tambahMotor();
-            mobilController.clear();
-            mobilController.showDataMotor();
-            mobilController.autoNumber();
+            motorController.tambahMotor();
+            motorController.clear();
+            motorController.showDataMotor();
+            motorController.autoNumber();
         }
         
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
 
     private void rSButtonMetro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro3ActionPerformed
         // TODO add your handling code here:
-        if(mobilController.validasi())
+        if(motorController.validasi())
         {
             JOptionPane.showMessageDialog(null, "Silahkan isi kolom yang kosong");
         }
         
-        else if(mobilController.getId().equals(""))
+        else if(motorController.getId().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Silahkan pilih data yang mau diedit");
         }
         
         else
         {
-            mobilController.updateMotor();
-            mobilController.clear();
-            mobilController.autoNumber();
-            mobilController.showDataMotor();
+            motorController.updateMotor();
+            motorController.clear();
+            motorController.autoNumber();
+            motorController.showDataMotor();
         }
     }//GEN-LAST:event_rSButtonMetro3ActionPerformed
 
     private void rSButtonMetro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro4ActionPerformed
         // TODO add your handling code here:
-        String id=mobilController.getId();
+        String id=motorController.getId();
         
         if(id.equals(""))
         {
@@ -393,10 +393,10 @@ public class DataMotorForm extends javax.swing.JFrame {
         
         else
         {
-            mobilController.deleteMotor();
-            mobilController.clear();
-            mobilController.autoNumber();
-            mobilController.showDataMotor();
+            motorController.deleteMotor();
+            motorController.clear();
+            motorController.autoNumber();
+            motorController.showDataMotor();
         }
     }//GEN-LAST:event_rSButtonMetro4ActionPerformed
 
@@ -424,8 +424,8 @@ public class DataMotorForm extends javax.swing.JFrame {
 
     private void tblmobilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblmobilMouseClicked
         // TODO add your handling code here:
-        mobilController=new MotorController(this);
-        mobilController.getRowData();
+        motorController=new MotorController(this);
+        motorController.getRowData();
     }//GEN-LAST:event_tblmobilMouseClicked
 
     private void rSButtonMetro5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro5ActionPerformed
@@ -434,18 +434,18 @@ public class DataMotorForm extends javax.swing.JFrame {
         
         if(index==0)
         {
-            mobilController.cariNamaMobil();
+            motorController.cariNamaMotor();
         }
         
         else if(index==1)
         {
-            mobilController.cariMerkMobil();
+            motorController.cariMerkMotor();
         }
     }//GEN-LAST:event_rSButtonMetro5ActionPerformed
 
     private void rSButtonMetro6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro6ActionPerformed
         // TODO add your handling code here:
-        mobilController.showDataMotor();
+        motorController.showDataMotor();
     }//GEN-LAST:event_rSButtonMetro6ActionPerformed
 
     /**

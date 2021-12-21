@@ -217,6 +217,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         lblbunga = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         lbluangmuka = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         txtcaridata = new javax.swing.JTextField();
@@ -460,8 +461,8 @@ public class BayarCicilanForm extends javax.swing.JFrame {
 
         jLabel32.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(99, 111, 254));
-        jLabel32.setText("Jumlah Cicilan:");
-        jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+        jLabel32.setText("Bulan");
+        jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
 
         lbljmlcicilan.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbljmlcicilan.setForeground(new java.awt.Color(99, 111, 254));
@@ -487,6 +488,11 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         lbluangmuka.setForeground(new java.awt.Color(99, 111, 254));
         lbluangmuka.setText("...");
         jPanel4.add(lbluangmuka, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
+
+        jLabel36.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(99, 111, 254));
+        jLabel36.setText("Jumlah Cicilan:");
+        jPanel4.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 410, 310));
 
@@ -597,16 +603,20 @@ public class BayarCicilanForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         cicilanController.bayarCicilan();
         cicilanController.showBeliCredit();
+        cicilanController.clear();
     }//GEN-LAST:event_btntambahActionPerformed
 
     private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
         // TODO add your handling code here:
         cicilanController.hapusCicilan();
+        cicilanController.showDataCicilan();
+        cicilanController.clear();
     }//GEN-LAST:event_btnhapusActionPerformed
 
     private void btncetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetakActionPerformed
         // TODO add your handling code here:
         cicilanController.cetakStruk();
+        cicilanController.clear();
     }//GEN-LAST:event_btncetakActionPerformed
 
     /**
@@ -667,6 +677,7 @@ public class BayarCicilanForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -18,6 +18,8 @@ import java.io.File;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.Month;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -159,15 +161,19 @@ public class cicilanController {
                 if(strukCicilanArrayList.size()>0)
                 {
                     
+                    
                     cicilanKe=strukCicilanArrayList.get(0).getCicilanKe()+1;
                     tglCicilTerakhir.setTime(sdf.parse(strukCicilanArrayList.get(0).getTglCicil()));
                     
-                    long bedaHari=Duration.between(tglCicilTerakhir.toInstant(), tglSkrg.toInstant()).toDays();
+                    Long bedaHari=Duration.between(tglCicilTerakhir.toInstant(), tglSkrg.toInstant()).toDays();
+                    Long hariTelat=null;
                     
-                    if(bedaHari>30)
+                    
+                    if(bedaHari>33)
                     {
+                        hariTelat=bedaHari-33;
                         status="telat";
-                        totalDenda=(int) (denda*bedaHari);
+                        totalDenda=(int) (denda*hariTelat);
                         jumlahBayar=jumlahBayar+totalDenda;
                     }
                     
@@ -175,6 +181,7 @@ public class cicilanController {
                     {
                         status="tepat";
                     }
+                    
                     
                 }
                 
@@ -195,6 +202,7 @@ public class cicilanController {
                 cicilan.setDenda(totalDenda);
 
                 interfaceCicilan.bayarCicilan(cicilan);
+                
                 
                 
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -324,6 +332,15 @@ public class cicilanController {
             bayarCicilanForm.getJLabelNamaMotor().setText(beliCreditArrayList.get(row).getNamaMotor());
             bayarCicilanForm.getJLabelMerk().setText(beliCreditArrayList.get(row).getMerkMotor());
             bayarCicilanForm.getJLabelWarna().setText(beliCreditArrayList.get(row).getWarna());
+            
+            bayarCicilanForm.getJLabelJmlCicilan().setText(String.valueOf(beliCreditArrayList.get(row).getJumlahCicilan()));
+            bayarCicilanForm.getJLabelNilaiCicilan().setText("Rp."+NumberFormat.getInstance().format(beliCreditArrayList.get(row).getNilaiCicilan()));
+            bayarCicilanForm.getJLabelBunga().setText(beliCreditArrayList.get(row).getBunga()+" %");
+            bayarCicilanForm.getJLabelUangMuka().setText("Rp."+NumberFormat.getInstance().format(beliCreditArrayList.get(row).getUangMuka()));
+            bayarCicilanForm.getJLabelHargaTotal().setText("Rp."+NumberFormat.getInstance().format(beliCreditArrayList.get(row).getHarga()));
+        
+            
+
             
         }
         

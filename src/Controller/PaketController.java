@@ -27,28 +27,38 @@ public class PaketController {
     PaketCreditForm paketCreditForm;
     InterfacePaket interfacePaket;
     InterfaceMotor interfaceMotor;
-    ArrayList<Paket>paketArrayList;
-    ArrayList<Motor>motorArrayList;
+    ArrayList<Paket>paketArrayList=new ArrayList<>();
+    ArrayList<Motor>motorArrayList=new ArrayList<>();
     String idMotor="", idPaket="";
+    Paket paket=new Paket();
     
     public PaketController(PaketCreditForm paketCreditForm)
     {
         this.paketCreditForm=paketCreditForm;
+        
         interfacePaket=new PaketDao();
         interfaceMotor=new MotorDao();
         
-        motorArrayList=interfaceMotor.showDataMotor();
         paketArrayList=interfacePaket.showDataPaket();
+        motorArrayList=interfaceMotor.showDataMotor();
+        
         paketCreditForm.getJlabelKodePaket().setText(interfacePaket.autoNumber());
         
     }
     
+    public void autoNumber()
+    {
+        paketCreditForm.getJlabelKodePaket().setText(interfacePaket.autoNumber());
+    }
 
     public void showDataPaket()
     {
         idMotor="";
-        TableModelDataPaket tabelModelDataPaket=new TableModelDataPaket(paketArrayList);
-        paketCreditForm.getTblPaket().setModel(tabelModelDataPaket);
+        paketArrayList.clear();
+        paketArrayList=interfacePaket.showDataPaket();
+        TableModelDataPaket tableModelDataPaket=new TableModelDataPaket(paketArrayList);
+        paketCreditForm.getTblPaket().setModel(tableModelDataPaket);
+        
     }
     
     
@@ -72,6 +82,8 @@ public class PaketController {
             paketCreditForm.getTxtUangMuka().setText("");
             paketCreditForm.getJlabelNilaiCicilan().setText("...");
             paketCreditForm.getJlabelHargaTotal().setText("...");
+            paketCreditForm.getJlabelHutangPokok().setText("...");
+            paketCreditForm.getJlabelTotalBunga().setText("...");
           
             paketCreditForm.getJlabelKodeMotor().setText("...");
             paketCreditForm.getJlabelNamaMotor().setText("...");
@@ -85,23 +97,26 @@ public class PaketController {
     public void hitungPaket()
     {
        
+       
+        //|| !paketCreditForm.getRbMotor().isSelected()
         
-        if(idMotor.equals("") || !paketCreditForm.getRbMotor().isSelected())
+        if(idMotor.equals("") )
         {
             JOptionPane.showMessageDialog(null, "Silahkan Pilih Model Yang Mau Dipaketkan");
         }
         
+        
         else
         {
             
-            String getBungaPerTahun=paketCreditForm.getTxtBunga().getText().trim();
-            String getHargaMotor=paketCreditForm.getJlabelHarga().getText().toString().replaceAll("[Rp.,]", "");
-            String getUangMuka=paketCreditForm.getTxtUangMuka().getText().toString();
+            String getBungaPerBulan=paketCreditForm.getTxtBunga().getText().trim();
+            String getHargaMotor=paketCreditForm.getJlabelHarga().getText().replaceAll("[Rp.,]", "");
+            String getUangMuka=paketCreditForm.getTxtUangMuka().getText();
             int getJumlahCicilan=Integer.parseInt(paketCreditForm.getCbCicilan().getSelectedItem().toString());
 
             int validasiUangMuka=Integer.parseInt(getHargaMotor)*20/100;
         
-            if(getBungaPerTahun.equals("") || getUangMuka.equals(""))
+            if(getBungaPerBulan.equals("") || getUangMuka.equals(""))
             {
                 JOptionPane.showMessageDialog(null, "Silahkan isi bunga dan uang muka");
             }
@@ -115,12 +130,10 @@ public class PaketController {
             {
 
                 int hutangPokok=Integer.parseInt(getHargaMotor)- Integer.parseInt(getUangMuka);
-                int totalBunga=hutangPokok*Integer.parseInt(getBungaPerTahun)/100*getJumlahCicilan/12;
+                int totalBunga=hutangPokok*Integer.parseInt(getBungaPerBulan)/100*getJumlahCicilan/12;
                 int hargaTotal=hutangPokok+totalBunga;
                 int cicilanPerBulan=hargaTotal/getJumlahCicilan;
                 
-               
-
                 paketCreditForm.getJlabelNilaiCicilan().setText("Rp."+NumberFormat.getInstance().format(cicilanPerBulan));
                 paketCreditForm.getJlabelHargaTotal().setText("Rp."+NumberFormat.getInstance().format(hargaTotal));
                 paketCreditForm.getJlabelHutangPokok().setText("Rp."+NumberFormat.getInstance().format(hutangPokok));
@@ -135,6 +148,7 @@ public class PaketController {
     
     public void tambahPaket()
     {
+        int row=paketCreditForm.getTblPaket().getSelectedRow();
         
         if(idMotor.equals(""))
         {
@@ -151,6 +165,16 @@ public class PaketController {
             JOptionPane.showMessageDialog(null, "Silahkan Masukkan Uang Muka");
         }
         
+        else if(paketCreditForm.getJlabelHargaTotal().getText().equals("..."))
+        {
+            JOptionPane.showMessageDialog(null, "Silahkan hitung paket terlebih dahulu");
+        }
+        
+        else if(motorArrayList.get(row).getHarga() >= Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().replaceAll("[Rp.,]", "")))
+        {
+            JOptionPane.showMessageDialog(null, "Harga Total Kredit Tidak Boleh Rendah DariPada Harga Motors");
+        }
+        
         else
         {
             Paket paket=new Paket();
@@ -164,14 +188,16 @@ public class PaketController {
             paket.setHargaTotal(Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().toString().replaceAll("[Rp.,]", "")));
 
             interfacePaket.tambahPaket(paket);
+            
         }
-        
-        
+            
     }
     
     
     public void editPaket()
     {
+        int row=paketCreditForm.getTblPaket().getSelectedRow();
+        
         if(idPaket.equals(""))
         {
             JOptionPane.showMessageDialog(null, "Silahkan Pilih Paket Yang Mau Diubah");
@@ -192,9 +218,19 @@ public class PaketController {
             JOptionPane.showMessageDialog(null, "Silahkan Masukkan Uang Muka");
         }
         
+        else if(paketCreditForm.getJlabelHutangPokok().getText().equals("..."))
+        {
+            JOptionPane.showMessageDialog(null, "Silahkan hitung paket terlebih dahulu");
+        }
+        
+        else if(motorArrayList.get(row).getHarga() >= Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().replaceAll("[Rp.,]", "")))
+        {
+            JOptionPane.showMessageDialog(null, "Harga Total Kredit Tidak Boleh Rendah DariPada Harga Motors");
+        }
+        
         else
         {
-            Paket paket=new Paket();
+            paket=new Paket();
         
             paket.setKodePaket(paketCreditForm.getJlabelKodePaket().getText());
             paket.setIdMotor(Integer.parseInt(idMotor));
@@ -203,8 +239,10 @@ public class PaketController {
             paket.setBunga(Integer.parseInt(paketCreditForm.getTxtBunga().getText().replaceAll("[Rp.,]", "")));
             paket.setUangMuka(Integer.parseInt(paketCreditForm.getTxtUangMuka().getText().replaceAll("[Rp.,]", "")));
             paket.setHargaTotal(Integer.parseInt(paketCreditForm.getJlabelHargaTotal().getText().replaceAll("[Rp.,]", "")));
-
-            interfacePaket.editPaket(Integer.parseInt(idPaket));
+            paket.setIdPaket(Integer.parseInt(idPaket));
+            
+            interfacePaket.editPaket(paket);
+            
             
         }
       
@@ -238,7 +276,8 @@ public class PaketController {
         if(paketCreditForm.getRbpaket().isSelected())
         {
             idPaket=String.valueOf(paketArrayList.get(row).getIdPaket());
-
+            
+            paketCreditForm.getJlabelKodePaket().setText(paketArrayList.get(row).getKodePaket());
             paketCreditForm.getCbCicilan().setSelectedItem(paketArrayList.get(row).getJumlahCicilan());
             paketCreditForm.getTxtBunga().setText(String.valueOf(paketArrayList.get(row).getBunga()));
             paketCreditForm.getTxtUangMuka().setText(String.valueOf(paketArrayList.get(row).getUangMuka()));

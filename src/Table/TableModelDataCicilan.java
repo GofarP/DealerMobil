@@ -6,6 +6,7 @@
 package Table;
 
 import Model.Cicilan;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -29,7 +30,7 @@ public class TableModelDataCicilan extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 14;
+        return 12;
     }
 
     @Override
@@ -39,17 +40,15 @@ public class TableModelDataCicilan extends AbstractTableModel{
             case 0: return arrayListCicilan.get(rowIndex).getKodeCicilan();
             case 1: return arrayListCicilan.get(rowIndex).getNama();
             case 2: return arrayListCicilan.get(rowIndex).getKodePaket();
-            case 3: return arrayListCicilan.get(rowIndex).getKodeMotor();
-            case 4: return arrayListCicilan.get(rowIndex).getNamaMotor();
-            case 5: return arrayListCicilan.get(rowIndex).getMerkMotor();
-            case 6: return arrayListCicilan.get(rowIndex).getWarnaMotor();
-            case 7: return arrayListCicilan.get(rowIndex).getJumlahCicilan();
-            case 8: return arrayListCicilan.get(rowIndex).getNilaiCicilan();
-            case 9: return arrayListCicilan.get(rowIndex).getBunga();
-            case 10: return arrayListCicilan.get(rowIndex).getUangMuka();
-            case 11: return arrayListCicilan.get(rowIndex).getHargaTotal();
-            case 12: return arrayListCicilan.get(rowIndex).getCicilanKe();
-            case 13: return arrayListCicilan.get(rowIndex).getTglCicil();
+            case 3: return arrayListCicilan.get(rowIndex).getNamaMotor();
+            case 4: return arrayListCicilan.get(rowIndex).getWarnaMotor();
+            case 5: return arrayListCicilan.get(rowIndex).getJumlahCicilan();
+            case 6: return "Rp."+NumberFormat.getInstance().format(arrayListCicilan.get(rowIndex).getNilaiCicilan());
+            case 7: return arrayListCicilan.get(rowIndex).getBunga()+"%";
+            case 8: return "Rp."+NumberFormat.getInstance().format(arrayListCicilan.get(rowIndex).getUangMuka());
+            case 9: return "Rp."+NumberFormat.getInstance().format(arrayListCicilan.get(rowIndex).getHargaTotal());
+            case 10: return arrayListCicilan.get(rowIndex).getCicilanKe();
+            case 11: return arrayListCicilan.get(rowIndex).getTglCicil();
             default: return null;
         }
     }
@@ -62,17 +61,15 @@ public class TableModelDataCicilan extends AbstractTableModel{
             case 0: return "Kode Cicilan";
             case 1: return "Nama Pembeli";
             case 2: return "Kode Paket";
-            case 3: return "Kode Motor";
-            case 4: return "Nama Motor";
-            case 5: return "Merk Motor";
-            case 6: return "Warna Motor";
-            case 7: return "Jumlah Cicilan";
-            case 8: return "Nilai Cicilan";
-            case 9: return "Bunga";
-            case 10: return "Uang Muka";
-            case 11: return "Harga Total";
-            case 12: return "Cicilan ke";
-            case 13: return "Tanggal Cicil";
+            case 3: return "Nama Motor";
+            case 4: return "Warna Motor";
+            case 5: return "Jumlah Cicilan";
+            case 6: return "Nilai Cicilan";
+            case 7: return "Bunga";
+            case 8: return "Uang Muka";
+            case 9: return "Harga Total";
+            case 10: return "Cicilan ke";
+            case 11: return "Tanggal Cicil";
             
             default: return null;
         }

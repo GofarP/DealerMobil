@@ -15,10 +15,11 @@ public interface InterfaceBeliCredit {
     
     public String noOtomatis();
     public ArrayList<BeliCredit> showDataBeliCredit();
+    public ArrayList<BeliCredit> searchDataKreditById(String id);
     public ArrayList<BeliCredit> searchDataKreditByKode(String kode);
     public ArrayList<BeliCredit> searchDatKreditByNama(String nama);
     public void tambahData(BeliCredit beliCredit);
-    public void editData(BeliCredit beliCredit);
+    public void editData(BeliCredit beliCredit, String idLamaPaket);
     public void deletedata(int idBeli, int idMotor);
     public boolean cekCicilan(int id);
     public boolean cekStok(int idMotor);

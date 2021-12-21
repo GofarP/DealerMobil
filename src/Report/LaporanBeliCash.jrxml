@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanBeliCash" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="712ec2e3-2371-48ef-a6a4-c0c2df2543ea">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="34"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -44,14 +44,14 @@
 				<reportElement x="0" y="0" width="802" height="169" uuid="54181ab7-9d63-49cc-926d-30f2fffe97ad"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="223" y="21" width="222" height="36" uuid="80b18de1-04f4-45eb-8f20-695cc9e306f1"/>
+				<reportElement x="311" y="23" width="222" height="36" uuid="80b18de1-04f4-45eb-8f20-695cc9e306f1"/>
 				<textElement textAlignment="Center">
 					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Laporan BeliCash]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="190" y="72" width="301" height="50" uuid="5a1199fc-6a90-4256-a3fc-336f8e0004b6"/>
+				<reportElement x="278" y="74" width="301" height="50" uuid="5a1199fc-6a90-4256-a3fc-336f8e0004b6"/>
 				<textElement textAlignment="Center">
 					<font size="20" isBold="true"/>
 				</textElement>

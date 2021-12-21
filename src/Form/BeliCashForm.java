@@ -8,9 +8,9 @@ package Form;
 import Controller.BeliCashController;
 import Model.BeliCash;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -36,6 +36,11 @@ public class BeliCashForm extends javax.swing.JFrame {
         
     }
     
+    
+    public JButton getBtnCetakNota()
+    {
+        return btncetaknota;
+    }
     
     public JTextField getTxtCari()
     {
@@ -161,7 +166,8 @@ public class BeliCashForm extends javax.swing.JFrame {
         rSButtonMetro1 = new rojerusan.RSButtonMetro();
         rSButtonMetro2 = new rojerusan.RSButtonMetro();
         rSButtonMetro6 = new rojerusan.RSButtonMetro();
-        rSButtonMetro5 = new rojerusan.RSButtonMetro();
+        btncetaknota = new rojerusan.RSButtonMetro();
+        rSButtonMetro8 = new rojerusan.RSButtonMetro();
         jPanel4 = new javax.swing.JPanel();
         lbltglbeli = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -285,7 +291,7 @@ public class BeliCashForm extends javax.swing.JFrame {
                 rSButtonMetro1ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 265, 80, 30));
+        jPanel3.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 265, 80, 30));
 
         rSButtonMetro2.setText("Tambah ");
         rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +299,7 @@ public class BeliCashForm extends javax.swing.JFrame {
                 rSButtonMetro2ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 265, 80, 30));
+        jPanel3.add(rSButtonMetro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 265, 80, 30));
 
         rSButtonMetro6.setText("Clear");
         rSButtonMetro6.addActionListener(new java.awt.event.ActionListener() {
@@ -301,15 +307,23 @@ public class BeliCashForm extends javax.swing.JFrame {
                 rSButtonMetro6ActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 265, 80, 30));
+        jPanel3.add(rSButtonMetro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 90, 30));
 
-        rSButtonMetro5.setText("Cetak Nota");
-        rSButtonMetro5.addActionListener(new java.awt.event.ActionListener() {
+        btncetaknota.setText("Cetak Nota");
+        btncetaknota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonMetro5ActionPerformed(evt);
+                btncetaknotaActionPerformed(evt);
             }
         });
-        jPanel3.add(rSButtonMetro5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 265, 95, 30));
+        jPanel3.add(btncetaknota, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 90, 30));
+
+        rSButtonMetro8.setText("Edit");
+        rSButtonMetro8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro8ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rSButtonMetro8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 265, 80, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 430, 320));
 
@@ -339,7 +353,7 @@ public class BeliCashForm extends javax.swing.JFrame {
 
         lblstok.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblstok.setForeground(new java.awt.Color(99, 111, 254));
-        lblstok.setText("...");
+        lblstok.setText("0");
         jPanel4.add(lblstok, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 190, -1, -1));
 
         lblkodemotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -364,7 +378,7 @@ public class BeliCashForm extends javax.swing.JFrame {
 
         lblhargamotor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblhargamotor.setForeground(new java.awt.Color(99, 111, 254));
-        lblhargamotor.setText("...");
+        lblhargamotor.setText("0");
         jPanel4.add(lblhargamotor, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 162, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -387,7 +401,7 @@ public class BeliCashForm extends javax.swing.JFrame {
         jLabel17.setText("Tgl Beli:");
         jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 390, 230));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 390, 230));
 
         tblbelicash.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -434,7 +448,7 @@ public class BeliCashForm extends javax.swing.JFrame {
         });
         jPanel5.add(rbpembelian, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 23, -1, -1));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 320, 60));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 320, 60));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cari Data:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(99, 111, 254))); // NOI18N
@@ -480,7 +494,7 @@ public class BeliCashForm extends javax.swing.JFrame {
         });
         jPanel6.add(rSButtonMetro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 230, 30));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 50, 280, 300));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 70, 280, 300));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 630));
 
@@ -496,9 +510,17 @@ public class BeliCashForm extends javax.swing.JFrame {
     private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
         beliCashController.deleteDataBeli();
-        beliCashController.showDataBeli();
         beliCashController.clearMotor();
-        beliCashController.clearPembeli();
+        beliCashController.clearPembeli();        
+        if(rbmotor.isSelected())
+        {
+            beliCashController.showMotor();
+        }
+        
+        else
+        {
+             beliCashController.showDataBeli();
+        }
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
@@ -507,18 +529,25 @@ public class BeliCashForm extends javax.swing.JFrame {
         beliCashController.tambahDataBeli();
         beliCashController.clearMotor();
         beliCashController.clearPembeli();
+        if(rbmotor.isSelected())
+        {
+            beliCashController.showMotor();
+        }
+        
+        else
+        {
+             beliCashController.showDataBeli();
+        }
     }//GEN-LAST:event_rSButtonMetro2ActionPerformed
 
     private void rbpembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbpembelianActionPerformed
         // TODO add your handling code here:
         beliCashController.showDataBeli();
-        beliCashController.clearMotor();
     }//GEN-LAST:event_rbpembelianActionPerformed
 
     private void rbmotorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmotorActionPerformed
         // TODO add your handling code here:
         beliCashController.showMotor();
-        beliCashController.clearPembeli();
     }//GEN-LAST:event_rbmotorActionPerformed
 
     private void tblbelicashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblbelicashMouseClicked
@@ -561,10 +590,29 @@ public class BeliCashForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtnoktpKeyTyped
 
-    private void rSButtonMetro5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro5ActionPerformed
+    private void btncetaknotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncetaknotaActionPerformed
         // TODO add your handling code here:
         beliCashController.cetakNota();
-    }//GEN-LAST:event_rSButtonMetro5ActionPerformed
+        beliCashController.clearPembeli();
+    }//GEN-LAST:event_btncetaknotaActionPerformed
+
+    private void rSButtonMetro8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro8ActionPerformed
+        // TODO add your handling code here:
+        beliCashController.UpdateDataBeli();
+        beliCashController.clearPembeli();
+        beliCashController.clearMotor();;
+        
+        if(rbmotor.isSelected())
+        {
+            beliCashController.showMotor();
+        }
+        
+        else
+        {
+             beliCashController.showDataBeli();
+        }
+       
+    }//GEN-LAST:event_rSButtonMetro8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -603,6 +651,7 @@ public class BeliCashForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSButtonMetro btncetaknota;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbberdasarkan;
     private javax.swing.JComboBox<String> cbjk;
@@ -640,8 +689,8 @@ public class BeliCashForm extends javax.swing.JFrame {
     private rojerusan.RSButtonMetro rSButtonMetro2;
     private rojerusan.RSButtonMetro rSButtonMetro3;
     private rojerusan.RSButtonMetro rSButtonMetro4;
-    private rojerusan.RSButtonMetro rSButtonMetro5;
     private rojerusan.RSButtonMetro rSButtonMetro6;
+    private rojerusan.RSButtonMetro rSButtonMetro8;
     private rojerusan.RSPanelImage rSPanelImage1;
     private javax.swing.JRadioButton rbmotor;
     private javax.swing.JRadioButton rbpembelian;

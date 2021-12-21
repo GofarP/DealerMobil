@@ -37,7 +37,7 @@ public class BeliCashDao implements InterfaceBeliCash{
     Date date=new Date();
     
     ArrayList<BeliCash> beliCashArrayList;
-    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
     
     @Override
     public String autoNumber() {
@@ -108,11 +108,7 @@ public class BeliCashDao implements InterfaceBeliCash{
           while(rs.next())
           {
               beliCash=new BeliCash();
-              
-              date=sdf.parse(rs.getString("tgl_beli")); 
-              sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-              String formattedDate=sdf.format(date);
-              
+                            
               beliCash.setIdBeli(rs.getInt("id_beli"));
               beliCash.setNoKtp(rs.getString("no_ktp"));
               beliCash.setNoBeli(rs.getString("no_beli"));
@@ -126,7 +122,7 @@ public class BeliCashDao implements InterfaceBeliCash{
               beliCash.setMerkMotor(rs.getString("merk"));
               beliCash.setWarnaMotor(rs.getString("warna"));
               beliCash.setHargaMotor(rs.getInt("harga"));
-              beliCash.setTglBeli(formattedDate);
+              beliCash.setTglBeli(sdf.format(rs.getTimestamp("tgl_beli")));
               
               beliCashArrayList.add(beliCash);
           }
@@ -193,17 +189,69 @@ public class BeliCashDao implements InterfaceBeliCash{
     
     
     @Override
-    public void editPembelian(BeliCash beliCash)
+    public void editPembelian(BeliCash beliCash, int idMotorLama)
     {
         try 
         {
+           
             conn=(Connection)koneksi.configDB();
-            sql="";
+            conn.setAutoCommit(false);
+            sql="update beli_cash set no_ktp=?, nama=?, jenis_kelamin=?, alamat=?, notelp=? where id_beli=?";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, beliCash.getNoKtp());
+            pst.setString(2, beliCash.getNama());
+            pst.setString(3, beliCash.getJeniKelamin());
+            pst.setString(4, beliCash.getAlamat());
+            pst.setString(5, beliCash.getNoTelp());
+            pst.setInt(6, beliCash.getIdBeli());
+            
+            pst.executeUpdate();
+            
+            if(beliCash.getIdMotor()!=idMotorLama)
+            {
+               Date date=new Date();
+               SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+               
+               sql="update beli_cash set id_motor=?, tgl_beli=? where id_beli=?";
+               pst=conn.prepareStatement(sql);
+               pst.setInt(1, beliCash.getIdMotor());
+               pst.setString(2, sdf.format(date));
+               pst.setInt(3, beliCash.getIdBeli());
+               pst.executeUpdate();
+                        
+               //tambah jumlah motor lama 
+               sql="update motor set stok=stok+1 where id=?";
+               pst=conn.prepareStatement(sql);
+               pst.setInt(1, idMotorLama);
+               pst.executeUpdate();
+               
+               //kurangi jumlah motor baru
+               sql="update motor set stok=stok-1 where id=?";
+               pst=conn.prepareStatement(sql);
+               pst.setInt(1, beliCash.getIdMotor());
+               pst.executeUpdate();
+               
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sukses Mengubah Data Beli");
+            
+            conn.commit();
+            
         } 
         
         catch (Exception e) 
         {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            try 
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                conn.rollback();
+            } 
+            
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(BeliCashDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -243,6 +291,34 @@ public class BeliCashDao implements InterfaceBeliCash{
             }
         }
     }
+    
+    @Override
+    public ArrayList<BeliCash> searchById(String id) {
+        try 
+        {
+            conn=(Connection)koneksi.configDB();
+            sql="select * from beli_cash where id_beli=?";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, id);
+            rs=pst.executeQuery();
+            
+            if(rs.next())
+            {
+                beliCash=new BeliCash();
+                
+                beliCash.setIdBeli(rs.getInt("id_beli"));
+                beliCash.setIdMotor(rs.getInt("id_motor"));
+               
+                beliCashArrayList.add(beliCash);
+            }
+        } 
+        
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return beliCashArrayList;
+    }
 
     @Override
     public ArrayList<BeliCash> searchByKode(String kode) {
@@ -262,7 +338,6 @@ public class BeliCashDao implements InterfaceBeliCash{
                 
                 date=sdf.parse(rs.getString("tgl_beli")); 
                 sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-                String formattedDate=sdf.format(date);
                 
                 beliCash.setIdBeli(rs.getInt("id_beli"));
                 beliCash.setNoKtp(rs.getString("no_ktp"));
@@ -277,7 +352,7 @@ public class BeliCashDao implements InterfaceBeliCash{
                 beliCash.setMerkMotor(rs.getString("merk"));
                 beliCash.setWarnaMotor(rs.getString("warna"));
                 beliCash.setHargaMotor(rs.getInt("harga"));
-                beliCash.setTglBeli(formattedDate);
+                beliCash.setTglBeli(sdf.format(rs.getTimestamp("tgl_beli")));
 
                 beliCashArrayList.add(beliCash);
             }
@@ -325,7 +400,7 @@ public class BeliCashDao implements InterfaceBeliCash{
                 beliCash.setMerkMotor(rs.getString("merk"));
                 beliCash.setWarnaMotor(rs.getString("warna"));
                 beliCash.setHargaMotor(rs.getInt("harga"));
-                beliCash.setTglBeli(formattedDate);
+                beliCash.setTglBeli(sdf.format(rs.getTimestamp("tgl_beli")));
                 
                 beliCashArrayList.add(beliCash);
             }
@@ -339,6 +414,8 @@ public class BeliCashDao implements InterfaceBeliCash{
         return beliCashArrayList;
 
     }
+
+    
 
    
     

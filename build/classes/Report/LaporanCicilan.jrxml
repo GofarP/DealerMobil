@@ -24,15 +24,15 @@
 		</box>
 	</style>
 	<subDataset name="CicilanDataSet" uuid="38c8547e-158d-4ac1-b294-6caf32675ed1">
-		<field name="idCicilan" class="java.lang.String"/>
+		<field name="idCicilan" class="java.lang.Integer"/>
 		<field name="kodeCicilan" class="java.lang.String"/>
-		<field name="namaPembeli" class="java.lang.String"/>
+		<field name="nama" class="java.lang.String"/>
 		<field name="namaMotor" class="java.lang.String"/>
-		<field name="jumlahBayar" class="java.lang.String"/>
-		<field name="statusCicilan" class="java.lang.String"/>
-		<field name="denda" class="java.lang.String"/>
-		<field name="tglBayar" class="java.lang.String"/>
-		<field name="cicilanKe" class="java.lang.String"/>
+		<field name="jumlahBayar" class="java.lang.Integer"/>
+		<field name="status" class="java.lang.String"/>
+		<field name="denda" class="java.lang.Integer"/>
+		<field name="tglCicil" class="java.lang.String"/>
+		<field name="cicilanKe" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="CicilanDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<background>
@@ -123,7 +123,7 @@
 								<textElement textAlignment="Center">
 									<font size="10"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{namaPembeli}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -158,7 +158,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="35" rowSpan="1">
-							<textField>
+							<textField pattern="¤ #,##0.00">
 								<reportElement x="0" y="0" width="90" height="35" uuid="24d2ffd2-fe58-4b3d-b7d6-3aadd0fd45d4"/>
 								<textElement textAlignment="Center">
 									<font size="10"/>
@@ -183,7 +183,7 @@
 								<textElement textAlignment="Center">
 									<font size="10"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{statusCicilan}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -223,7 +223,7 @@
 								<textElement textAlignment="Center">
 									<font size="10"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{tglBayar}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{tglCicil}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

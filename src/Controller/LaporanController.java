@@ -83,14 +83,23 @@ public class LaporanController {
                     break;
             }
             
-             itemsJRBean = new JRBeanCollectionDataSource(motorArrayList);
-             parameters.put("MotorDataSource", itemsJRBean);
+            if(motorArrayList.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Data Motor Masih Kosong Ataupun Tidak Ditemukan");
+            }
+            
+            else
+            {
+                itemsJRBean = new JRBeanCollectionDataSource(motorArrayList);
+                parameters.put("MotorDataSource", itemsJRBean);
+
+                jasperPrint = JasperFillManager.fillReport("src/report/LaporanMotor.jasper", parameters, new JREmptyDataSource());
+                jasperViewer=new JasperViewer(jasperPrint, false);
+                jasperViewer.viewReport(jasperPrint,false);
+
+                motorArrayList.clear();
+            }
              
-             jasperPrint = JasperFillManager.fillReport("src/report/LaporanMotor.jasper", parameters, new JREmptyDataSource());
-             jasperViewer=new JasperViewer(jasperPrint, false);
-             jasperViewer.viewReport(jasperPrint,false);
-             
-             motorArrayList.clear();
         } 
         
         catch (Exception e) 
@@ -108,7 +117,7 @@ public class LaporanController {
            
             int index=laporanForm.getCbPaketBerdasarkan().getSelectedIndex();
         
-            String cari=laporanForm.getTxtCariPaket().getText().trim();
+            String cariPaket=laporanForm.getTxtCariPaket().getText().trim();
             
             switch(index)
             {
@@ -117,23 +126,31 @@ public class LaporanController {
                     break;
                     
                 case 1:
-                    paketArrayList=interfaceLaporan.laporanPaketByKodePaket(cari);
+                    paketArrayList=interfaceLaporan.laporanPaketByKodePaket(cariPaket);
                     break;
                     
                 case 2:
-                    paketArrayList=interfaceLaporan.laporanPaketByNama(cari);
+                    paketArrayList=interfaceLaporan.laporanPaketByNama(cariPaket);
                     break;
             }
             
-            itemsJRBean = new JRBeanCollectionDataSource(paketArrayList);
-            parameters.put("PaketDataSource", itemsJRBean);
+            if(paketArrayList.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Data Paket Masih Kosong Atau Tidak DItemukan");
+            }
             
-            jasperPrint = JasperFillManager.fillReport("src/report/LaporanPaket.jasper", parameters, new JREmptyDataSource());
-            jasperViewer=new JasperViewer(jasperPrint, false);
-            jasperViewer.viewReport(jasperPrint,false);
-             
-            paketArrayList.clear();
-             
+            else
+            {
+                itemsJRBean = new JRBeanCollectionDataSource(paketArrayList);
+                parameters.put("PaketDataSource", itemsJRBean);
+
+                jasperPrint = JasperFillManager.fillReport("src/report/LaporanPaket.jasper", parameters, new JREmptyDataSource());
+                jasperViewer=new JasperViewer(jasperPrint, false);
+                jasperViewer.viewReport(jasperPrint,false);
+
+                paketArrayList.clear();
+            }
+                
             
         }
         
@@ -150,8 +167,9 @@ public class LaporanController {
         {
             int jenis=laporanForm.getCbTransaksiJenis().getSelectedIndex();
             int berdasarkan=laporanForm.getCbTransaksiBerdasarkan().getSelectedIndex();
-            String cari=laporanForm.getTxtCariPenjualan().getText().trim();
+            String cariPenjualan=laporanForm.getTxtCariPenjualan().getText().trim();
             
+            //laporan beli cash
             if(jenis==0)
             {
                 switch(berdasarkan)
@@ -161,11 +179,11 @@ public class LaporanController {
                         break;
                         
                     case 1:
-                        beliCashArrayList=interfaceLaporan.laporanBeliCashByKodeTransaksi(cari);
+                        beliCashArrayList=interfaceLaporan.laporanBeliCashByKodeTransaksi(cariPenjualan);
                         break;    
                         
                     case 2:
-                        beliCashArrayList=interfaceLaporan.laporanBeliCashByNamaPembeli(cari);
+                        beliCashArrayList=interfaceLaporan.laporanBeliCashByNamaPembeli(cariPenjualan);
                         break;
                 }
                 
@@ -180,12 +198,16 @@ public class LaporanController {
                     itemsJRBean = new JRBeanCollectionDataSource(beliCashArrayList);
                     parameters.put("BeliCashDataSource", itemsJRBean);
                     jasperPrint = JasperFillManager.fillReport("src/report/LaporanBeliCash.jasper", parameters, new JREmptyDataSource());
+                    jasperViewer=new JasperViewer(jasperPrint, false);
+                    jasperViewer.viewReport(jasperPrint,false);
+                    
                     beliCashArrayList.clear();
                 }
                 
-                
+               
             }
             
+            //laporan beli credit
             else if(jenis==1)
             {
                 switch(berdasarkan)
@@ -195,11 +217,11 @@ public class LaporanController {
                         break;
                         
                     case 1:
-                        beliCreditArrayList=interfaceLaporan.laporanBeliCreditByKodeTransaksi(cari);
+                        beliCreditArrayList=interfaceLaporan.laporanBeliCreditByKodeTransaksi(cariPenjualan);
                         break;
                         
                     case 2:
-                        beliCreditArrayList=interfaceLaporan.laporanBeliCreditByNama(cari);
+                        beliCreditArrayList=interfaceLaporan.laporanBeliCreditByNama(cariPenjualan);
                         break;
                 }
                 
@@ -213,11 +235,15 @@ public class LaporanController {
                     itemsJRBean = new JRBeanCollectionDataSource(beliCreditArrayList);
                     parameters.put("BeliCreditDataSource", itemsJRBean);
                     jasperPrint = JasperFillManager.fillReport("src/report/LaporanBelicredit.jasper", parameters, new JREmptyDataSource());
+                    jasperViewer=new JasperViewer(jasperPrint, false);
+                    jasperViewer.viewReport(jasperPrint,false);
+                
                     beliCreditArrayList.clear();
                 }
                 
             }
             
+            //laporan cicilan
             else if(jenis==2)
             {
                 switch(berdasarkan)
@@ -227,11 +253,11 @@ public class LaporanController {
                         break;
                         
                     case 1:
-                        cicilanCreditArrayList=interfaceLaporan.laporanCicilanByKodeCicilan(cari);
+                        cicilanCreditArrayList=interfaceLaporan.laporanCicilanByKodeCicilan(cariPenjualan);
                         break;
                         
                     case 2:
-                        cicilanCreditArrayList=interfaceLaporan.laporanCicilanByNama(cari);
+                        cicilanCreditArrayList=interfaceLaporan.laporanCicilanByNama(cariPenjualan);
                         break;
                 }
                 
@@ -245,16 +271,14 @@ public class LaporanController {
                     itemsJRBean = new JRBeanCollectionDataSource(cicilanCreditArrayList);
                     parameters.put("CicilanDataSource", itemsJRBean);
                     jasperPrint = JasperFillManager.fillReport("src/report/LaporanCicilan.jasper", parameters, new JREmptyDataSource());
+                    jasperViewer=new JasperViewer(jasperPrint, false);
+                    jasperViewer.viewReport(jasperPrint,false);
+                
                     cicilanCreditArrayList.clear();
                 }
-                
-                
+                  
             }
-            
-            
-            jasperViewer=new JasperViewer(jasperPrint, false);
-            jasperViewer.viewReport(jasperPrint,false);
-            
+              
         } 
         
         catch (Exception e) 

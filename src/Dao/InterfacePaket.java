@@ -20,7 +20,7 @@ public interface InterfacePaket {
     public ArrayList<Paket> searchDataPaketByKode(String kode);
     public ArrayList<Paket> searchDataPaketByMotor(String nama);
     public void tambahPaket(Paket paket);
-    public void editPaket(int idpaket);
+    public void editPaket(Paket paket);
     public void deletePacket(int idpaket);
     
 }

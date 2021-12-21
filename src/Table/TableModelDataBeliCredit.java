@@ -6,6 +6,7 @@
 package Table;
 
 import Model.BeliCredit;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -28,7 +29,7 @@ public class TableModelDataBeliCredit extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 16;
+        return 14;
     }
 
     @Override
@@ -36,21 +37,19 @@ public class TableModelDataBeliCredit extends AbstractTableModel{
         switch(columnIndex)
         {
             case 0: return arrayListBeliCredit.get(rowIndex).getNoBeli();
-            case 1: return arrayListBeliCredit.get(rowIndex).getNoKtp();
-            case 2: return arrayListBeliCredit.get(rowIndex).getNama();
-            case 3: return arrayListBeliCredit.get(rowIndex).getJenisKelamin();
-            case 4: return arrayListBeliCredit.get(rowIndex).getNoTelp();
-            case 5: return arrayListBeliCredit.get(rowIndex).getKodeMotor();
-            case 6: return arrayListBeliCredit.get(rowIndex).getNamaMotor();
-            case 7: return arrayListBeliCredit.get(rowIndex).getMerkMotor();
-            case 8: return arrayListBeliCredit.get(rowIndex).getWarna();
-            case 9: return arrayListBeliCredit.get(rowIndex).getJumlahCicilan();
-            case 10: return arrayListBeliCredit.get(rowIndex).getNilaiCicilan();
-            case 11: return arrayListBeliCredit.get(rowIndex).getBunga();
-            case 12: return arrayListBeliCredit.get(rowIndex).getUangMuka();
-            case 13: return arrayListBeliCredit.get(rowIndex).getHarga();
-            case 14: return arrayListBeliCredit.get(rowIndex).getTanggal();
-            case 15: return arrayListBeliCredit.get(rowIndex).getStatus();
+            case 1: return arrayListBeliCredit.get(rowIndex).getNama();
+            case 2: return arrayListBeliCredit.get(rowIndex).getJenisKelamin();
+            case 3: return arrayListBeliCredit.get(rowIndex).getNoTelp();
+            case 4: return arrayListBeliCredit.get(rowIndex).getNamaMotor();
+            case 5: return arrayListBeliCredit.get(rowIndex).getMerkMotor();
+            case 6: return arrayListBeliCredit.get(rowIndex).getWarna();
+            case 7: return arrayListBeliCredit.get(rowIndex).getJumlahCicilan();
+            case 8: return "Rp."+NumberFormat.getInstance().format(arrayListBeliCredit.get(rowIndex).getNilaiCicilan());
+            case 9: return arrayListBeliCredit.get(rowIndex).getBunga()+"%";
+            case 10: return "Rp."+NumberFormat.getInstance().format(arrayListBeliCredit.get(rowIndex).getUangMuka());
+            case 11: return "Rp."+NumberFormat.getInstance().format(arrayListBeliCredit.get(rowIndex).getHarga());
+            case 12: return arrayListBeliCredit.get(rowIndex).getTanggal();
+            case 13: return arrayListBeliCredit.get(rowIndex).getStatus();
             
             default: return null;
         }
@@ -61,21 +60,19 @@ public class TableModelDataBeliCredit extends AbstractTableModel{
            switch(column)
         {
             case 0: return "No Beli";
-            case 1: return "No KTP";
-            case 2: return "Nama";
-            case 3: return "Jenis Kelamin";
-            case 4: return "No Telp";
-            case 5: return "Kode Motor";
-            case 6: return "Nama Motor";
-            case 7: return "Merk Motor";
-            case 8: return "Warna";
-            case 9: return "Jumlah Cicilan";
-            case 10: return "Nilai cicilan";
-            case 11: return "Bunga";
-            case 12: return "Uang Muka";
-            case 13: return "Harga";
-            case 14: return "Tanggal";
-            case 15: return "Status";
+            case 1: return "Nama";
+            case 2: return "Jenis Kelamin";
+            case 3: return "No Telp";
+            case 4: return "Nama Motor";
+            case 5: return "Merk Motor";
+            case 6: return "Warna";
+            case 7: return "Jumlah Cicilan";
+            case 8: return "Nilai cicilan";
+            case 9: return "Bunga";
+            case 10: return "Uang Muka";
+            case 11: return "Harga";
+            case 12: return "Tanggal";
+            case 13: return "Status";
             
             default: return null;
         }

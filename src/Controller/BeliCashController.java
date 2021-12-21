@@ -63,7 +63,6 @@ public class BeliCashController {
     {        
         boolean kosong=false;
         
-        
         JTextField jtf[]={beliCashForm.getTxtNoKtp(), beliCashForm.getTxtNamaPembeli(),beliCashForm.getTxtalamat(),beliCashForm.getTxtnoTelp()};
         
         for(JTextField jTextField:jtf)
@@ -72,17 +71,8 @@ public class BeliCashController {
             {
                 kosong=true;
             }
-            
-            else
-            {
-                kosong=false;
-            }
         }
         
-        if(beliCashForm.getLblStok().getText().equals("..."))
-        {
-            kosong=true;
-        }
         
         return kosong;
     }
@@ -91,6 +81,7 @@ public class BeliCashController {
     
     public void clearPembeli()
     {
+       
        JTextField jtf[]={beliCashForm.getTxtNoKtp(), beliCashForm.getTxtNamaPembeli(),beliCashForm.getTxtalamat(),beliCashForm.getTxtnoTelp()};
        
        for(JTextField jTextField:jtf)
@@ -98,17 +89,18 @@ public class BeliCashController {
            jTextField.setText("");
        }
        
+       idMotor="";
        idBeli="";
        
        beliCashForm.getCbJenisKelamin().setSelectedIndex(0);
        beliCashForm.getLblTglBeli().setText("...");
+       beliCashForm.getLblStok().setText("0");
+       beliCashForm.getLblhargamotor().setText("0");
     }
     
     public void clearMotor()
     {
-        idMotor="";
-        
-        
+                
         JLabel jLabel[]={beliCashForm.getLblkodemotor(),beliCashForm.getLblnamamotor(), beliCashForm.getLblmerkmotor(),
             beliCashForm.getLblwarnamotor(),beliCashForm.getLblhargamotor(), beliCashForm.getLblStok()};
         
@@ -117,8 +109,11 @@ public class BeliCashController {
             jl.setText("...");
         }
         
-       
+       idMotor="";
+       idBeli="";
+          
     }
+    
     
     public void showMotor()
     {
@@ -126,8 +121,6 @@ public class BeliCashController {
         motorArrayList=interfaceMotor.showDataMotor();
         TableModelDataMotor modelDataMotor=new TableModelDataMotor(motorArrayList);
         beliCashForm.getTblBeliCash().setModel(modelDataMotor);
-        
-        
     }
     
     public void showDataBeli()
@@ -135,8 +128,7 @@ public class BeliCashController {
         interfaceBeliCash=new BeliCashDao();
         beliCashArrayList=interfaceBeliCash.showDataBeli();
         TableModelDataBeliCash modelDataCash=new TableModelDataBeliCash(beliCashArrayList);
-        beliCashForm.getTblBeliCash().setModel(modelDataCash);
-        
+        beliCashForm.getTblBeliCash().setModel(modelDataCash);        
     }
     
     
@@ -225,8 +217,7 @@ public class BeliCashController {
     {
         try
         {
-            
-            
+                   
             stok=Integer.parseInt(beliCashForm.getLblStok().getText());
             
             if(validasiPembeli())
@@ -263,7 +254,31 @@ public class BeliCashController {
                 beliCash.setTglBeli(sdf.format(date));
 
                 interfaceBeliCash.tambahPembelian(beliCash);
-                            
+                
+                
+                
+                File reportFile=new File("src/report/NotaCash.jrxml");
+                JasperDesign jDesign=JRXmlLoader.load(reportFile);
+                sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
+                Map formValues=new HashMap();
+                
+                formValues.put("pembeli", beliCashForm.getTxtNamaPembeli().getText().trim());
+                formValues.put("kodeMotor", beliCashForm.getLblkodemotor().getText());
+                formValues.put("merkMotor", beliCashForm.getLblmerkmotor().getText());
+                formValues.put("namaMotor", beliCashForm.getLblnamamotor().getText());
+                formValues.put("merk", beliCashForm.getLblmerkmotor().getText());
+                formValues.put("warna", beliCashForm.getLblwarnamotor().getText());
+                formValues.put("harga", beliCashForm.getLblhargamotor().getText());
+                formValues.put("tglBeli", sdf.format(date));
+
+                
+                JasperReport jr=JasperCompileManager.compileReport(jDesign);
+                JasperPrint jp = JasperFillManager.fillReport(jr, formValues,new JREmptyDataSource());
+                JasperViewer.viewReport(jp,false);
+                    
+                idBeli="";
+            
             }
             
         }
@@ -274,6 +289,108 @@ public class BeliCashController {
         }
         
         
+    }
+    
+    
+    public void UpdateDataBeli()
+    {
+        
+        //cek validasi pembeli
+        if(validasiPembeli())
+        {
+            JOptionPane.showMessageDialog(null, "Silahkan Lengkapi Data Pembeli");
+        }
+        
+        else
+        {
+          
+            String kodeMotor=beliCashForm.getLblkodemotor().getText();
+            
+            ArrayList<Motor> arrayListEditMotor;
+            ArrayList<BeliCash> arrayListEditBeliCash;
+            
+            arrayListEditMotor=interfaceMotor.searchKodeMotor(kodeMotor);
+            Integer stokMotor=arrayListEditMotor.get(0).getStok();
+            String idMotorBaru=String.valueOf(arrayListEditMotor.get(0).getId());
+            
+            arrayListEditBeliCash=interfaceBeliCash.searchById(idBeli);
+            String idMotorLama=String.valueOf(arrayListEditBeliCash.get(0).getIdMotor());
+            
+            if(idBeli.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Silahkan Pilih Data Beli Yang Mau Diubah");
+            }
+
+            else if(idMotor.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Silahkan Pilih Motor Yang Mau Diubah");
+            }
+
+            else if(stokMotor==0 && !idMotorBaru.equals(idMotorLama))
+            {
+               JOptionPane.showMessageDialog(null, "Stok Motor Habis");
+            }
+
+            else
+            {
+                String noktp=beliCashForm.getTxtNoKtp().getText().trim();
+                String nama=beliCashForm.getTxtNamaPembeli().getText().trim();
+                String jenisKelamin=beliCashForm.getCbJenisKelamin().getSelectedItem().toString();
+                String alamat=beliCashForm.getTxtalamat().getText().trim();
+                String noTelp=beliCashForm.getTxtnoTelp().getText().trim();
+                
+                beliCash.setIdMotor(Integer.parseInt(idMotorBaru));
+                beliCash.setIdBeli(Integer.parseInt(idBeli));
+                beliCash.setNoKtp(noktp);
+                beliCash.setNama(nama);
+                beliCash.setJeniKelamin(jenisKelamin);
+                beliCash.setAlamat(alamat);
+                beliCash.setNoTelp(noTelp);
+                
+                interfaceBeliCash.editPembelian(beliCash,Integer.parseInt(idMotorLama));
+                
+                if(!idMotorBaru.equals(idMotorLama))
+                {
+                    
+                    try 
+                    {
+                        Date tglHariIni=new Date();
+                        SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+                        File reportFile=new File("src/report/NotaCash.jrxml");
+                        JasperDesign jDesign=JRXmlLoader.load(reportFile);
+
+                        Map formValues=new HashMap();
+
+                        formValues.put("pembeli", beliCashForm.getTxtNamaPembeli().getText().trim());
+                        formValues.put("kodeMotor", beliCashForm.getLblkodemotor().getText());
+                        formValues.put("merkMotor", beliCashForm.getLblmerkmotor().getText());
+                        formValues.put("namaMotor", beliCashForm.getLblnamamotor().getText());
+                        formValues.put("merk", beliCashForm.getLblmerkmotor().getText());
+                        formValues.put("warna", beliCashForm.getLblwarnamotor().getText());
+                        formValues.put("harga", beliCashForm.getLblhargamotor().getText());
+                        formValues.put("tglBeli", sdf.format(tglHariIni));
+
+
+                        JasperReport jr=JasperCompileManager.compileReport(jDesign);
+                        JasperPrint jp = JasperFillManager.fillReport(jr, formValues,new JREmptyDataSource());
+                        JasperViewer.viewReport(jp,false);
+                    } 
+                    
+                    catch (Exception e) 
+                    {
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }
+                    
+                }
+                
+                idMotorBaru="";
+                idMotorLama="";
+                stokMotor=null;
+                
+
+            }   
+        
+        }
     }
     
     
@@ -369,8 +486,31 @@ public class BeliCashController {
     {
         int row=beliCashForm.getTblBeliCash().getSelectedRow();
         
-        if(beliCashForm.getRbDataMotor().isSelected())
+        if(beliCashForm.getRbDataBeli().isSelected())
         {
+            beliCashForm.getBtnCetakNota().setEnabled(true);
+            
+            idBeli=String.valueOf(beliCashArrayList.get(row).getIdBeli());
+            idMotor=String.valueOf(beliCashArrayList.get(row).getIdMotor());
+            
+            beliCashForm.getTxtNoKtp().setText(beliCashArrayList.get(row).getNoKtp());
+            beliCashForm.getTxtNamaPembeli().setText(beliCashArrayList.get(row).getNama());
+            beliCashForm.getCbJenisKelamin().setSelectedItem(beliCashArrayList.get(row).getJeniKelamin());
+            beliCashForm.getTxtalamat().setText(beliCashArrayList.get(row).getAlamat());
+            beliCashForm.getTxtnoTelp().setText(beliCashArrayList.get(row).getNoTelp());
+
+            beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
+            beliCashForm.getLblnamamotor().setText(beliCashArrayList.get(row).getNamaMotor());
+            beliCashForm.getLblmerkmotor().setText(beliCashArrayList.get(row).getMerkMotor());
+            beliCashForm.getLblwarnamotor().setText(beliCashArrayList.get(row).getWarnaMotor());        
+            beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(beliCashArrayList.get(row).getHargaMotor()));         
+        
+        }
+        
+        else if(beliCashForm.getRbDataMotor().isSelected())
+        {
+            beliCashForm.getBtnCetakNota().setEnabled(false);
+            
             idMotor=String.valueOf(motorArrayList.get(row).getId());
             beliCashForm.getLblkodemotor().setText(motorArrayList.get(row).getKodeMotor());
             beliCashForm.getLblnamamotor().setText(motorArrayList.get(row).getNama());
@@ -378,23 +518,12 @@ public class BeliCashController {
             beliCashForm.getLblwarnamotor().setText(motorArrayList.get(row).getWarna());        
             beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(motorArrayList.get(row).getHarga()));
             beliCashForm.getLblStok().setText(String.valueOf(motorArrayList.get(row).getStok()));
-        
         }
         
-        else if(beliCashForm.getRbDataBeli().isSelected())
-        {
-            idBeli=String.valueOf(beliCashArrayList.get(row).getIdBeli());
-            idMotor=String.valueOf(beliCashArrayList.get(row).getIdMotor());
-            beliCashForm.getLblkodemotor().setText(beliCashArrayList.get(row).getKodeMotor());
-            beliCashForm.getLblnamamotor().setText(beliCashArrayList.get(row).getNamaMotor());
-            beliCashForm.getLblmerkmotor().setText(beliCashArrayList.get(row).getMerkMotor());
-            beliCashForm.getLblwarnamotor().setText(beliCashArrayList.get(row).getWarnaMotor());        
-            beliCashForm.getLblhargamotor().setText("Rp."+NumberFormat.getInstance().format(beliCashArrayList.get(row).getHargaMotor()));
-            beliCashForm.getLblTglBeli().setText(beliCashArrayList.get(row).getTglBeli());
-        }
+         
         
-        //stok=motorArrayList.get(row).getStok();
-        
+      
+               
     }
     
 }

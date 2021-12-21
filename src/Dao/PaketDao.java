@@ -85,7 +85,7 @@ public class PaketDao implements InterfacePaket{
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`";
+            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna`, motor.`stok` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`";
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             
@@ -102,6 +102,7 @@ public class PaketDao implements InterfacePaket{
                 paket.setWarnaMotor(rs.getString("warna"));
                 paket.setJumlahCicilan(rs.getInt("jumlah_cicilan"));
                 paket.setNilaiCicilan(rs.getInt("nilai_cicilan"));
+                paket.setStok(rs.getInt("stok"));
                 paket.setBunga(rs.getInt("bunga"));
                 paket.setUangMuka(rs.getInt("uang_muka"));
                 paket.setHargaTotal(rs.getInt("harga_total"));
@@ -123,7 +124,7 @@ public class PaketDao implements InterfacePaket{
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where kode_paket=?";
+            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna`, motor.`stok` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id` where kode_paket=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, kode);
             rs=pst.executeQuery();
@@ -139,6 +140,7 @@ public class PaketDao implements InterfacePaket{
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
+                paket.setStok(rs.getInt("stok"));
                 paket.setJumlahCicilan(rs.getInt("jumlah_cicilan"));
                 paket.setNilaiCicilan(rs.getInt("nilai_cicilan"));
                 paket.setBunga(rs.getInt("bunga"));
@@ -162,7 +164,7 @@ public class PaketDao implements InterfacePaket{
         try 
         {
             conn=(Connection)koneksi.configDB();
-            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`where motor.`nama`=?";
+            sql="SELECT paket.*, motor.`kode_motor`,motor.`nama`, motor.`merk`, motor.`warna`, motor.`stok` FROM paket INNER JOIN motor ON paket.`id_motor`=motor.`id`where motor.`nama`=?";
             pst=conn.prepareStatement(sql);
             pst.setString(1, nama);
             rs=pst.executeQuery();
@@ -178,6 +180,7 @@ public class PaketDao implements InterfacePaket{
                 paket.setNamaMotor(rs.getString("nama"));
                 paket.setMerkMotor(rs.getString("merk"));
                 paket.setWarnaMotor(rs.getString("warna"));
+                paket.setStok(rs.getInt("stok"));
                 paket.setJumlahCicilan(rs.getInt("jumlah_cicilan"));
                 paket.setNilaiCicilan(rs.getInt("nilai_cicilan"));
                 paket.setBunga(rs.getInt("bunga"));
@@ -224,7 +227,7 @@ public class PaketDao implements InterfacePaket{
     }
 
     @Override
-    public void editPaket(int idpaket) {
+    public void editPaket(Paket paket) {
         try
         {
             conn=(Connection)koneksi.configDB();
@@ -236,11 +239,13 @@ public class PaketDao implements InterfacePaket{
             pst.setInt(4, paket.getBunga());
             pst.setInt(5, paket.getUangMuka());
             pst.setInt(6, paket.getHargaTotal());
-            pst.setInt(7, idpaket);
+            pst.setInt(7, paket.getIdPaket());
             
             pst.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Sukses Mengubah Data Paket");
+
+                       
         }
         
         catch(Exception e)
@@ -297,5 +302,7 @@ public class PaketDao implements InterfacePaket{
         
         return ada;
     }
+
+    
     
 }

@@ -36,7 +36,7 @@ public class TableModelDataBeliCash extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 13;
+        return 10;
     }
 
     @Override
@@ -46,19 +46,16 @@ public class TableModelDataBeliCash extends AbstractTableModel{
         switch(columnIndex)
         {
                 
-            case 0:return beliArrayList.get(rowIndex).getIdBeli();
-            case 1: return beliArrayList.get(rowIndex).getNoKtp();
-            case 2:return  beliArrayList.get(rowIndex).getNoBeli();
-            case 3:return  beliArrayList.get(rowIndex).getNama();
-            case 4:return  beliArrayList.get(rowIndex).getJeniKelamin();
-            case 5:return  beliArrayList.get(rowIndex).getAlamat();
-            case 6:return  beliArrayList.get(rowIndex).getNoTelp();
-            case 7:return  beliArrayList.get(rowIndex).getIdMotor();
-            case 8:return  beliArrayList.get(rowIndex).getNamaMotor();
-            case 9:return  beliArrayList.get(rowIndex).getMerkMotor();
-            case 10:return  beliArrayList.get(rowIndex).getWarnaMotor();
-            case 11:return  "Rp."+NumberFormat.getInstance().format(beliArrayList.get(rowIndex).getHargaMotor());
-            case 12: return beliArrayList.get(rowIndex).getTglBeli();
+            case 0:return  beliArrayList.get(rowIndex).getNoBeli();
+            case 1:return  beliArrayList.get(rowIndex).getNama();
+            case 2:return  beliArrayList.get(rowIndex).getJeniKelamin();
+            case 3:return  beliArrayList.get(rowIndex).getAlamat();
+            case 4:return  beliArrayList.get(rowIndex).getNoTelp();
+            case 5:return  beliArrayList.get(rowIndex).getNamaMotor();
+            case 6:return  beliArrayList.get(rowIndex).getMerkMotor();
+            case 7:return  beliArrayList.get(rowIndex).getWarnaMotor();
+            case 8:return  "Rp."+NumberFormat.getInstance().format(beliArrayList.get(rowIndex).getHargaMotor());
+            case 9: return beliArrayList.get(rowIndex).getTglBeli();
             
             default:return null;
         }
@@ -68,19 +65,16 @@ public class TableModelDataBeliCash extends AbstractTableModel{
     public String getColumnName(int column) {
         switch(column)
         {
-            case 0: return "ID Beli";
-            case 1: return "No Ktp";
-            case 2: return "No Beli";
-            case 3: return "Nama";
-            case 4: return "Jenis Kelamin";
-            case 5: return "Alamat";
-            case 6: return "No.Telp";
-            case 7: return "ID Motor";
-            case 8: return "Nama Motor";
-            case 9: return "Merk Motor";
-            case 10: return "Warna";
-            case 11: return "Harga";
-            case 12: return "tanggal";
+            case 0: return "No Beli";
+            case 1: return "Nama";
+            case 2: return "Jenis Kelamin";
+            case 3: return "Alamat";
+            case 4: return "No.Telp";
+            case 5: return "Nama Motor";
+            case 6: return "Merk Motor";
+            case 7: return "Warna";
+            case 8: return "Harga";
+            case 9: return "tanggal";
             
             default:return null;
         }

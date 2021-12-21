@@ -432,7 +432,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Jumlah Merk Motor");
+        jLabel12.setText("Jumlah Jenis Motor");
         kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 25, -1, -1));
 
         lbljmlmerk.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
@@ -499,7 +499,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Mobil Terjual");
+        jLabel11.setText("Motor Terjual");
         kGradientPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 25, -1, -1));
 
         jPanel8.add(kGradientPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 88, 200, 110));
